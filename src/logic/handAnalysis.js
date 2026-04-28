@@ -1,0 +1,283 @@
+import { TILE_LIST, TILE_MAP, countTiles, KOKUSHI_IDS, isWinningHand } from './tiles';
+import { YAKU_LIST } from './riichiData';
+import { calcHan, calcScore } from './score';
+
+const yakuById = new Map(YAKU_LIST.map((yaku) => [yaku.id, yaku]));
+
+const suits = ['m', 'p', 's'];
+const dragonIds = ['white', 'green', 'red'];
+
+function isNumberTile(id) {
+  return /^[1-9][mps]$/.test(id);
+}
+
+function tileNumber(id) {
+  return Number(id.slice(0, -1));
+}
+
+function tileSuit(id) {
+  return id.at(-1);
+}
+
+function isTerminalOrHonor(id) {
+  const tile = TILE_MAP.get(id);
+  return Boolean(tile?.terminal || tile?.honor);
+}
+
+function isSevenPairs(tileIds) {
+  if (tileIds.length !== 14) return false;
+  const values = Object.values(countTiles(tileIds));
+  return values.length === 7 && values.every((count) => count === 2);
+}
+
+function isKokushi(tileIds) {
+  if (tileIds.length !== 14) return false;
+  const counts = countTiles(tileIds);
+  return KOKUSHI_IDS.every((id) => counts[id] >= 1) && KOKUSHI_IDS.some((id) => counts[id] >= 2);
+}
+
+function cloneCounts(counts) {
+  return Object.fromEntries(TILE_LIST.map((tile) => [tile.id, counts[tile.id] || 0]));
+}
+
+function findMeldArrangements(counts, melds = [], limit = 80) {
+  if (melds.length > 4) return [];
+  const first = TILE_LIST.find((tile) => counts[tile.id] > 0);
+  if (!first) return [melds];
+
+  const results = [];
+  const id = first.id;
+
+  if (counts[id] >= 3) {
+    counts[id] -= 3;
+    results.push(...findMeldArrangements(counts, [...melds, { type: 'triplet', tiles: [id, id, id] }], limit));
+    counts[id] += 3;
+  }
+
+  if (isNumberTile(id) && tileNumber(id) <= 7) {
+    const suit = tileSuit(id);
+    const a = `${tileNumber(id) + 1}${suit}`;
+    const b = `${tileNumber(id) + 2}${suit}`;
+    if ((counts[a] || 0) > 0 && (counts[b] || 0) > 0) {
+      counts[id] -= 1;
+      counts[a] -= 1;
+      counts[b] -= 1;
+      results.push(...findMeldArrangements(counts, [...melds, { type: 'sequence', tiles: [id, a, b] }], limit));
+      counts[id] += 1;
+      counts[a] += 1;
+      counts[b] += 1;
+    }
+  }
+
+  return results.slice(0, limit);
+}
+
+function getStandardArrangements(tileIds) {
+  const baseCounts = cloneCounts(countTiles(tileIds));
+  const arrangements = [];
+
+  TILE_LIST.forEach((tile) => {
+    if ((baseCounts[tile.id] || 0) < 2) return;
+    const counts = { ...baseCounts };
+    counts[tile.id] -= 2;
+    const meldGroups = findMeldArrangements(counts);
+    meldGroups.forEach((melds) => {
+      if (melds.length === 4) arrangements.push({ pair: tile.id, melds });
+    });
+  });
+
+  return arrangements;
+}
+
+function hasYakuhai(pairOrMeldId, options) {
+  return dragonIds.includes(pairOrMeldId) || pairOrMeldId === options.roundWind || pairOrMeldId === options.seatWind;
+}
+
+function getSequenceBaseNumber(meld) {
+  return Math.min(...meld.tiles.map(tileNumber));
+}
+
+function isTwoSidedWait(meld, winningTileId) {
+  if (!winningTileId || meld.type !== 'sequence' || !meld.tiles.includes(winningTileId)) return false;
+
+  const suit = tileSuit(meld.tiles[0]);
+  if (tileSuit(winningTileId) !== suit) return false;
+
+  const base = getSequenceBaseNumber(meld);
+  const winNumber = tileNumber(winningTileId);
+
+  if (winNumber === base + 1) return false; // 간짱
+  if (base === 1 && winNumber === 3) return false; // 1-2 대기
+  if (base === 7 && winNumber === 7) return false; // 8-9 대기
+
+  return winNumber === base || winNumber === base + 2;
+}
+
+function getWaitFu(arrangement, winningTileId) {
+  if (!winningTileId) return 0;
+  if (arrangement.pair === winningTileId) return 2; // 단기
+
+  const winningSequences = arrangement.melds.filter((meld) => meld.type === 'sequence' && meld.tiles.includes(winningTileId));
+  if (winningSequences.length === 0) return 0;
+  return winningSequences.some((meld) => isTwoSidedWait(meld, winningTileId)) ? 0 : 2;
+}
+
+function analyzeArrangement(tileIds, arrangement, options) {
+  const yaku = [];
+  const counts = countTiles(tileIds);
+  const melds = arrangement.melds;
+  const sequences = melds.filter((meld) => meld.type === 'sequence');
+  const triplets = melds.filter((meld) => meld.type === 'triplet');
+
+  const allSimples = tileIds.every((id) => isNumberTile(id) && !isTerminalOrHonor(id));
+  if (allSimples) yaku.push({ id: 'tanyao', count: 1 });
+
+  if (options.isClosed && options.winType === 'tsumo') yaku.push({ id: 'menzenTsumo', count: 1 });
+
+  if (options.isClosed && options.riichiStatus === 'riichi') yaku.push({ id: 'riichi', count: 1 });
+  if (options.isClosed && options.riichiStatus === 'doubleRiichi') yaku.push({ id: 'doubleRiichi', count: 1 });
+
+  const yakuhaiCount = triplets.filter((meld) => hasYakuhai(meld.tiles[0], options)).length;
+  if (yakuhaiCount > 0) yaku.push({ id: 'yakuhai', count: yakuhaiCount });
+
+  if (triplets.length === 4) yaku.push({ id: 'toitoi', count: 1 });
+
+  const suitSet = new Set(tileIds.filter(isNumberTile).map(tileSuit));
+  const hasHonor = tileIds.some((id) => TILE_MAP.get(id)?.honor);
+  if (suitSet.size === 1 && hasHonor) yaku.push({ id: 'honitsu', count: 1 });
+  if (suitSet.size === 1 && !hasHonor) yaku.push({ id: 'chinitsu', count: 1 });
+
+  const sequenceKeys = sequences.map((meld) => meld.tiles.map((id) => tileNumber(id)).join('-') + tileSuit(meld.tiles[0]));
+  const sequenceCountMap = sequenceKeys.reduce((map, key) => {
+    map.set(key, (map.get(key) || 0) + 1);
+    return map;
+  }, new Map());
+  const duplicateSequenceCount = [...sequenceCountMap.values()].filter((count) => count >= 2).length;
+  if (options.isClosed && duplicateSequenceCount >= 2) {
+    yaku.push({ id: 'ryanpeko', count: 1 });
+  } else if (options.isClosed && duplicateSequenceCount >= 1) {
+    yaku.push({ id: 'ipeiko', count: 1 });
+  }
+
+  for (let n = 1; n <= 7; n += 1) {
+    const hasAllSuits = suits.every((suit) => sequenceKeys.includes(`${n}-${n + 1}-${n + 2}${suit}`));
+    if (hasAllSuits) {
+      yaku.push({ id: 'sanshokuDoujun', count: 1 });
+      break;
+    }
+  }
+
+  const tripletKeys = triplets.map((meld) => meld.tiles[0]);
+  for (let n = 1; n <= 9; n += 1) {
+    const hasAllSuits = suits.every((suit) => tripletKeys.includes(`${n}${suit}`));
+    if (hasAllSuits) {
+      yaku.push({ id: 'sanshokuDouko', count: 1 });
+      break;
+    }
+  }
+
+  const allBlocksContainTerminalOrHonor = [arrangement.pair, ...melds.map((meld) => meld.tiles[0])].every((id, index) => {
+    if (index === 0) return isTerminalOrHonor(id);
+    const meld = melds[index - 1];
+    return meld.tiles.some(isTerminalOrHonor);
+  });
+  if (allBlocksContainTerminalOrHonor && tileIds.some((id) => TILE_MAP.get(id)?.honor)) yaku.push({ id: 'chanta', count: 1 });
+  if (allBlocksContainTerminalOrHonor && !tileIds.some((id) => TILE_MAP.get(id)?.honor)) yaku.push({ id: 'junchan', count: 1 });
+
+  const waitFu = getWaitFu(arrangement, options.winningTileId);
+  const isPinfu = options.isClosed
+    && sequences.length === 4
+    && !hasYakuhai(arrangement.pair, options)
+    && waitFu === 0;
+  if (isPinfu) yaku.push({ id: 'pinfu', count: 1 });
+
+  let fu = 20;
+  if (options.winType === 'ron' && options.isClosed) fu += 10;
+  if (options.winType === 'tsumo' && !isPinfu) fu += 2;
+  if (hasYakuhai(arrangement.pair, options)) fu += 2;
+  fu += waitFu;
+  triplets.forEach((meld) => {
+    fu += isTerminalOrHonor(meld.tiles[0]) ? 8 : 4;
+  });
+  if (!isPinfu && fu < 30) fu = 30;
+
+  return { yaku, fu, arrangement };
+}
+
+function withKnownYakuName(yakuItems) {
+  return yakuItems
+    .filter((item) => yakuById.has(item.id))
+    .map((item) => ({ ...item, name: yakuById.get(item.id).name }));
+}
+
+function scoreCandidate(tileIds, yaku, fu, options) {
+  const han = calcHan({
+    selectedYaku: yaku,
+    yakuList: YAKU_LIST,
+    isClosed: options.isClosed,
+    doraCount: options.doraCount,
+    uraDoraCount: options.uraDoraCount,
+    akaDoraCount: options.akaDoraCount,
+  });
+  const result = calcScore({ ...options, han, fu });
+  return { han, result };
+}
+
+export function analyzeHandForScore(tileIds, options) {
+  if (tileIds.length !== 14) {
+    return { error: '14장을 선택해야 점수를 계산할 수 있습니다.' };
+  }
+  if (!isWinningHand(tileIds)) {
+    return { error: '현재 선택한 14장은 완성패가 아닙니다.' };
+  }
+
+  const candidates = [];
+
+  if (isKokushi(tileIds)) {
+    candidates.push({ yaku: [{ id: 'kokushi', name: '국사무쌍', count: 1, yakuman: true }], fu: 0, yakumanBase: 8000 });
+  }
+
+  if (isSevenPairs(tileIds)) {
+    const yaku = [];
+    if (options.isClosed && options.winType === 'tsumo') yaku.push({ id: 'menzenTsumo', count: 1 });
+    if (options.isClosed && options.riichiStatus === 'riichi') yaku.push({ id: 'riichi', count: 1 });
+    if (options.isClosed && options.riichiStatus === 'doubleRiichi') yaku.push({ id: 'doubleRiichi', count: 1 });
+    if (tileIds.every((id) => isNumberTile(id) && !isTerminalOrHonor(id))) yaku.push({ id: 'tanyao', count: 1 });
+    candidates.push({ yaku: withKnownYakuName(yaku), fu: 25 });
+  }
+
+  getStandardArrangements(tileIds).forEach((arrangement) => {
+    const analyzed = analyzeArrangement(tileIds, arrangement, options);
+    candidates.push({ ...analyzed, yaku: withKnownYakuName(analyzed.yaku) });
+  });
+
+  if (candidates.length === 0) return { error: '점수 계산 가능한 조합을 찾지 못했습니다.' };
+
+  const scored = candidates.map((candidate) => {
+    if (candidate.yakumanBase) {
+      const result = calcScore({ ...options, han: 13, fu: 40 });
+      return { ...candidate, han: 13, result };
+    }
+    const { han, result } = scoreCandidate(tileIds, candidate.yaku, candidate.fu, options);
+    return { ...candidate, han, result };
+  });
+
+  const valid = scored.filter((item) => !item.result.error);
+  if (valid.length === 0) {
+    const doraOnlyHan = Number(options.doraCount || 0) + Number(options.uraDoraCount || 0) + Number(options.akaDoraCount || 0);
+    return {
+      error: doraOnlyHan > 0 ? '도라만으로는 화료할 수 없습니다. 기본 역이 필요합니다.' : '인식된 역이 없습니다. 리치 등 수동 역이 필요한 손패일 수 있습니다.',
+      candidates: scored,
+    };
+  }
+
+  valid.sort((a, b) => (b.result.total || 0) - (a.result.total || 0) || b.han - a.han || b.fu - a.fu);
+  const best = valid[0];
+  const doraItems = [
+    options.doraCount > 0 ? { name: '도라', count: Number(options.doraCount) } : null,
+    options.uraDoraCount > 0 ? { name: '우라도라', count: Number(options.uraDoraCount) } : null,
+    options.akaDoraCount > 0 ? { name: '적도라', count: Number(options.akaDoraCount) } : null,
+  ].filter(Boolean);
+
+  return { ...best, doraItems, candidates: valid, winningTileId: options.winningTileId || null };
+}
