@@ -157,7 +157,7 @@ const MeldTileFace = styled.span`
   font-family: "Segoe UI Symbol", "Apple Color Emoji", "Noto Color Emoji", system-ui, sans-serif;
   font-size: 40px;
   line-height: 0.8;
-  transform: scale(1.14);
+  transform: scale(1.14) ${({ $rotated }) => ($rotated ? 'rotate(90deg)' : '')};
 `;
 
 const MeldBadge = styled.span`
@@ -212,8 +212,20 @@ export function getPhysicalTileIds(selectedTiles) {
   return selectedTiles.flatMap(getPhysicalIds);
 }
 
+export function getConcealedTileIds(selectedTiles) {
+  return selectedTiles.filter((item) => !isMeldItem(item));
+}
+
+export function getFixedMeldCount(selectedTiles) {
+  return selectedTiles.filter(isMeldItem).length;
+}
+
 export function hasOpenMeld(selectedTiles) {
   return selectedTiles.some((item) => isMeldItem(item) && ['chi', 'pon', 'kan'].includes(item.type));
+}
+
+export function getKanCount(selectedTiles) {
+  return selectedTiles.filter((item) => isMeldItem(item) && ['kan', 'ankan'].includes(item.type)).length;
 }
 
 export default function TilePicker({ selectedTiles, setSelectedTiles, maxTiles = 13, title = '패 선택' }) {
@@ -307,6 +319,7 @@ export default function TilePicker({ selectedTiles, setSelectedTiles, maxTiles =
           <GroupTitle>{group.label}</GroupTitle>
           <TileGrid>
             {group.tiles.map((tile) => {
+              if ((physicalCounts[tile.id] || 0) >= 4) return null;
               const disabled = isDisabled(tile);
               return (
                 <TileButton
@@ -372,3 +385,4 @@ export default function TilePicker({ selectedTiles, setSelectedTiles, maxTiles =
     </Section>
   );
 }
+

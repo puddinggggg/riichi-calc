@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import DoraPanel from './components/DoraPanel';
 import OptionPanel from './components/OptionPanel';
 import ResultPanel from './components/ResultPanel';
-import TilePicker, { getEffectiveTileIds, getPhysicalTileIds, hasOpenMeld } from './components/TilePicker';
+import TilePicker, { getEffectiveTileIds, getPhysicalTileIds, getConcealedTileIds, getFixedMeldCount, hasOpenMeld, getKanCount } from './components/TilePicker';
 import WaitResultPanel from './components/WaitResultPanel';
 import YakuSelector from './components/YakuSelector';
-import { getWaitingTiles, TILE_MAP, countTiles } from './logic/tiles';
+import { getWaitingTiles, getWaitingTilesWithFixedMelds, TILE_MAP, countTiles } from './logic/tiles';
 import { calcHan, calcScore } from './logic/score';
 import { analyzeHandForScore } from './logic/handAnalysis';
 import { YAKU_LIST } from './logic/riichiData';
@@ -219,8 +219,8 @@ const initialOptions = {
   riichiStatus: 'none',
 };
 
-function WaitScoreModal({ tiles, winningTileId, isClosed = true, onClose }) {
-  const [modalOptions, setModalOptions] = useState({ ...initialOptions, isClosed, playerType: initialOptions.seatWind === 'east' ? 'dealer' : initialOptions.playerType, winningTileId });
+function WaitScoreModal({ tiles, winningTileId, isClosed = true, kanCount = 0, onClose }) {
+  const [modalOptions, setModalOptions] = useState({ ...initialOptions, isClosed, playerType: initialOptions.seatWind === 'east' ? 'dealer' : initialOptions.playerType, winningTileId, kanCount });
   const [analysis, setAnalysis] = useState(null);
 
   const confirm = () => {
@@ -281,8 +281,15 @@ export default function App() {
   const waitPhysicalTiles = useMemo(() => getPhysicalTileIds(waitTiles), [waitTiles]);
   const waits = useMemo(() => {
     const physicalCounts = countTiles(waitPhysicalTiles);
-    return getWaitingTiles(waitEffectiveTiles).filter((tile) => (physicalCounts[tile.id] || 0) < 4);
-  }, [waitEffectiveTiles, waitPhysicalTiles]);
+    const fixedMeldCount = getFixedMeldCount(waitTiles);
+    const concealedTileIds = getConcealedTileIds(waitTiles);
+
+    const candidates = fixedMeldCount > 0
+      ? getWaitingTilesWithFixedMelds(concealedTileIds, fixedMeldCount)
+      : getWaitingTiles(waitEffectiveTiles);
+
+    return candidates.filter((tile) => (physicalCounts[tile.id] || 0) < 4);
+  }, [waitTiles, waitEffectiveTiles, waitPhysicalTiles]);
 
   const han = useMemo(
     () => calcHan({
@@ -314,6 +321,18 @@ export default function App() {
       return prev;
     });
   }, [options.winType, options.isClosed]);
+
+  useEffect(() => {
+    const hasPinfu = selectedYaku.some((item) => item.id === 'pinfu');
+    const hasMenzenTsumo = selectedYaku.some((item) => item.id === 'menzenTsumo');
+    if (hasPinfu && hasMenzenTsumo && options.isClosed && options.winType === 'tsumo' && Number(options.fu) !== 20) {
+      setOptions((prev) => ({ ...prev, fu: 20 }));
+      return;
+    }
+    if (hasPinfu && options.winType === 'ron' && Number(options.fu) !== 30) {
+      setOptions((prev) => ({ ...prev, fu: 30 }));
+    }
+  }, [selectedYaku, options.isClosed, options.winType, options.fu]);
 
   useEffect(() => {
     if (!options.isClosed) {
@@ -366,9 +385,9 @@ export default function App() {
         </Header>
         <Layout>
           <TilePicker selectedTiles={waitTiles} setSelectedTiles={setWaitTiles} maxTiles={14} title="선택된 패 / 선택할 패" />
-          <WaitResultPanel selectedCount={waitEffectiveTiles.length} waits={waits} onWaitClick={(tile) => setWaitScoreTarget({ winningTileId: tile.id, tiles: [...waitEffectiveTiles, tile.id], isClosed: !hasOpenMeld(waitTiles) })} />
+          <WaitResultPanel selectedCount={waitEffectiveTiles.length} waits={waits} onWaitClick={(tile) => setWaitScoreTarget({ winningTileId: tile.id, tiles: [...waitEffectiveTiles, tile.id], isClosed: !hasOpenMeld(waitTiles), kanCount: getKanCount(waitTiles) })} />
         </Layout>
-        {waitScoreTarget && <WaitScoreModal tiles={waitScoreTarget.tiles} winningTileId={waitScoreTarget.winningTileId} isClosed={waitScoreTarget.isClosed} onClose={() => setWaitScoreTarget(null)} />}
+        {waitScoreTarget && <WaitScoreModal tiles={waitScoreTarget.tiles} winningTileId={waitScoreTarget.winningTileId} isClosed={waitScoreTarget.isClosed} kanCount={waitScoreTarget.kanCount} onClose={() => setWaitScoreTarget(null)} />}
       </Page>
     );
   }

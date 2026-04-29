@@ -6,6 +6,8 @@ const yakuById = new Map(YAKU_LIST.map((yaku) => [yaku.id, yaku]));
 
 const suits = ['m', 'p', 's'];
 const dragonIds = ['white', 'green', 'red'];
+const windIds = ['east', 'south', 'west', 'north'];
+const greenIds = new Set(['2s', '3s', '4s', '6s', '8s', 'green']);
 
 function isNumberTile(id) {
   return /^[1-9][mps]$/.test(id);
@@ -34,6 +36,59 @@ function isKokushi(tileIds) {
   if (tileIds.length !== 14) return false;
   const counts = countTiles(tileIds);
   return KOKUSHI_IDS.every((id) => counts[id] >= 1) && KOKUSHI_IDS.some((id) => counts[id] >= 2);
+}
+
+
+function isChuuren(tileIds, options) {
+  if (!options.isClosed || tileIds.length !== 14) return false;
+  if (tileIds.some((id) => !isNumberTile(id))) return false;
+  const suitSet = new Set(tileIds.map(tileSuit));
+  if (suitSet.size !== 1) return false;
+  const counts = countTiles(tileIds);
+  const suit = [...suitSet][0];
+  const required = { 1: 3, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1, 7: 1, 8: 1, 9: 3 };
+  return Object.entries(required).every(([number, requiredCount]) => (counts[`${number}${suit}`] || 0) >= requiredCount);
+}
+
+function isRyuiso(tileIds) {
+  return tileIds.length === 14 && tileIds.every((id) => greenIds.has(id));
+}
+
+function isTsuiso(tileIds) {
+  return tileIds.length === 14 && tileIds.every((id) => TILE_MAP.get(id)?.honor);
+}
+
+function isChinroto(tileIds) {
+  return tileIds.length === 14 && tileIds.every((id) => isNumberTile(id) && isTerminalOrHonor(id));
+}
+
+function getTripletLikeIds(counts) {
+  return TILE_LIST.filter((tile) => (counts[tile.id] || 0) >= 3).map((tile) => tile.id);
+}
+
+function getPairIds(counts) {
+  return TILE_LIST.filter((tile) => (counts[tile.id] || 0) >= 2).map((tile) => tile.id);
+}
+
+function getGlobalYakuman(tileIds, options) {
+  const counts = countTiles(tileIds);
+  const yaku = [];
+
+  if (isKokushi(tileIds)) yaku.push({ id: 'kokushi', count: 1 });
+  if (isChuuren(tileIds, options)) yaku.push({ id: 'chuuren', count: 1 });
+  if (isRyuiso(tileIds)) yaku.push({ id: 'ryuiso', count: 1 });
+  if (isTsuiso(tileIds)) yaku.push({ id: 'tsuiso', count: 1 });
+  if (isChinroto(tileIds)) yaku.push({ id: 'chinroto', count: 1 });
+  if (dragonIds.every((id) => (counts[id] || 0) >= 3)) yaku.push({ id: 'daisangen', count: 1 });
+
+  const windTriplets = windIds.filter((id) => (counts[id] || 0) >= 3).length;
+  const windPairs = windIds.filter((id) => (counts[id] || 0) >= 2).length;
+  if (windTriplets === 4) yaku.push({ id: 'daisushi', count: 1 });
+  else if (windTriplets === 3 && windPairs >= 4) yaku.push({ id: 'shosushi', count: 1 });
+
+  if (Number(options.kanCount || 0) >= 4) yaku.push({ id: 'suukantsu', count: 1 });
+
+  return yaku;
 }
 
 function cloneCounts(counts) {
@@ -128,6 +183,15 @@ function analyzeArrangement(tileIds, arrangement, options) {
   const melds = arrangement.melds;
   const sequences = melds.filter((meld) => meld.type === 'sequence');
   const triplets = melds.filter((meld) => meld.type === 'triplet');
+  const globalYakuman = getGlobalYakuman(tileIds, options);
+
+  if (globalYakuman.length > 0) {
+    return { yaku: globalYakuman, fu: 0, arrangement, yakuman: true };
+  }
+
+  if (options.isClosed && triplets.length === 4 && (options.winType === 'tsumo' || arrangement.pair === options.winningTileId)) {
+    return { yaku: [{ id: 'suuankou', count: 1 }], fu: 0, arrangement, yakuman: true };
+  }
 
   const allSimples = tileIds.every((id) => isNumberTile(id) && !isTerminalOrHonor(id));
   if (allSimples) yaku.push({ id: 'tanyao', count: 1 });
@@ -141,6 +205,8 @@ function analyzeArrangement(tileIds, arrangement, options) {
   if (yakuhaiCount > 0) yaku.push({ id: 'yakuhai', count: yakuhaiCount });
 
   if (triplets.length === 4) yaku.push({ id: 'toitoi', count: 1 });
+  if (triplets.length >= 3) yaku.push({ id: 'sananko', count: 1 });
+  if (Number(options.kanCount || 0) >= 3) yaku.push({ id: 'sanKantsu', count: 1 });
 
   const suitSet = new Set(tileIds.filter(isNumberTile).map(tileSuit));
   const hasHonor = tileIds.some((id) => TILE_MAP.get(id)?.honor);
@@ -232,9 +298,9 @@ export function analyzeHandForScore(tileIds, options) {
   }
 
   const candidates = [];
-
-  if (isKokushi(tileIds)) {
-    candidates.push({ yaku: [{ id: 'kokushi', name: '국사무쌍', count: 1, yakuman: true }], fu: 0, yakumanBase: 8000 });
+  const globalYakuman = getGlobalYakuman(tileIds, options);
+  if (globalYakuman.length > 0) {
+    candidates.push({ yaku: withKnownYakuName(globalYakuman), fu: 0, yakuman: true });
   }
 
   if (isSevenPairs(tileIds)) {
@@ -254,9 +320,10 @@ export function analyzeHandForScore(tileIds, options) {
   if (candidates.length === 0) return { error: '점수 계산 가능한 조합을 찾지 못했습니다.' };
 
   const scored = candidates.map((candidate) => {
-    if (candidate.yakumanBase) {
-      const result = calcScore({ ...options, han: 13, fu: 40 });
-      return { ...candidate, han: 13, result };
+    if (candidate.yakuman) {
+      const yakumanCount = Math.max(1, candidate.yaku.length);
+      const result = calcScore({ ...options, han: 13 * yakumanCount, fu: 40 });
+      return { ...candidate, han: 13 * yakumanCount, result };
     }
     const { han, result } = scoreCandidate(tileIds, candidate.yaku, candidate.fu, options);
     return { ...candidate, han, result };

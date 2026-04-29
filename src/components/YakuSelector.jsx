@@ -48,11 +48,12 @@ const Sub = styled.div`
 const CONFLICTS = {
   riichi: ['doubleRiichi'],
   doubleRiichi: ['riichi'],
-  pinfu: ['yakuhai', 'toitoi', 'sananko', 'sanshokuDouko'],
+  pinfu: ['yakuhai', 'toitoi', 'sananko', 'sanshokuDouko', 'sanKantsu'],
   yakuhai: ['pinfu'],
   toitoi: ['pinfu', 'ipeiko', 'ryanpeko', 'sanshokuDoujun'],
   sananko: ['pinfu'],
   sanshokuDouko: ['pinfu', 'sanshokuDoujun', 'ipeiko', 'ryanpeko'],
+  sanKantsu: ['pinfu'],
   ipeiko: ['toitoi', 'sanshokuDouko', 'ryanpeko'],
   ryanpeko: ['ipeiko', 'toitoi', 'sanshokuDouko', 'sanshokuDoujun'],
   sanshokuDoujun: ['toitoi', 'sanshokuDouko'],
