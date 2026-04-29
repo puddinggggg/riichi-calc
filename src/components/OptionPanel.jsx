@@ -38,9 +38,16 @@ const Check = styled.label`
   align-items: center;
   min-height: 42px;
   font-weight: 700;
+  opacity: ${({ $disabled }) => ($disabled ? 0.55 : 1)};
 `;
 
-export default function OptionPanel({ state, setState, hideFu = false, showRiichiOption = false }) {
+export default function OptionPanel({
+  state,
+  setState,
+  hideFu = false,
+  showRiichiOption = false,
+  lockIsClosed = false,
+}) {
   const set = (key, value) => setState((prev) => ({ ...prev, [key]: value }));
 
   useEffect(() => {
@@ -59,41 +66,48 @@ export default function OptionPanel({ state, setState, hideFu = false, showRiich
             {WIN_TYPES.map((item) => <option key={item.value} value={item.value}>{item.label}</option>)}
           </Select>
         </Field>
+
         <Field>
           친/자
           <Select value={state.playerType} onChange={(e) => set('playerType', e.target.value)}>
             {PLAYER_TYPES.map((item) => <option key={item.value} value={item.value}>{item.label}</option>)}
           </Select>
         </Field>
-{!hideFu && (
+
+        {!hideFu && (
           <Field>
             부
             <Input type="number" min="20" step="10" value={state.fu} onChange={(e) => set('fu', e.target.value)} />
           </Field>
         )}
+
         <Field>
           본장
           <Input type="number" min="0" value={state.honba} onChange={(e) => set('honba', e.target.value)} />
         </Field>
+
         {showRiichiOption && (
           <Field>
             리치 여부
             <Select
               value={state.isClosed ? (state.riichiStatus || 'none') : 'none'}
               onChange={(e) => set('riichiStatus', e.target.value)}
+              disabled={!state.isClosed}
             >
               <option value="none">리치안함</option>
-              <option value="riichi" disabled={!state.isClosed}>리치</option>
-              <option value="doubleRiichi" disabled={!state.isClosed}>더블리치</option>
+              <option value="riichi">리치</option>
+              <option value="doubleRiichi">더블리치</option>
             </Select>
           </Field>
         )}
+
         <Field>
           장풍
           <Select value={state.roundWind} onChange={(e) => set('roundWind', e.target.value)}>
             {WINDS.map((item) => <option key={item.value} value={item.value}>{item.label}</option>)}
           </Select>
         </Field>
+
         <Field>
           자풍
           <Select
@@ -110,8 +124,14 @@ export default function OptionPanel({ state, setState, hideFu = false, showRiich
             {WINDS.map((item) => <option key={item.value} value={item.value}>{item.label}</option>)}
           </Select>
         </Field>
-        <Check>
-          <input type="checkbox" checked={state.isClosed} onChange={(e) => set('isClosed', e.target.checked)} />
+
+        <Check $disabled={lockIsClosed}>
+          <input
+            type="checkbox"
+            checked={state.isClosed}
+            disabled={lockIsClosed}
+            onChange={(e) => set('isClosed', e.target.checked)}
+          />
           멘젠
         </Check>
       </Grid>
