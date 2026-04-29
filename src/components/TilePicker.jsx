@@ -220,6 +220,16 @@ export function getFixedMeldCount(selectedTiles) {
   return selectedTiles.filter(isMeldItem).length;
 }
 
+export function getFixedMelds(selectedTiles) {
+  return selectedTiles.filter(isMeldItem).map((item) => ({
+    type: item.type === 'chi' ? 'sequence' : 'triplet',
+    sourceType: item.type,
+    tiles: getEffectiveIds(item),
+    open: ['chi', 'pon', 'kan'].includes(item.type),
+    kan: ['kan', 'ankan'].includes(item.type),
+  }));
+}
+
 export function hasOpenMeld(selectedTiles) {
   return selectedTiles.some((item) => isMeldItem(item) && ['chi', 'pon', 'kan'].includes(item.type));
 }
