@@ -236,7 +236,13 @@ function WaitScoreModal({ tiles, winningTileId, isClosed = true, kanCount = 0, o
           <SmallButton type="button" onClick={onClose}>닫기</SmallButton>
         </ModalHeader>
         <ModalBody>
-          <OptionPanel state={modalOptions} setState={setModalOptions} hideFu showRiichiOption />
+          <OptionPanel
+  state={modalOptions}
+  setState={setModalOptions}
+  hideFu
+  showRiichiOption
+  lockIsClosed
+/>
           <DoraPanel state={modalOptions} setState={setModalOptions} />
           <Actions>
             <PrimaryButton type="button" onClick={confirm}>확인</PrimaryButton>
