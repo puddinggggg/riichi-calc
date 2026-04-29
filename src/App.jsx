@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import DoraPanel from './components/DoraPanel';
 import OptionPanel from './components/OptionPanel';
 import ResultPanel from './components/ResultPanel';
-import TilePicker from './components/TilePicker';
+import TilePicker, { getEffectiveTileIds, getPhysicalTileIds, hasOpenMeld } from './components/TilePicker';
 import WaitResultPanel from './components/WaitResultPanel';
 import YakuSelector from './components/YakuSelector';
-import { getWaitingTiles, TILE_MAP } from './logic/tiles';
+import { getWaitingTiles, TILE_MAP, countTiles } from './logic/tiles';
 import { calcHan, calcScore } from './logic/score';
 import { analyzeHandForScore } from './logic/handAnalysis';
 import { YAKU_LIST } from './logic/riichiData';
@@ -207,7 +207,7 @@ const WarningBox = styled.div`
 
 const initialOptions = {
   winType: 'ron',
-  playerType: 'nonDealer',
+  playerType: 'dealer',
   fu: 30,
   honba: 0,
   roundWind: 'east',
@@ -219,8 +219,8 @@ const initialOptions = {
   riichiStatus: 'none',
 };
 
-function WaitScoreModal({ tiles, winningTileId, onClose }) {
-  const [modalOptions, setModalOptions] = useState({ ...initialOptions, winningTileId });
+function WaitScoreModal({ tiles, winningTileId, isClosed = true, onClose }) {
+  const [modalOptions, setModalOptions] = useState({ ...initialOptions, isClosed, playerType: initialOptions.seatWind === 'east' ? 'dealer' : initialOptions.playerType, winningTileId });
   const [analysis, setAnalysis] = useState(null);
 
   const confirm = () => {
@@ -277,7 +277,12 @@ export default function App() {
   const [selectedYaku, setSelectedYaku] = useState([]);
   const [waitScoreTarget, setWaitScoreTarget] = useState(null);
 
-  const waits = useMemo(() => getWaitingTiles(waitTiles), [waitTiles]);
+  const waitEffectiveTiles = useMemo(() => getEffectiveTileIds(waitTiles), [waitTiles]);
+  const waitPhysicalTiles = useMemo(() => getPhysicalTileIds(waitTiles), [waitTiles]);
+  const waits = useMemo(() => {
+    const physicalCounts = countTiles(waitPhysicalTiles);
+    return getWaitingTiles(waitEffectiveTiles).filter((tile) => (physicalCounts[tile.id] || 0) < 4);
+  }, [waitEffectiveTiles, waitPhysicalTiles]);
 
   const han = useMemo(
     () => calcHan({
@@ -356,14 +361,14 @@ export default function App() {
         <Header>
           <div>
             <Title>대기패 확인</Title>
-            <Desc>13장을 선택하면 대기패가 표시됩니다. 표시된 대기패를 클릭하면 그 패를 마지막 선택패(화료패)로 보고 점수보기 창에서 자동 판정 결과를 확인합니다. 선택된 패 영역의 주황 테두리는 마지막 선택패입니다.</Desc>
+            <Desc>13장을 선택하면 대기패가 표시됩니다. 표시된 대기패를 클릭하면 그 패를 마지막 선택패(화료패)로 보고 점수보기 창에서 자동 판정 결과를 확인합니다. 치/퐁/깡/암깡 버튼으로 몸통을 미리 입력할 수 있고, 선택된 패 영역에서 해당 몸통을 클릭하면 한꺼번에 제거됩니다. 선택된 패 영역의 주황 테두리는 14장 완성 상태에서의 마지막 선택패입니다.</Desc>
           </div>
         </Header>
         <Layout>
           <TilePicker selectedTiles={waitTiles} setSelectedTiles={setWaitTiles} maxTiles={14} title="선택된 패 / 선택할 패" />
-          <WaitResultPanel selectedCount={waitTiles.length} waits={waits} onWaitClick={(tile) => setWaitScoreTarget({ winningTileId: tile.id, tiles: [...waitTiles, tile.id] })} />
+          <WaitResultPanel selectedCount={waitEffectiveTiles.length} waits={waits} onWaitClick={(tile) => setWaitScoreTarget({ winningTileId: tile.id, tiles: [...waitEffectiveTiles, tile.id], isClosed: !hasOpenMeld(waitTiles) })} />
         </Layout>
-        {waitScoreTarget && <WaitScoreModal tiles={waitScoreTarget.tiles} winningTileId={waitScoreTarget.winningTileId} onClose={() => setWaitScoreTarget(null)} />}
+        {waitScoreTarget && <WaitScoreModal tiles={waitScoreTarget.tiles} winningTileId={waitScoreTarget.winningTileId} isClosed={waitScoreTarget.isClosed} onClose={() => setWaitScoreTarget(null)} />}
       </Page>
     );
   }

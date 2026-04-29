@@ -96,7 +96,17 @@ export default function OptionPanel({ state, setState, hideFu = false, showRiich
         </Field>
         <Field>
           자풍
-          <Select value={state.seatWind} onChange={(e) => set('seatWind', e.target.value)}>
+          <Select
+            value={state.seatWind}
+            onChange={(e) => {
+              const seatWind = e.target.value;
+              setState((prev) => ({
+                ...prev,
+                seatWind,
+                playerType: seatWind === 'east' ? 'dealer' : 'nonDealer',
+              }));
+            }}
+          >
             {WINDS.map((item) => <option key={item.value} value={item.value}>{item.label}</option>)}
           </Select>
         </Field>
