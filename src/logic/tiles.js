@@ -140,6 +140,72 @@ export function isWinningHand(tileIds) {
   return isStandardWin(tileIds) || isSevenPairs(tileIds) || isKokushi(tileIds);
 }
 
+function canMakeMeldsExact(counts, neededMelds) {
+  if (neededMelds < 0) return false;
+  const first = TILE_LIST.find((tile) => counts[tile.id] > 0);
+  if (!first) return neededMelds === 0;
+  if (neededMelds === 0) return false;
+
+  const id = first.id;
+  if (counts[id] >= 3) {
+    counts[id] -= 3;
+    if (canMakeMeldsExact(counts, neededMelds - 1)) {
+      counts[id] += 3;
+      return true;
+    }
+    counts[id] += 3;
+  }
+
+  const suit = id.at(-1);
+  const number = Number(id.slice(0, -1));
+  if (['m', 'p', 's'].includes(suit) && number <= 7) {
+    const a = `${number + 1}${suit}`;
+    const b = `${number + 2}${suit}`;
+    if ((counts[a] || 0) > 0 && (counts[b] || 0) > 0) {
+      counts[id] -= 1;
+      counts[a] -= 1;
+      counts[b] -= 1;
+      if (canMakeMeldsExact(counts, neededMelds - 1)) {
+        counts[id] += 1;
+        counts[a] += 1;
+        counts[b] += 1;
+        return true;
+      }
+      counts[id] += 1;
+      counts[a] += 1;
+      counts[b] += 1;
+    }
+  }
+
+  return false;
+}
+
+function isStandardWinWithFixedMelds(concealedTileIds, fixedMeldCount) {
+  const neededMelds = 4 - fixedMeldCount;
+  if (neededMelds < 0) return false;
+  if (concealedTileIds.length !== neededMelds * 3 + 2) return false;
+
+  const baseCounts = countTiles(concealedTileIds);
+  return TILE_LIST.some((tile) => {
+    if ((baseCounts[tile.id] || 0) < 2) return false;
+    const counts = { ...baseCounts };
+    counts[tile.id] -= 2;
+    return canMakeMeldsExact(counts, neededMelds);
+  });
+}
+
+export function getWaitingTilesWithFixedMelds(concealedTileIds, fixedMeldCount = 0) {
+  const neededMelds = 4 - fixedMeldCount;
+  if (neededMelds < 0) return [];
+  if (concealedTileIds.length !== neededMelds * 3 + 1) return [];
+
+  const counts = countTiles(concealedTileIds);
+  return TILE_LIST.filter((tile) => {
+    if ((counts[tile.id] || 0) >= 4) return false;
+    return isStandardWinWithFixedMelds([...concealedTileIds, tile.id], fixedMeldCount);
+  });
+}
+
 export function getWaitingTiles(tileIds) {
   if (tileIds.length !== 13) return [];
   const counts = countTiles(tileIds);

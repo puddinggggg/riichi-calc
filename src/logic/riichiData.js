@@ -28,10 +28,21 @@ export const YAKU_LIST = [
   { id: 'sananko', name: '삼암각', closedHan: 2, openHan: 2 },
   { id: 'sanshokuDoujun', name: '삼색동순', closedHan: 2, openHan: 1 },
   { id: 'sanshokuDouko', name: '삼색동각', closedHan: 2, openHan: 2 },
+  { id: 'sanKantsu', name: '삼깡즈', closedHan: 2, openHan: 2 },
   { id: 'chanta', name: '찬타', closedHan: 2, openHan: 1 },
   { id: 'junchan', name: '준찬타', closedHan: 3, openHan: 2 },
   { id: 'honitsu', name: '혼일색', closedHan: 3, openHan: 2 },
   { id: 'chinitsu', name: '청일색', closedHan: 6, openHan: 5 },
+  { id: 'kokushi', name: '국사무쌍', closedHan: 13, openHan: 0 },
+  { id: 'chuuren', name: '구련보등', closedHan: 13, openHan: 0 },
+  { id: 'suuankou', name: '사암각', closedHan: 13, openHan: 0 },
+  { id: 'ryuiso', name: '녹일색', closedHan: 13, openHan: 13 },
+  { id: 'daisangen', name: '대삼원', closedHan: 13, openHan: 13 },
+  { id: 'shosushi', name: '소사희', closedHan: 13, openHan: 13 },
+  { id: 'daisushi', name: '대사희', closedHan: 13, openHan: 13 },
+  { id: 'suukantsu', name: '사깡즈', closedHan: 13, openHan: 13 },
+  { id: 'tsuiso', name: '자일색', closedHan: 13, openHan: 13 },
+  { id: 'chinroto', name: '청노두', closedHan: 13, openHan: 13 },
 ];
 
 export const LIMITS = [
