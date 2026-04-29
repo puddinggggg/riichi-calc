@@ -219,13 +219,14 @@ function analyzeArrangement(tileIds, arrangement, options) {
   const triplets = melds.filter((meld) => meld.type === 'triplet');
   const closedTriplets = triplets.filter((meld) => isClosedTriplet(meld, options));
   const globalYakuman = getGlobalYakuman(tileIds, options);
-
-  if (globalYakuman.length > 0) {
-    return { yaku: globalYakuman, fu: 0, arrangement, yakuman: true };
-  }
+  const yakumanYaku = [...globalYakuman];
 
   if (options.isClosed && triplets.length === 4 && closedTriplets.length === 4) {
-    return { yaku: [{ id: 'suuankou', count: 1 }], fu: 0, arrangement, yakuman: true };
+    yakumanYaku.push({ id: 'suuankou', count: 1 });
+  }
+
+  if (yakumanYaku.length > 0) {
+    return { yaku: yakumanYaku, fu: 0, arrangement, yakuman: true };
   }
 
   const allSimples = tileIds.every((id) => isNumberTile(id) && !isTerminalOrHonor(id));
@@ -298,7 +299,17 @@ function analyzeArrangement(tileIds, arrangement, options) {
   if (hasYakuhai(arrangement.pair, options)) fu += 2;
   fu += waitFu;
   triplets.forEach((meld) => {
-    const baseFu = isTerminalOrHonor(meld.tiles[0]) ? 8 : 4;
+    const isTerminalHonor = isTerminalOrHonor(meld.tiles[0]);
+
+    if (meld.kan) {
+      // 깡 부수: 명깡 중장패 8부 / 명깡 요구패 16부 / 암깡 중장패 16부 / 암깡 요구패 32부
+      const baseKanFu = isTerminalHonor ? 16 : 8;
+      fu += meld.open ? baseKanFu : baseKanFu * 2;
+      return;
+    }
+
+    // 커쯔 부수: 명커 중장패 2부 / 명커 요구패 4부 / 암커 중장패 4부 / 암커 요구패 8부
+    const baseFu = isTerminalHonor ? 8 : 4;
     const multiplier = meld.open ? 0.5 : 1;
     fu += baseFu * multiplier;
   });
