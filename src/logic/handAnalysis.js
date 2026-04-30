@@ -189,19 +189,19 @@ function isTwoSidedWait(meld, winningTileId) {
   return winNumber === base || winNumber === base + 2;
 }
 
-function getWaitFu(arrangement, winningTileId) {
+function getWaitFu(arrangement, winningTileId, preferPinfuWait = false) {
   if (!winningTileId) return 0;
 
   const winningSequences = arrangement.melds.filter((meld) => meld.type === 'sequence' && meld.tiles.includes(winningTileId));
+  const hasTwoSidedWait = winningSequences.some((meld) => isTwoSidedWait(meld, winningTileId));
+  const hasBadSequenceWait = winningSequences.some((meld) => !isTwoSidedWait(meld, winningTileId));
+  const hasPairWait = arrangement.pair === winningTileId;
 
-  // 같은 패가 머리와 슌쯔 양쪽에 모두 들어갈 수 있는 형태는
-  // 실제 화료패를 가장 유리한 몸통에 붙인 후보도 함께 고려해야 합니다.
-  // 예: 111222333m 789p 9p 에서 9p 화료는 99p 단기처럼 보일 수 있지만,
-  // 7p8p9p의 양면 대기로 처리하면 핑후가 성립합니다.
-  if (winningSequences.some((meld) => isTwoSidedWait(meld, winningTileId))) return 0;
-  if (winningSequences.length > 0) return 2;
-  if (arrangement.pair === winningTileId) return 2;
-
+  // 핑후가 가능한 형태라면 양면대기로 해석해 0부를 우선합니다.
+  // 단, 핑후가 아닌 손패에서는 같은 화료패를 변짱/간짱/단기로도 볼 수 있으면
+  // 더 높은 점수가 나오도록 2부 대기로 계산합니다.
+  if (preferPinfuWait && hasTwoSidedWait) return 0;
+  if (hasBadSequenceWait || hasPairWait) return 2;
   return 0;
 }
 
@@ -289,8 +289,9 @@ function analyzeArrangement(tileIds, arrangement, options) {
   if (allBlocksContainTerminalOrHonor && hasHonor) yaku.push({ id: 'chanta', count: 1 });
   if (allBlocksContainTerminalOrHonor && !hasHonor) yaku.push({ id: 'junchan', count: 1 });
 
-  const waitFu = getWaitFu(arrangement, options.winningTileId);
-  const isPinfu = sequences.length === 4 && !hasYakuhai(arrangement.pair, options) && waitFu === 0;
+  const pinfuShape = sequences.length === 4 && !hasYakuhai(arrangement.pair, options);
+  const waitFu = getWaitFu(arrangement, options.winningTileId, pinfuShape);
+  const isPinfu = pinfuShape && waitFu === 0;
   if (isPinfu && options.isClosed) yaku.push({ id: 'pinfu', count: 1 });
 
   let fu = 20;
