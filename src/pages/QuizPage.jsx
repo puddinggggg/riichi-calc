@@ -291,7 +291,8 @@ export default function QuizPage() {
         <StartTitle>대기패 연습퀴즈</StartTitle>
         <StartDesc>
           {/* 청일색 13장 문제를 보고 완성 가능한 대기패를 모두 고르는 연습입니다.<br /> */}
-          초급 5문제, 중급 3문제, 고급 2문제가 랜덤으로 출제되며 제한시간은 문제당 30초입니다.
+          {/* 초급 5문제, 중급 3문제, 고급 2문제가 랜덤으로 출제되며  */}
+          제한시간은 문제당 30초입니다.
         </StartDesc>
         <PrimaryButton type="button" onClick={startQuiz}>시작하기</PrimaryButton>
       </StartCard>
