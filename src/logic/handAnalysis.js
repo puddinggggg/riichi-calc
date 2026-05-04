@@ -357,6 +357,7 @@ export function analyzeHandForScore(tileIds, options) {
 
   if (fixedMelds.length === 0 && isSevenPairs(tileIds)) {
     const yaku = [];
+    yaku.push({ id: 'chiitoitsu', count: 1 });
     if (options.isClosed && options.winType === 'tsumo') yaku.push({ id: 'menzenTsumo', count: 1 });
     if (options.isClosed && options.riichiStatus === 'riichi') yaku.push({ id: 'riichi', count: 1 });
     if (options.isClosed && options.riichiStatus === 'doubleRiichi') yaku.push({ id: 'doubleRiichi', count: 1 });

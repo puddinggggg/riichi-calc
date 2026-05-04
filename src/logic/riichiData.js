@@ -21,6 +21,7 @@ export const YAKU_LIST = [
   { id: 'menzenTsumo', name: '멘젠쯔모', closedHan: 1, openHan: 0 },
   { id: 'tanyao', name: '탕야오', closedHan: 1, openHan: 1 },
   { id: 'pinfu', name: '핑후', closedHan: 1, openHan: 0 },
+  { id: 'chiitoitsu', name: '치또이츠', closedHan: 2, openHan: 0 },
   { id: 'ipeiko', name: '이페코', closedHan: 1, openHan: 0 },
   { id: 'ryanpeko', name: '량페코', closedHan: 3, openHan: 0 },
   { id: 'yakuhai', name: '역패', closedHan: 1, openHan: 1 },

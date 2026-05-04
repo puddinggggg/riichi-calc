@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { PLAYER_TYPES, WIN_TYPES, WINDS } from '../logic/riichiData';
 import { Section, SectionTitle } from './Section';
 
+const FU_OPTIONS = [20, 25, 30, 40, 50, 60, 70, 80, 90, 100, 110];
+
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -77,7 +79,9 @@ export default function OptionPanel({
         {!hideFu && (
           <Field>
             부
-            <Input type="number" min="20" step="10" value={state.fu} onChange={(e) => set('fu', e.target.value)} />
+            <Select value={Number(state.fu)} onChange={(e) => set('fu', Number(e.target.value))}>
+              {FU_OPTIONS.map((fu) => <option key={fu} value={fu}>{fu}부</option>)}
+            </Select>
           </Field>
         )}
 

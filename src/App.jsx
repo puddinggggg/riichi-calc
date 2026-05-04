@@ -329,8 +329,15 @@ export default function App() {
   }, [options.winType, options.isClosed]);
 
   useEffect(() => {
+    const hasChiitoitsu = selectedYaku.some((item) => item.id === 'chiitoitsu');
     const hasPinfu = selectedYaku.some((item) => item.id === 'pinfu');
     const hasMenzenTsumo = selectedYaku.some((item) => item.id === 'menzenTsumo');
+
+    if (hasChiitoitsu && Number(options.fu) !== 25) {
+      setOptions((prev) => ({ ...prev, fu: 25 }));
+      return;
+    }
+
     if (hasPinfu && hasMenzenTsumo && options.isClosed && options.winType === 'tsumo' && Number(options.fu) !== 20) {
       setOptions((prev) => ({ ...prev, fu: 20 }));
       return;
