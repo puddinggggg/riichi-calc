@@ -240,9 +240,9 @@ export function getKanCount(selectedTiles) {
   return selectedTiles.filter((item) => isMeldItem(item) && ['kan', 'ankan'].includes(item.type)).length;
 }
 
-// function tileImageSrc(url) {
-//   return `/images/tiles/${id}.png`;
-// }
+function tileImageSrc(id) {
+  return `/images/tiles/${id}.png`;
+}
 
 export default function TilePicker({ selectedTiles, setSelectedTiles, maxTiles = 13, title = '패 선택' }) {
   const [meldMode, setMeldMode] = useState(null);
@@ -346,7 +346,7 @@ export default function TilePicker({ selectedTiles, setSelectedTiles, maxTiles =
                   $active={(physicalCounts[tile.id] || 0) > 0}
                   onClick={() => addTile(tile.id)}
                 >
-                  <TileImage src={tile.url} alt={tile.label} />
+                  <TileImage src={tileImageSrc(tile.id)} alt={tile.label} />
                   {(physicalCounts[tile.id] || 0) > 0 && <CountBadge>{physicalCounts[tile.id]}</CountBadge>}
                 </TileButton>
               );
@@ -371,7 +371,7 @@ export default function TilePicker({ selectedTiles, setSelectedTiles, maxTiles =
                   onClick={() => removeItemAt(originalIndex)}
                   $last={isLastTile}
                 >
-                  <TileImage src={item.url} alt={tile.label} />
+                  <TileImage src={tileImageSrc(item)} alt={tile.label} />
                   {isLastTile && <LastBadge>화료</LastBadge>}
                 </SelectedButton>
               );
@@ -389,7 +389,7 @@ export default function TilePicker({ selectedTiles, setSelectedTiles, maxTiles =
                   const isBack = item.type === 'ankan' && item.backIndexes?.includes(tileIndex);
                   return (
                     <MeldTile key={`${id}-${tileIndex}`} $back={isBack}  $rotated={item.rotatedIndex === tileIndex}>
-                      {isBack ? <MeldBack /> : <TileImage src={tile.url} alt={tile.label} />}
+                      {isBack ? <MeldBack /> : <TileImage src={tileImageSrc(id)} alt={tile.label} />}
                     </MeldTile>
                   );
                 })}
@@ -402,4 +402,3 @@ export default function TilePicker({ selectedTiles, setSelectedTiles, maxTiles =
     </Section>
   );
 }
-

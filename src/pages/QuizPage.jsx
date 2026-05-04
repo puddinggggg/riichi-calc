@@ -191,7 +191,7 @@ function countTile(tiles, id) {
 
 function Tile({ id }) {
   const tile = TILE_MAP.get(id);
-  return <TileImage src={tile.url} alt={tile?.label || id} />;
+  return <TileImage src={`/images/tiles/${id}.png`} alt={tile?.label || id} />;
 }
 
 export default function QuizPage() {
