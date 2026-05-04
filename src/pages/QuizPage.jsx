@@ -315,7 +315,7 @@ export default function QuizPage() {
   return (
     <QuizShell>
       <TopInfo>
-        <InfoPill>{index + 1} / {problems.length}문제 · {current.difficulty}</InfoPill>
+        <InfoPill>{index + 1} / {problems.length}문제</InfoPill>
         <InfoPill $warn={timeLeft <= 5}>남은 시간 {timeLeft}초</InfoPill>
         <InfoPill>현재 점수 {score}점</InfoPill>
       </TopInfo>
