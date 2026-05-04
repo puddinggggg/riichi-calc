@@ -81,12 +81,6 @@ const CountLabel = styled.span`
   }
 `;
 
-const CountLabel = styled.span`
-  font-size: 13px;
-  font-weight: 900;
-  min-width: 32px;
-  text-align: center;
-`;
 
 // 동시에 성립할 수 없는 역 조합입니다.
 // 한쪽을 선택하면 반대쪽은 비활성화되고, 새 역을 선택할 때 기존 충돌 역은 자동 해제됩니다.
