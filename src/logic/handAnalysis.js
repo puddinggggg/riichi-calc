@@ -233,6 +233,16 @@ function analyzeArrangement(tileIds, arrangement, options) {
     }
   }
 
+  for (const suit of suits) {
+    const hasIttsuu = sequenceKeys.includes(`1-2-3${suit}`)
+      && sequenceKeys.includes(`4-5-6${suit}`)
+      && sequenceKeys.includes(`7-8-9${suit}`);
+    if (hasIttsuu) {
+      yaku.push({ id: 'ittsuu', count: 1 });
+      break;
+    }
+  }
+
   const tripletKeys = triplets.map((meld) => meld.tiles[0]);
   for (let n = 1; n <= 9; n += 1) {
     const hasAllSuits = suits.every((suit) => tripletKeys.includes(`${n}${suit}`));
@@ -304,7 +314,7 @@ export function analyzeHandForScore(tileIds, options) {
   }
 
   if (isSevenPairs(tileIds)) {
-    const yaku = [];
+    const yaku = [{ id: 'chiitoi', count: 1 }];
     if (options.isClosed && options.winType === 'tsumo') yaku.push({ id: 'menzenTsumo', count: 1 });
     if (options.isClosed && options.riichiStatus === 'riichi') yaku.push({ id: 'riichi', count: 1 });
     if (options.isClosed && options.riichiStatus === 'doubleRiichi') yaku.push({ id: 'doubleRiichi', count: 1 });

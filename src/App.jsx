@@ -392,7 +392,7 @@ export default function App() {
         <Header>
           <div>
             <Title>대기패 연습퀴즈</Title>
-            {/* <Desc>청일색 문제은행에서 초급 5문제, 중급 3문제, 고급 2문제를 랜덤으로 출제합니다.</Desc> */}
+            {/* <Desc>랜덤으로 10문제가 출제됩니다.</Desc> */}
           </div>
         </Header>
         <QuizPage />

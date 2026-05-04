@@ -32,6 +32,9 @@ const Input = styled.input`
   padding: 0 10px;
 `;
 
+
+const FU_OPTIONS = [20, 25, ...Array.from({ length: 9 }, (_, index) => 30 + index * 10)];
+
 const Check = styled.label`
   display: flex;
   gap: 8px;
@@ -77,7 +80,11 @@ export default function OptionPanel({
         {!hideFu && (
           <Field>
             부
-            <Input type="number" min="20" step="10" value={state.fu} onChange={(e) => set('fu', e.target.value)} />
+            <Select value={String(state.fu)} onChange={(e) => set('fu', Number(e.target.value))}>
+              {FU_OPTIONS.map((fu) => (
+                <option key={fu} value={fu}>{fu}부</option>
+              ))}
+            </Select>
           </Field>
         )}
 

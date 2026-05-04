@@ -94,48 +94,40 @@ const AnswerGrid = styled.div`
 const TileButton = styled.button`
   position: relative;
   aspect-ratio: 0.74 / 1;
-  border-radius: 14px;
-  border: 2px solid ${({ $selected, $answer, $wrong }) => {
-    if ($answer) return '#1f7a50';
-    if ($wrong) return '#c64231';
-    if ($selected) return '#d85b1f';
-    return 'rgba(50,35,20,0.18)';
-  }};
-  background: ${({ $selected, $answer, $wrong }) => {
-    if ($answer) return '#e3f4ea';
-    if ($wrong) return '#ffe5df';
-    if ($selected) return '#fff0e5';
-    return '#fff';
-  }};
+  border: 0;
+  background: transparent;
   display: grid;
   place-items: center;
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   padding: 0;
-  overflow: hidden;
-  box-shadow: 0 2px 0 rgba(50,35,20,0.08);
+  overflow: visible;
+  outline: ${({ $selected, $answer, $wrong }) => {
+    if ($answer) return '3px solid #1f7a50';
+    if ($wrong) return '3px solid #c64231';
+    if ($selected) return '3px solid #d85b1f';
+    return 'none';
+  }};
+  outline-offset: 2px;
 `;
 
 const SmallTile = styled.div`
   width: 52px;
   aspect-ratio: 0.74 / 1;
-  border: 1px solid rgba(50,35,20,0.18);
-  background: #fff;
   display: grid;
   place-items: center;
-  overflow: hidden;
-  box-shadow: 0 2px 0 rgba(50,35,20,0.08);
+  overflow: visible;
 
   @media (max-width: 640px) {
     width: 38px;
   }
 `;
 
-const TileFace = styled.span`
-  font-family: "Segoe UI Symbol", "Apple Color Emoji", "Noto Color Emoji", system-ui, sans-serif;
-  font-size: ${({ $small }) => ($small ? 'clamp(34px, 6vw, 52px)' : 'clamp(54px, 12vw, 86px)')};
-  transform: scale(1.28);
-  line-height: 0.8;
+const TileImage = styled.img`
+  width: 100%;
+  height: 100%;
   display: block;
+  object-fit: contain;
+  pointer-events: none;
 `;
 
 const ResultNotice = styled.div`
@@ -169,7 +161,7 @@ const AnswerText = styled.div`
   line-height: 1.5;
 `;
 
-const ANSWER_TILES = ['1','2','3','4','5','6','7','8','9'];
+const ANSWER_NUMBERS = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function shuffle(array) {
   return [...array]
@@ -197,11 +189,11 @@ function countTile(tiles, id) {
   return tiles.filter((tile) => tile === id).length;
 }
 
-function Tile({ id, small = false }) {
+function Tile({ id }) {
   const tile = TILE_MAP.get(id);
-  return <TileFace $small={small}>{tile?.unicode || id}</TileFace>;
+  return <TileImage src={`/images/tiles/${id}.png`} alt={tile?.label || id} />;
 }
-const TILE_LIST = ['p','s','m']
+
 export default function QuizPage() {
   const [started, setStarted] = useState(false);
   const [problems, setProblems] = useState([]);
@@ -211,16 +203,18 @@ export default function QuizPage() {
   const [submitted, setSubmitted] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [score, setScore] = useState(0);
-  const [tileType, setTileType] = useState(TILE_LIST[Math.floor(Math.random() * TILE_LIST.length)]);
+
   const current = problems[index];
   const isFinished = started && index >= problems.length;
 
-  const sortedProblemTiles = useMemo(() => (current ? sortTiles(current.tiles).map((id) => `${id}${tileType}`) : []), [current]);
+  const sortedProblemTiles = useMemo(() => (current ? sortTiles(current.tiles) : []), [current]);
 
-  const selectableAnswerTiles = useMemo(() => ANSWER_TILES.map((id) => `${id}${tileType}`), [tileType]);
+  const answerSuit = useMemo(() => (current?.tiles?.[0] ? current.tiles[0].slice(1) : 'p'), [current]);
+
+  const selectableAnswerTiles = useMemo(() => ANSWER_NUMBERS.map((n) => `${n}${answerSuit}`), [answerSuit]);
 
   const effectiveWaits = useMemo(() => (
-    current ? current.waits.map((id) => `${id}${tileType}`).filter((id) => countTile(current.tiles, id) < 4) : []
+    current ? current.waits.filter((id) => countTile(current.tiles, id) < 4) : []
   ), [current]);
 
   const answerLabels = useMemo(() => (
@@ -277,8 +271,6 @@ export default function QuizPage() {
       return;
     }
     setIndex((prev) => prev + 1);
-    const nextTileType = TILE_LIST[Math.floor(Math.random() * TILE_LIST.length)];
-    setTileType(nextTileType);
     setSelected([]);
     setTimeLeft(30);
     setSubmitted(false);
@@ -288,11 +280,10 @@ export default function QuizPage() {
   if (!started) {
     return (
       <StartCard>
-        <StartTitle>대기패 연습퀴즈</StartTitle>
+        {/* <StartTitle>대기패 연습퀴즈</StartTitle> */}
         <StartDesc>
-          {/* 청일색 13장 문제를 보고 완성 가능한 대기패를 모두 고르는 연습입니다.<br /> */}
-          {/* 초급 5문제, 중급 3문제, 고급 2문제가 랜덤으로 출제되며  */}
-          제한시간은 문제당 30초입니다.
+          완성 가능한 대기패를 모두 찾아보세요.<br />
+          10문제가 랜덤으로 출제되며 제한시간은 문제당 30초입니다.
         </StartDesc>
         <PrimaryButton type="button" onClick={startQuiz}>시작하기</PrimaryButton>
       </StartCard>

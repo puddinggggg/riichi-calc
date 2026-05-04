@@ -1,5 +1,5 @@
 const ceil100 = (value) => Math.ceil(value / 100) * 100;
-const roundFu = (fu) => Math.ceil(fu / 10) * 10;
+const roundFu = (fu) => (Number(fu) === 25 ? 25 : Math.ceil(Number(fu) / 10) * 10);
 
 export function calcHan({ selectedYaku, yakuList, isClosed, doraCount = 0, uraDoraCount = 0, akaDoraCount = 0 }) {
   const yakuHan = selectedYaku.reduce((sum, item) => {
