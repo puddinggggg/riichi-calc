@@ -3,6 +3,7 @@ import { YAKU_LIST } from './riichiData';
 import { calcHan, calcScore } from './score';
 
 const yakuById = new Map(YAKU_LIST.map((yaku) => [yaku.id, yaku]));
+
 const suits = ['m', 'p', 's'];
 const dragonIds = ['white', 'green', 'red'];
 const windIds = ['east', 'south', 'west', 'north'];
@@ -25,16 +26,6 @@ function isTerminalOrHonor(id) {
   return Boolean(tile?.terminal || tile?.honor);
 }
 
-function normalizeFixedMelds(options) {
-  return (options.fixedMelds || []).map((meld) => ({
-    type: meld.type,
-    tiles: [...meld.tiles],
-    open: Boolean(meld.open),
-    kan: Boolean(meld.kan),
-    fixed: true,
-  }));
-}
-
 function isSevenPairs(tileIds) {
   if (tileIds.length !== 14) return false;
   const values = Object.values(countTiles(tileIds));
@@ -47,9 +38,9 @@ function isKokushi(tileIds) {
   return KOKUSHI_IDS.every((id) => counts[id] >= 1) && KOKUSHI_IDS.some((id) => counts[id] >= 2);
 }
 
+
 function isChuuren(tileIds, options) {
   if (!options.isClosed || tileIds.length !== 14) return false;
-  if (normalizeFixedMelds(options).length > 0) return false;
   if (tileIds.some((id) => !isNumberTile(id))) return false;
   const suitSet = new Set(tileIds.map(tileSuit));
   if (suitSet.size !== 1) return false;
@@ -71,11 +62,19 @@ function isChinroto(tileIds) {
   return tileIds.length === 14 && tileIds.every((id) => isNumberTile(id) && isTerminalOrHonor(id));
 }
 
+function getTripletLikeIds(counts) {
+  return TILE_LIST.filter((tile) => (counts[tile.id] || 0) >= 3).map((tile) => tile.id);
+}
+
+function getPairIds(counts) {
+  return TILE_LIST.filter((tile) => (counts[tile.id] || 0) >= 2).map((tile) => tile.id);
+}
+
 function getGlobalYakuman(tileIds, options) {
   const counts = countTiles(tileIds);
   const yaku = [];
 
-  if (normalizeFixedMelds(options).length === 0 && isKokushi(tileIds)) yaku.push({ id: 'kokushi', count: 1 });
+  if (isKokushi(tileIds)) yaku.push({ id: 'kokushi', count: 1 });
   if (isChuuren(tileIds, options)) yaku.push({ id: 'chuuren', count: 1 });
   if (isRyuiso(tileIds)) yaku.push({ id: 'ryuiso', count: 1 });
   if (isTsuiso(tileIds)) yaku.push({ id: 'tsuiso', count: 1 });
@@ -96,27 +95,17 @@ function cloneCounts(counts) {
   return Object.fromEntries(TILE_LIST.map((tile) => [tile.id, counts[tile.id] || 0]));
 }
 
-function removeTilesFromCounts(counts, tileIds) {
-  const next = { ...counts };
-  for (const id of tileIds) {
-    next[id] = (next[id] || 0) - 1;
-    if (next[id] < 0) return null;
-  }
-  return next;
-}
-
-function findMeldArrangements(counts, neededMelds, melds = [], limit = 160) {
-  if (melds.length > neededMelds) return [];
+function findMeldArrangements(counts, melds = [], limit = 80) {
+  if (melds.length > 4) return [];
   const first = TILE_LIST.find((tile) => counts[tile.id] > 0);
-  if (!first) return melds.length === neededMelds ? [melds] : [];
-  if (melds.length === neededMelds) return [];
+  if (!first) return [melds];
 
   const results = [];
   const id = first.id;
 
   if (counts[id] >= 3) {
     counts[id] -= 3;
-    results.push(...findMeldArrangements(counts, neededMelds, [...melds, { type: 'triplet', tiles: [id, id, id], open: false, fixed: false }], limit));
+    results.push(...findMeldArrangements(counts, [...melds, { type: 'triplet', tiles: [id, id, id] }], limit));
     counts[id] += 3;
   }
 
@@ -128,7 +117,7 @@ function findMeldArrangements(counts, neededMelds, melds = [], limit = 160) {
       counts[id] -= 1;
       counts[a] -= 1;
       counts[b] -= 1;
-      results.push(...findMeldArrangements(counts, neededMelds, [...melds, { type: 'sequence', tiles: [id, a, b], open: false, fixed: false }], limit));
+      results.push(...findMeldArrangements(counts, [...melds, { type: 'sequence', tiles: [id, a, b] }], limit));
       counts[id] += 1;
       counts[a] += 1;
       counts[b] += 1;
@@ -138,36 +127,25 @@ function findMeldArrangements(counts, neededMelds, melds = [], limit = 160) {
   return results.slice(0, limit);
 }
 
-function getStandardArrangements(tileIds, fixedMelds = []) {
+function getStandardArrangements(tileIds) {
   const baseCounts = cloneCounts(countTiles(tileIds));
-  let countsWithoutFixed = baseCounts;
-  for (const meld of fixedMelds) {
-    countsWithoutFixed = removeTilesFromCounts(countsWithoutFixed, meld.tiles);
-    if (!countsWithoutFixed) return [];
-  }
-
-  const neededMelds = 4 - fixedMelds.length;
-  if (neededMelds < 0) return [];
-
-  const remainingCount = Object.values(countsWithoutFixed).reduce((sum, count) => sum + count, 0);
-  if (remainingCount !== neededMelds * 3 + 2) return [];
-
   const arrangements = [];
+
   TILE_LIST.forEach((tile) => {
-    if ((countsWithoutFixed[tile.id] || 0) < 2) return;
-    const counts = { ...countsWithoutFixed };
+    if ((baseCounts[tile.id] || 0) < 2) return;
+    const counts = { ...baseCounts };
     counts[tile.id] -= 2;
-    const meldGroups = findMeldArrangements(counts, neededMelds);
+    const meldGroups = findMeldArrangements(counts);
     meldGroups.forEach((melds) => {
-      arrangements.push({ pair: tile.id, melds: [...fixedMelds, ...melds] });
+      if (melds.length === 4) arrangements.push({ pair: tile.id, melds });
     });
   });
 
   return arrangements;
 }
 
-function hasYakuhai(id, options) {
-  return dragonIds.includes(id) || id === options.roundWind || id === options.seatWind;
+function hasYakuhai(pairOrMeldId, options) {
+  return dragonIds.includes(pairOrMeldId) || pairOrMeldId === options.roundWind || pairOrMeldId === options.seatWind;
 }
 
 function getSequenceBaseNumber(meld) {
@@ -176,6 +154,7 @@ function getSequenceBaseNumber(meld) {
 
 function isTwoSidedWait(meld, winningTileId) {
   if (!winningTileId || meld.type !== 'sequence' || !meld.tiles.includes(winningTileId)) return false;
+
   const suit = tileSuit(meld.tiles[0]);
   if (tileSuit(winningTileId) !== suit) return false;
 
@@ -183,56 +162,42 @@ function isTwoSidedWait(meld, winningTileId) {
   const winNumber = tileNumber(winningTileId);
 
   if (winNumber === base + 1) return false; // 간짱
-  if (base === 1 && winNumber === 3) return false; // 변짱 1-2 대기
-  if (base === 7 && winNumber === 7) return false; // 변짱 8-9 대기
+  if (base === 1 && winNumber === 3) return false; // 1-2 대기
+  if (base === 7 && winNumber === 7) return false; // 8-9 대기
 
   return winNumber === base || winNumber === base + 2;
 }
 
-function getWaitFu(arrangement, winningTileId, preferPinfuWait = false) {
+function getWaitFu(arrangement, winningTileId) {
   if (!winningTileId) return 0;
+  if (arrangement.pair === winningTileId) return 2; // 단기
 
   const winningSequences = arrangement.melds.filter((meld) => meld.type === 'sequence' && meld.tiles.includes(winningTileId));
-  const hasTwoSidedWait = winningSequences.some((meld) => isTwoSidedWait(meld, winningTileId));
-  const hasBadSequenceWait = winningSequences.some((meld) => !isTwoSidedWait(meld, winningTileId));
-  const hasPairWait = arrangement.pair === winningTileId;
-
-  // 핑후가 가능한 형태라면 양면대기로 해석해 0부를 우선합니다.
-  // 단, 핑후가 아닌 손패에서는 같은 화료패를 변짱/간짱/단기로도 볼 수 있으면
-  // 더 높은 점수가 나오도록 2부 대기로 계산합니다.
-  if (preferPinfuWait && hasTwoSidedWait) return 0;
-  if (hasBadSequenceWait || hasPairWait) return 2;
-  return 0;
-}
-
-function isClosedTriplet(meld, options) {
-  if (meld.type !== 'triplet') return false;
-  if (meld.open) return false;
-  if (options.winType === 'ron' && meld.tiles.includes(options.winningTileId)) return false;
-  return true;
+  if (winningSequences.length === 0) return 0;
+  return winningSequences.some((meld) => isTwoSidedWait(meld, winningTileId)) ? 0 : 2;
 }
 
 function analyzeArrangement(tileIds, arrangement, options) {
   const yaku = [];
+  const counts = countTiles(tileIds);
   const melds = arrangement.melds;
   const sequences = melds.filter((meld) => meld.type === 'sequence');
   const triplets = melds.filter((meld) => meld.type === 'triplet');
-  const closedTriplets = triplets.filter((meld) => isClosedTriplet(meld, options));
   const globalYakuman = getGlobalYakuman(tileIds, options);
-  const yakumanYaku = [...globalYakuman];
 
-  if (options.isClosed && triplets.length === 4 && closedTriplets.length === 4) {
-    yakumanYaku.push({ id: 'suuankou', count: 1 });
+  if (globalYakuman.length > 0) {
+    return { yaku: globalYakuman, fu: 0, arrangement, yakuman: true };
   }
 
-  if (yakumanYaku.length > 0) {
-    return { yaku: yakumanYaku, fu: 0, arrangement, yakuman: true };
+  if (options.isClosed && triplets.length === 4 && (options.winType === 'tsumo' || arrangement.pair === options.winningTileId)) {
+    return { yaku: [{ id: 'suuankou', count: 1 }], fu: 0, arrangement, yakuman: true };
   }
 
   const allSimples = tileIds.every((id) => isNumberTile(id) && !isTerminalOrHonor(id));
   if (allSimples) yaku.push({ id: 'tanyao', count: 1 });
 
   if (options.isClosed && options.winType === 'tsumo') yaku.push({ id: 'menzenTsumo', count: 1 });
+
   if (options.isClosed && options.riichiStatus === 'riichi') yaku.push({ id: 'riichi', count: 1 });
   if (options.isClosed && options.riichiStatus === 'doubleRiichi') yaku.push({ id: 'doubleRiichi', count: 1 });
 
@@ -240,7 +205,7 @@ function analyzeArrangement(tileIds, arrangement, options) {
   if (yakuhaiCount > 0) yaku.push({ id: 'yakuhai', count: yakuhaiCount });
 
   if (triplets.length === 4) yaku.push({ id: 'toitoi', count: 1 });
-  if (closedTriplets.length >= 3) yaku.push({ id: 'sananko', count: 1 });
+  if (triplets.length >= 3) yaku.push({ id: 'sananko', count: 1 });
   if (Number(options.kanCount || 0) >= 3) yaku.push({ id: 'sanKantsu', count: 1 });
 
   const suitSet = new Set(tileIds.filter(isNumberTile).map(tileSuit));
@@ -254,20 +219,16 @@ function analyzeArrangement(tileIds, arrangement, options) {
     return map;
   }, new Map());
   const duplicateSequenceCount = [...sequenceCountMap.values()].filter((count) => count >= 2).length;
-  if (options.isClosed && duplicateSequenceCount >= 2) yaku.push({ id: 'ryanpeko', count: 1 });
-  else if (options.isClosed && duplicateSequenceCount >= 1) yaku.push({ id: 'ipeiko', count: 1 });
+  if (options.isClosed && duplicateSequenceCount >= 2) {
+    yaku.push({ id: 'ryanpeko', count: 1 });
+  } else if (options.isClosed && duplicateSequenceCount >= 1) {
+    yaku.push({ id: 'ipeiko', count: 1 });
+  }
 
   for (let n = 1; n <= 7; n += 1) {
     const hasAllSuits = suits.every((suit) => sequenceKeys.includes(`${n}-${n + 1}-${n + 2}${suit}`));
     if (hasAllSuits) {
       yaku.push({ id: 'sanshokuDoujun', count: 1 });
-      break;
-    }
-  }
-
-  for (const suit of suits) {
-    if (sequenceKeys.includes(`1-2-3${suit}`) && sequenceKeys.includes(`4-5-6${suit}`) && sequenceKeys.includes(`7-8-9${suit}`)) {
-      yaku.push({ id: 'ittsuu', count: 1 });
       break;
     }
   }
@@ -286,13 +247,15 @@ function analyzeArrangement(tileIds, arrangement, options) {
     const meld = melds[index - 1];
     return meld.tiles.some(isTerminalOrHonor);
   });
-  if (allBlocksContainTerminalOrHonor && hasHonor) yaku.push({ id: 'chanta', count: 1 });
-  if (allBlocksContainTerminalOrHonor && !hasHonor) yaku.push({ id: 'junchan', count: 1 });
+  if (allBlocksContainTerminalOrHonor && tileIds.some((id) => TILE_MAP.get(id)?.honor)) yaku.push({ id: 'chanta', count: 1 });
+  if (allBlocksContainTerminalOrHonor && !tileIds.some((id) => TILE_MAP.get(id)?.honor)) yaku.push({ id: 'junchan', count: 1 });
 
-  const pinfuShape = sequences.length === 4 && !hasYakuhai(arrangement.pair, options);
-  const waitFu = getWaitFu(arrangement, options.winningTileId, pinfuShape);
-  const isPinfu = pinfuShape && waitFu === 0;
-  if (isPinfu && options.isClosed) yaku.push({ id: 'pinfu', count: 1 });
+  const waitFu = getWaitFu(arrangement, options.winningTileId);
+  const isPinfu = options.isClosed
+    && sequences.length === 4
+    && !hasYakuhai(arrangement.pair, options)
+    && waitFu === 0;
+  if (isPinfu) yaku.push({ id: 'pinfu', count: 1 });
 
   let fu = 20;
   if (options.winType === 'ron' && options.isClosed) fu += 10;
@@ -300,25 +263,11 @@ function analyzeArrangement(tileIds, arrangement, options) {
   if (hasYakuhai(arrangement.pair, options)) fu += 2;
   fu += waitFu;
   triplets.forEach((meld) => {
-    const isTerminalHonor = isTerminalOrHonor(meld.tiles[0]);
-
-    if (meld.kan) {
-      // 깡 부수: 명깡 중장패 8부 / 명깡 요구패 16부 / 암깡 중장패 16부 / 암깡 요구패 32부
-      const baseKanFu = isTerminalHonor ? 16 : 8;
-      fu += meld.open ? baseKanFu : baseKanFu * 2;
-      return;
-    }
-
-    // 커쯔 부수: 명커 중장패 2부 / 명커 요구패 4부 / 암커 중장패 4부 / 암커 요구패 8부
-    const baseFu = isTerminalHonor ? 8 : 4;
-    const multiplier = meld.open ? 0.5 : 1;
-    fu += baseFu * multiplier;
+    fu += isTerminalOrHonor(meld.tiles[0]) ? 8 : 4;
   });
+  if (!isPinfu && fu < 30) fu = 30;
 
-  if (isPinfu && options.isClosed && options.winType === 'tsumo') fu = 20;
-  else if (fu < 30) fu = 30;
-
-  return { yaku, fu: Math.ceil(fu / 10) * 10, arrangement };
+  return { yaku, fu, arrangement };
 }
 
 function withKnownYakuName(yakuItems) {
@@ -327,7 +276,7 @@ function withKnownYakuName(yakuItems) {
     .map((item) => ({ ...item, name: yakuById.get(item.id).name }));
 }
 
-function scoreCandidate(yaku, fu, options) {
+function scoreCandidate(tileIds, yaku, fu, options) {
   const han = calcHan({
     selectedYaku: yaku,
     yakuList: YAKU_LIST,
@@ -341,11 +290,10 @@ function scoreCandidate(yaku, fu, options) {
 }
 
 export function analyzeHandForScore(tileIds, options) {
-  const fixedMelds = normalizeFixedMelds(options);
   if (tileIds.length !== 14) {
     return { error: '14장을 선택해야 점수를 계산할 수 있습니다.' };
   }
-  if (fixedMelds.length === 0 && !isWinningHand(tileIds)) {
+  if (!isWinningHand(tileIds)) {
     return { error: '현재 선택한 14장은 완성패가 아닙니다.' };
   }
 
@@ -355,9 +303,8 @@ export function analyzeHandForScore(tileIds, options) {
     candidates.push({ yaku: withKnownYakuName(globalYakuman), fu: 0, yakuman: true });
   }
 
-  if (fixedMelds.length === 0 && isSevenPairs(tileIds)) {
+  if (isSevenPairs(tileIds)) {
     const yaku = [];
-    yaku.push({ id: 'chiitoitsu', count: 1 });
     if (options.isClosed && options.winType === 'tsumo') yaku.push({ id: 'menzenTsumo', count: 1 });
     if (options.isClosed && options.riichiStatus === 'riichi') yaku.push({ id: 'riichi', count: 1 });
     if (options.isClosed && options.riichiStatus === 'doubleRiichi') yaku.push({ id: 'doubleRiichi', count: 1 });
@@ -365,7 +312,7 @@ export function analyzeHandForScore(tileIds, options) {
     candidates.push({ yaku: withKnownYakuName(yaku), fu: 25 });
   }
 
-  getStandardArrangements(tileIds, fixedMelds).forEach((arrangement) => {
+  getStandardArrangements(tileIds).forEach((arrangement) => {
     const analyzed = analyzeArrangement(tileIds, arrangement, options);
     candidates.push({ ...analyzed, yaku: withKnownYakuName(analyzed.yaku) });
   });
@@ -378,7 +325,7 @@ export function analyzeHandForScore(tileIds, options) {
       const result = calcScore({ ...options, han: 13 * yakumanCount, fu: 40 });
       return { ...candidate, han: 13 * yakumanCount, result };
     }
-    const { han, result } = scoreCandidate(candidate.yaku, candidate.fu, options);
+    const { han, result } = scoreCandidate(tileIds, candidate.yaku, candidate.fu, options);
     return { ...candidate, han, result };
   });
 
@@ -391,7 +338,7 @@ export function analyzeHandForScore(tileIds, options) {
     };
   }
 
-  valid.sort((a, b) => (b.result.total || 0) - (a.result.total || 0) || b.han - a.han || b.fu - a.fu || b.yaku.length - a.yaku.length);
+  valid.sort((a, b) => (b.result.total || 0) - (a.result.total || 0) || b.han - a.han || b.fu - a.fu);
   const best = valid[0];
   const doraItems = [
     options.doraCount > 0 ? { name: '도라', count: Number(options.doraCount) } : null,

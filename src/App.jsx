@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import DoraPanel from './components/DoraPanel';
 import OptionPanel from './components/OptionPanel';
 import ResultPanel from './components/ResultPanel';
-import TilePicker, { getEffectiveTileIds, getPhysicalTileIds, getConcealedTileIds, getFixedMeldCount, hasOpenMeld, getKanCount, getFixedMelds } from './components/TilePicker';
+import TilePicker, { getEffectiveTileIds, getPhysicalTileIds, getConcealedTileIds, getFixedMeldCount, hasOpenMeld, getKanCount } from './components/TilePicker';
 import WaitResultPanel from './components/WaitResultPanel';
 import YakuSelector from './components/YakuSelector';
+import QuizPage from './pages/QuizPage';
 import { getWaitingTiles, getWaitingTilesWithFixedMelds, TILE_MAP, countTiles } from './logic/tiles';
 import { calcHan, calcScore } from './logic/score';
 import { analyzeHandForScore } from './logic/handAnalysis';
@@ -38,7 +39,7 @@ const Desc = styled.p`
 
 const MenuGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 16px;
   margin-top: 24px;
 
@@ -219,12 +220,12 @@ const initialOptions = {
   riichiStatus: 'none',
 };
 
-function WaitScoreModal({ tiles, winningTileId, isClosed = true, kanCount = 0, fixedMelds = [], onClose }) {
-  const [modalOptions, setModalOptions] = useState({ ...initialOptions, isClosed, playerType: initialOptions.seatWind === 'east' ? 'dealer' : initialOptions.playerType, winningTileId, kanCount, fixedMelds });
+function WaitScoreModal({ tiles, winningTileId, isClosed = true, kanCount = 0, onClose }) {
+  const [modalOptions, setModalOptions] = useState({ ...initialOptions, isClosed, playerType: initialOptions.seatWind === 'east' ? 'dealer' : initialOptions.playerType, winningTileId, kanCount });
   const [analysis, setAnalysis] = useState(null);
 
   const confirm = () => {
-    const next = analyzeHandForScore(tiles, { ...modalOptions, winningTileId, fixedMelds });
+    const next = analyzeHandForScore(tiles, { ...modalOptions, winningTileId });
     setAnalysis(next);
   };
 
@@ -329,15 +330,8 @@ export default function App() {
   }, [options.winType, options.isClosed]);
 
   useEffect(() => {
-    const hasChiitoitsu = selectedYaku.some((item) => item.id === 'chiitoitsu');
     const hasPinfu = selectedYaku.some((item) => item.id === 'pinfu');
     const hasMenzenTsumo = selectedYaku.some((item) => item.id === 'menzenTsumo');
-
-    if (hasChiitoitsu && Number(options.fu) !== 25) {
-      setOptions((prev) => ({ ...prev, fu: 25 }));
-      return;
-    }
-
     if (hasPinfu && hasMenzenTsumo && options.isClosed && options.winType === 'tsumo' && Number(options.fu) !== 20) {
       setOptions((prev) => ({ ...prev, fu: 20 }));
       return;
@@ -379,7 +373,29 @@ export default function App() {
             <MenuTitle>점수계산기</MenuTitle>
             <MenuDesc>역, 부수, 화료 조건, 도라 개수를 입력해 점수를 계산합니다.</MenuDesc>
           </MenuButton>
+          <MenuButton type="button" onClick={() => setMode('quiz')}>
+            <MenuTitle>대기패 연습퀴즈</MenuTitle>
+            <MenuDesc>청일색 대기패 퀴즈입니다.</MenuDesc>
+          </MenuButton>
         </MenuGrid>
+      </Page>
+    );
+  }
+
+
+  if (mode === 'quiz') {
+    return (
+      <Page>
+        <TopBar>
+          <BackButton type="button" onClick={() => setMode('menu')}>← 메뉴로</BackButton>
+        </TopBar>
+        <Header>
+          <div>
+            <Title>대기패 연습퀴즈</Title>
+            {/* <Desc>청일색 문제은행에서 초급 5문제, 중급 3문제, 고급 2문제를 랜덤으로 출제합니다.</Desc> */}
+          </div>
+        </Header>
+        <QuizPage />
       </Page>
     );
   }
@@ -393,14 +409,14 @@ export default function App() {
         <Header>
           <div>
             <Title>대기패 확인</Title>
-            <Desc>13장을 선택하면 대기패가 표시됩니다. 표시된 대기패를 클릭하면 해당 패를 화료패로 보고 점수보기 창에서 자동 판정 결과를 확인합니다. 치/퐁/깡/암깡 버튼으로 몸통을 미리 입력할 수 있고, 선택된 패 영역에서 해당 몸통을 클릭하면 한꺼번에 제거됩니다. 대기패 확인 화면에서는 최대 13장까지만 선택하고, 마지막 1장은 대기패 결과에서 선택합니다.</Desc>
+            <Desc>13장을 선택하면 대기패가 표시됩니다. 표시된 대기패를 클릭하면 그 패를 마지막 선택패(화료패)로 보고 점수보기 창에서 자동 판정 결과를 확인합니다. 치/퐁/깡/암깡 버튼으로 몸통을 미리 입력할 수 있고, 선택된 패 영역에서 해당 몸통을 클릭하면 한꺼번에 제거됩니다. 선택된 패 영역의 주황 테두리는 14장 완성 상태에서의 마지막 선택패입니다.</Desc>
           </div>
         </Header>
         <Layout>
-          <TilePicker selectedTiles={waitTiles} setSelectedTiles={setWaitTiles} maxTiles={13} title="선택된 패 / 선택할 패" />
-          <WaitResultPanel selectedCount={waitEffectiveTiles.length} waits={waits} onWaitClick={(tile) => setWaitScoreTarget({ winningTileId: tile.id, tiles: [...waitEffectiveTiles, tile.id], isClosed: !hasOpenMeld(waitTiles), kanCount: getKanCount(waitTiles), fixedMelds: getFixedMelds(waitTiles) })} />
+          <TilePicker selectedTiles={waitTiles} setSelectedTiles={setWaitTiles} maxTiles={14} title="선택된 패 / 선택할 패" />
+          <WaitResultPanel selectedCount={waitEffectiveTiles.length} waits={waits} onWaitClick={(tile) => setWaitScoreTarget({ winningTileId: tile.id, tiles: [...waitEffectiveTiles, tile.id], isClosed: !hasOpenMeld(waitTiles), kanCount: getKanCount(waitTiles) })} />
         </Layout>
-        {waitScoreTarget && <WaitScoreModal tiles={waitScoreTarget.tiles} winningTileId={waitScoreTarget.winningTileId} isClosed={waitScoreTarget.isClosed} kanCount={waitScoreTarget.kanCount} fixedMelds={waitScoreTarget.fixedMelds} onClose={() => setWaitScoreTarget(null)} />}
+        {waitScoreTarget && <WaitScoreModal tiles={waitScoreTarget.tiles} winningTileId={waitScoreTarget.winningTileId} isClosed={waitScoreTarget.isClosed} kanCount={waitScoreTarget.kanCount} onClose={() => setWaitScoreTarget(null)} />}
       </Page>
     );
   }

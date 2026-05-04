@@ -1,5 +1,5 @@
 const ceil100 = (value) => Math.ceil(value / 100) * 100;
-const roundFu = (fu) => (Number(fu) === 25 ? 25 : Math.ceil(fu / 10) * 10);
+const roundFu = (fu) => Math.ceil(fu / 10) * 10;
 
 export function calcHan({ selectedYaku, yakuList, isClosed, doraCount = 0, uraDoraCount = 0, akaDoraCount = 0 }) {
   const yakuHan = selectedYaku.reduce((sum, item) => {
@@ -13,10 +13,10 @@ export function calcHan({ selectedYaku, yakuList, isClosed, doraCount = 0, uraDo
 }
 
 export function getLimitBasePoint(han, fu) {
-  if (han >= 26) {
-    const yakumanCount = Math.floor(han / 13);
-    return { base: 8000 * yakumanCount, label: `${yakumanCount}배 역만` };
-  }
+  // if (han >= 26) {
+  //   const yakumanCount = Math.floor(han / 13);
+  //   return { base: 8000 * yakumanCount, label: `${yakumanCount}배 역만` };
+  // }
   if (han >= 13) return { base: 8000, label: '역만' };
   if (han >= 11) return { base: 6000, label: '삼배만' };
   if (han >= 8) return { base: 4000, label: '배만' };
