@@ -17,26 +17,21 @@ const WaitGrid = styled.div`
 
 const TileCard = styled.button`
   aspect-ratio: 0.74 / 1;
-  border-radius: 14px;
-  background: #fff;
-  border: 1px solid rgba(50,35,20,0.18);
+  border: 0;
+  background: transparent;
   display: grid;
   place-items: center;
-  overflow: hidden;
-  box-shadow: 0 2px 0 rgba(50,35,20,0.08);
+  overflow: visible;
   cursor: pointer;
-
-  &:hover {
-    border-color: #d85b1f;
-    background: #fff0e5;
-  }
+  padding: 0;
 `;
 
-const TileFace = styled.span`
-  font-family: "Segoe UI Symbol", "Apple Color Emoji", "Noto Color Emoji", system-ui, sans-serif;
-  font-size: clamp(42px, 8vw, 64px);
-  transform: scale(1.28);
-  line-height: 0.8;
+const TileImage = styled.img`
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  pointer-events: none;
 `;
 
 const Label = styled.div`
@@ -62,7 +57,7 @@ export default function WaitResultPanel({ selectedCount, waits, onWaitClick }) {
           <WaitGrid>
             {waits.map((tile) => (
               <TileCard key={tile.id} type="button" title={`${tile.label} 점수보기`} onClick={() => onWaitClick?.(tile)}>
-                <TileFace>{tile.unicode}</TileFace>
+                <TileImage src={`/images/tiles/${tile.id}.png`} alt={tile.label} />
               </TileCard>
             ))}
           </WaitGrid>
