@@ -57,7 +57,7 @@ export default function WaitResultPanel({ selectedCount, waits, onWaitClick }) {
           <WaitGrid>
             {waits.map((tile) => (
               <TileCard key={tile.id} type="button" title={`${tile.label} 점수보기`} onClick={() => onWaitClick?.(tile)}>
-                <TileImage src={`/images/tiles/${tile.id}.png`} alt={tile.label} />
+                <TileImage src={tile.url} alt={tile.label} />
               </TileCard>
             ))}
           </WaitGrid>
