@@ -4,6 +4,7 @@ import { calcHan, calcScore } from './score';
 
 const yakuById = new Map(YAKU_LIST.map((yaku) => [yaku.id, yaku]));
 
+
 const suits = ['m', 'p', 's'];
 const dragonIds = ['white', 'green', 'red'];
 const windIds = ['east', 'south', 'west', 'north'];
@@ -37,6 +38,7 @@ function isKokushi(tileIds) {
   const counts = countTiles(tileIds);
   return KOKUSHI_IDS.every((id) => counts[id] >= 1) && KOKUSHI_IDS.some((id) => counts[id] >= 2);
 }
+
 
 
 function isChuuren(tileIds, options) {
@@ -257,16 +259,9 @@ function analyzeArrangement(tileIds, arrangement, options) {
     const meld = melds[index - 1];
     return meld.tiles.some(isTerminalOrHonor);
   });
-  if (allBlocksContainTerminalOrHonor && tileIds.some((id) => TILE_MAP.get(id)?.honor)) yaku.push({ id: 'chanta', count: 1 });
-  if (allBlocksContainTerminalOrHonor && !tileIds.some((id) => TILE_MAP.get(id)?.honor)) yaku.push({ id: 'junchan', count: 1 });
-const isHonroutou = tileIds.every((id) => {
-  const tile = TILE_MAP.get(id);
-  return tile?.honor || (tile?.terminal && !tile?.honor);
-});
+  if (allBlocksContainTerminalOrHonor && hasHonor) yaku.push({ id: 'chanta', count: 1 });
+  if (allBlocksContainTerminalOrHonor && !hasHonor) yaku.push({ id: 'junchan', count: 1 });
 
-if (isHonroutou) {
-  yaku.push({ id: 'honroutou', count: 1 });
-}
   const waitFu = getWaitFu(arrangement, options.winningTileId);
   const isPinfu = options.isClosed
     && sequences.length === 4

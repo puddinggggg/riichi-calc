@@ -50,11 +50,27 @@ const CountControls = styled.div`
   margin-top: 8px;
 `;
 
-const CountButton = styled.button`
-  width: 28px;
-  height: 28px;
+const CountButton = styled.span`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
   border: 1px solid rgba(50,35,20,0.18);
   background: #fff;
+  border-radius: 999px;
+  font-weight: 900;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+`;
+
+const CountLabel = styled.span`
+  font-size: 13px;
   border-radius: 999px;
   font-weight: 900;
   cursor: pointer;
@@ -77,19 +93,18 @@ const CountLabel = styled.span`
 const CONFLICTS = {
   riichi: ['doubleRiichi'],
   doubleRiichi: ['riichi'],
-  pinfu: ['yakuhai', 'toitoi', 'sananko', 'sanshokuDouko', 'sanKantsu', 'chiitoi'],
-  chiitoi: ['pinfu', 'yakuhai', 'toitoi', 'sananko', 'sanshokuDoujun', 'ittsuu', 'sanshokuDouko', 'sanKantsu', 'ipeiko', 'ryanpeko', 'chanta', 'junchan'],
-  yakuhai: ['pinfu', 'chiitoi'],
-  toitoi: ['pinfu', 'ipeiko', 'ryanpeko', 'sanshokuDoujun', 'ittsuu', 'chiitoi'],
-  sananko: ['pinfu', 'chiitoi'],
-  sanshokuDouko: ['pinfu', 'sanshokuDoujun', 'ittsuu', 'ipeiko', 'ryanpeko', 'chiitoi'],
-  sanKantsu: ['pinfu', 'ittsuu', 'chiitoi'],
-  ipeiko: ['toitoi', 'sanshokuDouko', 'ryanpeko', 'chiitoi'],
-  ryanpeko: ['ipeiko', 'toitoi', 'sanshokuDouko', 'sanshokuDoujun', 'ittsuu', 'chiitoi'],
-  sanshokuDoujun: ['toitoi', 'sanshokuDouko', 'ittsuu', 'chiitoi'],
-  ittsuu: ['toitoi', 'sanshokuDoujun', 'sanshokuDouko', 'sanKantsu', 'ryanpeko', 'chanta', 'junchan', 'tanyao', 'chiitoi'],
-  chanta: ['junchan', 'tanyao', 'ittsuu', 'chiitoi','honroutou'],
-  junchan: ['chanta', 'honitsu', 'tanyao', 'ittsuu', 'chiitoi','honroutou'],
+  pinfu: ['yakuhai', 'toitoi', 'sananko', 'sanshokuDouko', 'sanKantsu'],
+  yakuhai: ['pinfu'],
+  toitoi: ['pinfu', 'ipeiko', 'ryanpeko', 'sanshokuDoujun', 'ittsuu'],
+  sananko: ['pinfu'],
+  sanshokuDouko: ['pinfu', 'sanshokuDoujun', 'ittsuu', 'ipeiko', 'ryanpeko'],
+  sanKantsu: ['pinfu', 'ittsuu'],
+  ipeiko: ['toitoi', 'sanshokuDouko', 'ryanpeko'],
+  ryanpeko: ['ipeiko', 'toitoi', 'sanshokuDouko', 'sanshokuDoujun', 'ittsuu'],
+  sanshokuDoujun: ['toitoi', 'sanshokuDouko', 'ittsuu'],
+  ittsuu: ['toitoi', 'sanshokuDoujun', 'sanshokuDouko', 'sanKantsu', 'ryanpeko', 'tanyao'],
+  chanta: ['junchan', 'tanyao'],
+  junchan: ['chanta', 'honitsu', 'tanyao'],
   honitsu: ['chinitsu', 'junchan'],
   chinitsu: ['honitsu','honroutou'],
   tanyao: ['chanta', 'junchan', 'ittsuu','honroutou'],
