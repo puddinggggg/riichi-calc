@@ -161,6 +161,51 @@ const AnswerText = styled.div`
   line-height: 1.5;
 `;
 
+const WrongReviewWrap = styled.div`
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+  text-align: left;
+`;
+
+const ReviewCard = styled.div`
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid rgba(50,35,20,0.14);
+`;
+
+const ReviewTitle = styled.div`
+  font-weight: 900;
+  color: #3a3026;
+`;
+
+const ReviewTileRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+`;
+
+const ReviewSmallTile = styled.div`
+  width: 34px;
+  aspect-ratio: 0.74 / 1;
+  display: grid;
+  place-items: center;
+
+  @media (max-width: 640px) {
+    width: 28px;
+  }
+`;
+
+const ReviewText = styled.div`
+  color: #665d50;
+  line-height: 1.55;
+  font-size: 14px;
+`;
+
+
 const ANSWER_NUMBERS = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function shuffle(array) {
@@ -203,9 +248,12 @@ export default function QuizPage() {
   const [submitted, setSubmitted] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [score, setScore] = useState(0);
+  const [records, setRecords] = useState([]);
+  const [showWrongReview, setShowWrongReview] = useState(false);
 
   const current = problems[index];
   const isFinished = started && index >= problems.length;
+  const wrongRecords = useMemo(() => records.filter((record) => !record.correct), [records]);
 
   const sortedProblemTiles = useMemo(() => (current ? sortTiles(current.tiles) : []), [current]);
 
@@ -221,6 +269,28 @@ export default function QuizPage() {
     effectiveWaits.map((id) => TILE_MAP.get(id)?.label || id).join(', ')
   ), [effectiveWaits]);
 
+  const finishProblem = (selectedAnswer, timedOut = false) => {
+    if (!current || submitted) return;
+    const correct = sameTileSet(selectedAnswer, effectiveWaits);
+    setIsCorrect(correct);
+    setSubmitted(true);
+    setRecords((prev) => {
+      if (prev.some((record) => record.index === index)) return prev;
+      return [
+        ...prev,
+        {
+          index,
+          problem: current,
+          selected: [...selectedAnswer],
+          waits: [...effectiveWaits],
+          correct,
+          timedOut,
+        },
+      ];
+    });
+    if (correct) setScore((currentScore) => currentScore + 10);
+  };
+
   useEffect(() => {
     if (!started || submitted || isFinished) return undefined;
 
@@ -228,10 +298,7 @@ export default function QuizPage() {
       setTimeLeft((prev) => {
         if (prev <= 1) {
           window.clearInterval(timer);
-          const correct = sameTileSet(selected, effectiveWaits);
-          setIsCorrect(correct);
-          setSubmitted(true);
-          if (correct) setScore((currentScore) => currentScore + 10);
+          finishProblem(selected, true);
           return 0;
         }
         return prev - 1;
@@ -250,6 +317,8 @@ export default function QuizPage() {
     setSubmitted(false);
     setIsCorrect(false);
     setScore(0);
+    setRecords([]);
+    setShowWrongReview(false);
   };
 
   const toggleTile = (id) => {
@@ -258,11 +327,7 @@ export default function QuizPage() {
   };
 
   const submitAnswer = () => {
-    if (!current || submitted) return;
-    const correct = sameTileSet(selected, effectiveWaits);
-    setIsCorrect(correct);
-    setSubmitted(true);
-    if (correct) setScore((prev) => prev + 10);
+    finishProblem(selected, false);
   };
 
   const goNext = () => {
@@ -298,7 +363,38 @@ export default function QuizPage() {
         <AnswerText>총 10문제 중 {score / 10}문제를 맞혔습니다.</AnswerText>
         <ButtonRow style={{ justifyContent: 'center', marginTop: 18 }}>
           <PrimaryButton type="button" onClick={startQuiz}>다시 시작</PrimaryButton>
+          <SubButton type="button" onClick={() => setShowWrongReview((prev) => !prev)} disabled={wrongRecords.length === 0}>
+            {showWrongReview ? '오답 닫기' : '오답 확인'}
+          </SubButton>
         </ButtonRow>
+
+        {showWrongReview && (
+          <WrongReviewWrap>
+            {wrongRecords.length === 0 ? (
+              <ResultNotice $correct>틀린 문제가 없습니다.</ResultNotice>
+            ) : wrongRecords.map((record) => {
+              const problemTiles = sortTiles(record.problem.tiles);
+              const selectedLabels = record.selected.length > 0
+                ? record.selected.map((id) => TILE_MAP.get(id)?.label || id).join(', ')
+                : '선택 없음';
+              const answerLabelsForRecord = record.waits.map((id) => TILE_MAP.get(id)?.label || id).join(', ');
+              return (
+                <ReviewCard key={record.index}>
+                  <ReviewTitle>{record.index + 1}번 문제 {record.timedOut ? '(시간 초과)' : ''}</ReviewTitle>
+                  <ReviewTileRow>
+                    {problemTiles.map((id, tileIndex) => (
+                      <ReviewSmallTile key={`${record.index}-${id}-${tileIndex}`}>
+                        <Tile id={id} />
+                      </ReviewSmallTile>
+                    ))}
+                  </ReviewTileRow>
+                  <ReviewText>내가 선택한 패: {selectedLabels}</ReviewText>
+                  <ReviewText>정답: {answerLabelsForRecord}</ReviewText>
+                </ReviewCard>
+              );
+            })}
+          </WrongReviewWrap>
+        )}
       </ScoreCard>
     );
   }

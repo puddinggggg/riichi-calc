@@ -179,6 +179,31 @@ function getWaitFu(arrangement, winningTileId) {
   return winningSequences.some((meld) => isTwoSidedWait(meld, winningTileId)) ? 0 : 2;
 }
 
+
+function getFixedMeldFuMap(fixedMelds = []) {
+  const map = new Map();
+  fixedMelds
+    .filter((meld) => ['pon', 'kan', 'ankan'].includes(meld.type))
+    .forEach((meld) => {
+      const tileId = meld.tileId || meld.tiles?.[0];
+      if (!tileId) return;
+      const isYaochu = isTerminalOrHonor(tileId);
+      let fu = 0;
+      if (meld.type === 'kan') fu = isYaochu ? 16 : 8; // 명깡
+      else if (meld.type === 'ankan') fu = isYaochu ? 32 : 16; // 암깡
+      else fu = isYaochu ? 4 : 2; // 명각(퐁)
+      if (!map.has(tileId)) map.set(tileId, []);
+      map.get(tileId).push({ type: meld.type, fu });
+    });
+  return map;
+}
+
+function takeFixedMeldFu(fixedMeldFuMap, tileId) {
+  const list = fixedMeldFuMap.get(tileId);
+  if (!list || list.length === 0) return null;
+  return list.shift();
+}
+
 function analyzeArrangement(tileIds, arrangement, options) {
   const yaku = [];
   const counts = countTiles(tileIds);
@@ -274,8 +299,23 @@ function analyzeArrangement(tileIds, arrangement, options) {
   if (options.winType === 'tsumo' && !isPinfu) fu += 2;
   if (hasYakuhai(arrangement.pair, options)) fu += 2;
   fu += waitFu;
+  const fixedMeldFuMap = getFixedMeldFuMap(options.fixedMelds);
   triplets.forEach((meld) => {
-    fu += isTerminalOrHonor(meld.tiles[0]) ? 8 : 4;
+    const tileId = meld.tiles[0];
+    const fixedFu = takeFixedMeldFu(fixedMeldFuMap, tileId);
+    if (fixedFu) {
+      fu += fixedFu.fu;
+      return;
+    }
+
+    // 손 안에서 완성된 커쯔는 기본적으로 암각으로 계산합니다.
+    // 단, 론으로 커쯔가 완성된 경우에는 명각 부수로 계산합니다.
+    const isRonCompletedTriplet = options.winType === 'ron' && tileId === options.winningTileId;
+    if (isRonCompletedTriplet) {
+      fu += isTerminalOrHonor(tileId) ? 4 : 2;
+    } else {
+      fu += isTerminalOrHonor(tileId) ? 8 : 4;
+    }
   });
   if (!isPinfu && fu < 30) fu = 30;
 

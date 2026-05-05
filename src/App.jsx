@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import DoraPanel from './components/DoraPanel';
 import OptionPanel from './components/OptionPanel';
 import ResultPanel from './components/ResultPanel';
-import TilePicker, { getEffectiveTileIds, getPhysicalTileIds, getConcealedTileIds, getFixedMeldCount, hasOpenMeld, getKanCount } from './components/TilePicker';
+import TilePicker, { getEffectiveTileIds, getPhysicalTileIds, getConcealedTileIds, getFixedMeldCount, hasOpenMeld, getKanCount, getFixedMelds } from './components/TilePicker';
 import WaitResultPanel from './components/WaitResultPanel';
 import YakuSelector from './components/YakuSelector';
 import QuizPage from './pages/QuizPage';
@@ -220,12 +220,19 @@ const initialOptions = {
   riichiStatus: 'none',
 };
 
-function WaitScoreModal({ tiles, winningTileId, isClosed = true, kanCount = 0, onClose }) {
-  const [modalOptions, setModalOptions] = useState({ ...initialOptions, isClosed, playerType: initialOptions.seatWind === 'east' ? 'dealer' : initialOptions.playerType, winningTileId, kanCount });
+function WaitScoreModal({ tiles, winningTileId, isClosed = true, kanCount = 0, fixedMelds = [], onClose }) {
+  const [modalOptions, setModalOptions] = useState({
+    ...initialOptions,
+    isClosed,
+    playerType: initialOptions.seatWind === 'east' ? 'dealer' : initialOptions.playerType,
+    winningTileId,
+    kanCount,
+    fixedMelds,
+  });
   const [analysis, setAnalysis] = useState(null);
 
   const confirm = () => {
-    const next = analyzeHandForScore(tiles, { ...modalOptions, winningTileId });
+    const next = analyzeHandForScore(tiles, { ...modalOptions, winningTileId, fixedMelds });
     setAnalysis(next);
   };
 
@@ -414,9 +421,22 @@ export default function App() {
         </Header>
         <Layout>
           <TilePicker selectedTiles={waitTiles} setSelectedTiles={setWaitTiles} maxTiles={14} title="선택된 패 / 선택할 패" />
-          <WaitResultPanel selectedCount={waitEffectiveTiles.length} waits={waits} onWaitClick={(tile) => setWaitScoreTarget({ winningTileId: tile.id, tiles: [...waitEffectiveTiles, tile.id], isClosed: !hasOpenMeld(waitTiles), kanCount: getKanCount(waitTiles) })} />
+          <WaitResultPanel selectedCount={waitEffectiveTiles.length} waits={waits} onWaitClick={(tile) => setWaitScoreTarget({
+              winningTileId: tile.id,
+              tiles: [...waitEffectiveTiles, tile.id],
+              isClosed: !hasOpenMeld(waitTiles),
+              kanCount: getKanCount(waitTiles),
+              fixedMelds: getFixedMelds(waitTiles),
+            })} />
         </Layout>
-        {waitScoreTarget && <WaitScoreModal tiles={waitScoreTarget.tiles} winningTileId={waitScoreTarget.winningTileId} isClosed={waitScoreTarget.isClosed} kanCount={waitScoreTarget.kanCount} onClose={() => setWaitScoreTarget(null)} />}
+        {waitScoreTarget && <WaitScoreModal
+            tiles={waitScoreTarget.tiles}
+            winningTileId={waitScoreTarget.winningTileId}
+            isClosed={waitScoreTarget.isClosed}
+            kanCount={waitScoreTarget.kanCount}
+            fixedMelds={waitScoreTarget.fixedMelds}
+            onClose={() => setWaitScoreTarget(null)}
+          />}
       </Page>
     );
   }

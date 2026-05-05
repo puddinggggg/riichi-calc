@@ -155,13 +155,16 @@ const MeldGroupButton = styled.button`
 `;
 
 const MeldTile = styled.span`
-  width: 34px;
-  height: 46px;
+  width: 42px;
+  height:  ${({ $back }) => ($back ? '46' : '48')}px;
   display: grid;
   place-items: center;
   color: #171512;
   overflow: visible;
-  transform: ${({ $rotated }) => ($rotated ? 'rotate(270deg)' : '')};
+  border: ${({ $back }) => ($back ? '1px solid #777' : 'none')};
+  border-radius: ${({ $back }) => ($back ? '3px' : 'none')};
+  background-color: #fff;
+  transform: ${({ $rotated }) => ($rotated ? 'rotate(270deg)' : 'none')};
 `;
 
 const MeldBack = styled.span`
@@ -238,6 +241,18 @@ export function hasOpenMeld(selectedTiles) {
 
 export function getKanCount(selectedTiles) {
   return selectedTiles.filter((item) => isMeldItem(item) && ['kan', 'ankan'].includes(item.type)).length;
+}
+
+export function getFixedMelds(selectedTiles) {
+  return selectedTiles
+    .filter(isMeldItem)
+    .map((item) => ({
+      type: item.type,
+      tileId: item.tiles[0],
+      tiles: item.tiles,
+      isOpen: ['chi', 'pon', 'kan'].includes(item.type),
+      isKan: ['kan', 'ankan'].includes(item.type),
+    }));
 }
 
 function tileImageSrc(id) {
@@ -389,7 +404,8 @@ export default function TilePicker({ selectedTiles, setSelectedTiles, maxTiles =
                   const isBack = item.type === 'ankan' && item.backIndexes?.includes(tileIndex);
                   return (
                     <MeldTile key={`${id}-${tileIndex}`} $back={isBack}  $rotated={item.rotatedIndex === tileIndex}>
-                      {isBack ? <MeldBack /> : <TileImage src={tileImageSrc(id)} alt={tile.label} />}
+                      { <TileImage  $back={isBack} src={isBack ?'/images/back.png':tileImageSrc(id)} alt={tile.label} />}
+                      {/* {isBack ? <MeldBack /> : <TileImage src={tileImageSrc(id)} alt={tile.label} />} */}
                     </MeldTile>
                   );
                 })}
