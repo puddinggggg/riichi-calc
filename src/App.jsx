@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import DoraPanel from './components/DoraPanel';
 import OptionPanel from './components/OptionPanel';
@@ -416,11 +416,11 @@ export default function App() {
         <Header>
           <div>
             <Title>대기패 확인</Title>
-            <Desc>13장을 선택하면 대기패가 표시됩니다. 표시된 대기패를 클릭하면 그 패를 마지막 선택패(화료패)로 보고 점수보기 창에서 자동 판정 결과를 확인합니다. 치/퐁/깡/암깡 버튼으로 몸통을 미리 입력할 수 있고, 선택된 패 영역에서 해당 몸통을 클릭하면 한꺼번에 제거됩니다. 선택된 패 영역의 주황 테두리는 14장 완성 상태에서의 마지막 선택패입니다.</Desc>
+            <Desc>13장을 선택하면 대기패가 표시됩니다. 표시된 대기패를 클릭하면 그 패를 마지막 선택패(화료패)로 보고 점수보기 창에서 자동 판정 결과를 확인합니다. 치/퐁/깡/암깡 버튼으로 몸통을 미리 입력할 수 있고, 선택된 패 영역에서 해당 몸통을 클릭하면 한꺼번에 제거됩니다.</Desc>
           </div>
         </Header>
         <Layout>
-          <TilePicker selectedTiles={waitTiles} setSelectedTiles={setWaitTiles} maxTiles={14} title="선택된 패 / 선택할 패" />
+          <TilePicker selectedTiles={waitTiles} setSelectedTiles={setWaitTiles} maxTiles={13} title="선택된 패 / 선택할 패" />
           <WaitResultPanel selectedCount={waitEffectiveTiles.length} waits={waits} onWaitClick={(tile) => setWaitScoreTarget({
               winningTileId: tile.id,
               tiles: [...waitEffectiveTiles, tile.id],

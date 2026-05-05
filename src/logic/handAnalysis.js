@@ -231,6 +231,10 @@ function analyzeArrangement(tileIds, arrangement, options) {
   const yakuhaiCount = triplets.filter((meld) => hasYakuhai(meld.tiles[0], options)).length;
   if (yakuhaiCount > 0) yaku.push({ id: 'yakuhai', count: yakuhaiCount });
 
+  const dragonTripletCount = triplets.filter((meld) => dragonIds.includes(meld.tiles[0])).length;
+  const hasDragonPair = dragonIds.includes(arrangement.pair);
+  if (dragonTripletCount === 2 && hasDragonPair) yaku.push({ id: 'shosangen', count: 1 });
+
   if (triplets.length === 4) yaku.push({ id: 'toitoi', count: 1 });
   if (triplets.length >= 3) yaku.push({ id: 'sananko', count: 1 });
   if (Number(options.kanCount || 0) >= 3) yaku.push({ id: 'sanKantsu', count: 1 });
@@ -279,13 +283,16 @@ function analyzeArrangement(tileIds, arrangement, options) {
     }
   }
 
+  const allTerminalOrHonor = tileIds.every(isTerminalOrHonor);
+  if (allTerminalOrHonor) yaku.push({ id: 'honroutou', count: 1 });
+
   const allBlocksContainTerminalOrHonor = [arrangement.pair, ...melds.map((meld) => meld.tiles[0])].every((id, index) => {
     if (index === 0) return isTerminalOrHonor(id);
     const meld = melds[index - 1];
     return meld.tiles.some(isTerminalOrHonor);
   });
-  if (allBlocksContainTerminalOrHonor && hasHonor) yaku.push({ id: 'chanta', count: 1 });
-  if (allBlocksContainTerminalOrHonor && !hasHonor) yaku.push({ id: 'junchan', count: 1 });
+  if (!allTerminalOrHonor && allBlocksContainTerminalOrHonor && hasHonor) yaku.push({ id: 'chanta', count: 1 });
+  if (!allTerminalOrHonor && allBlocksContainTerminalOrHonor && !hasHonor) yaku.push({ id: 'junchan', count: 1 });
 
   const waitFu = getWaitFu(arrangement, options.winningTileId);
   const isPinfu = options.isClosed
@@ -361,6 +368,7 @@ export function analyzeHandForScore(tileIds, options) {
     if (options.isClosed && options.riichiStatus === 'riichi') yaku.push({ id: 'riichi', count: 1 });
     if (options.isClosed && options.riichiStatus === 'doubleRiichi') yaku.push({ id: 'doubleRiichi', count: 1 });
     if (tileIds.every((id) => isNumberTile(id) && !isTerminalOrHonor(id))) yaku.push({ id: 'tanyao', count: 1 });
+    if (tileIds.every(isTerminalOrHonor)) yaku.push({ id: 'honroutou', count: 1 });
     candidates.push({ yaku: withKnownYakuName(yaku), fu: 25 });
   }
 

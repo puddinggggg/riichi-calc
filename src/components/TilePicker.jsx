@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { TILE_GROUPS, TILE_MAP } from '../logic/tiles';
 import { Section, SectionTitle } from './Section';

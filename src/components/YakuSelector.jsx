@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import { YAKU_LIST } from '../logic/riichiData';
 import { Section, SectionTitle } from './Section';
@@ -87,12 +88,13 @@ const CountLabel = styled.span`
 const CONFLICTS = {
   riichi: ['doubleRiichi'],
   doubleRiichi: ['riichi'],
-  pinfu: ['yakuhai', 'toitoi', 'sananko', 'sanshokuDouko', 'sanKantsu'],
+  pinfu: ['yakuhai', 'toitoi', 'sananko', 'sanshokuDouko', 'sanKantsu', 'shosangen'],
   yakuhai: ['pinfu'],
   toitoi: ['pinfu', 'ipeiko', 'ryanpeko', 'sanshokuDoujun', 'ittsuu'],
   sananko: ['pinfu'],
   sanshokuDouko: ['pinfu', 'sanshokuDoujun', 'ittsuu', 'ipeiko', 'ryanpeko'],
   sanKantsu: ['pinfu', 'ittsuu'],
+  shosangen: ['pinfu', 'ipeiko', 'ryanpeko', 'sanshokuDoujun', 'ittsuu', 'tanyao'],
   ipeiko: ['toitoi', 'sanshokuDouko', 'ryanpeko'],
   ryanpeko: ['ipeiko', 'toitoi', 'sanshokuDouko', 'sanshokuDoujun', 'ittsuu'],
   sanshokuDoujun: ['toitoi', 'sanshokuDouko', 'ittsuu'],
@@ -101,7 +103,7 @@ const CONFLICTS = {
   junchan: ['chanta', 'honitsu', 'tanyao'],
   honitsu: ['chinitsu', 'junchan'],
   chinitsu: ['honitsu','honroutou'],
-  tanyao: ['chanta', 'junchan', 'ittsuu','honroutou'],
+  tanyao: ['chanta', 'junchan', 'ittsuu','honroutou','shosangen'],
   honroutou: ['tanyao','pinfu','sanshokuDoujun','ipeiko','ryanpeko','ittsuu','chanta','junchan']
 };
 
