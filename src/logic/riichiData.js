@@ -31,7 +31,6 @@ export const YAKU_LIST = [
   { id: 'ittsuu', name: '일기통관', closedHan: 2, openHan: 1 },
   { id: 'sanshokuDouko', name: '삼색동각', closedHan: 2, openHan: 2 },
   { id: 'sanKantsu', name: '삼깡즈', closedHan: 2, openHan: 2 },
-  { id: 'shosangen', name: '소삼원', closedHan: 2, openHan: 2 },
   { id: 'chanta', name: '찬타', closedHan: 2, openHan: 1 },
   { id: 'honroutou', name: '혼노두', closedHan: 2, openHan: 2 },
   { id: 'junchan', name: '준찬타', closedHan: 3, openHan: 2 },

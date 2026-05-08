@@ -20,6 +20,13 @@ const Badge = styled.span`
   margin-left: 8px;
 `;
 
+const FuBreakdown = styled.div`
+  margin-top: 8px;
+  color: #5d554b;
+  font-size: 14px;
+  line-height: 1.55;
+`;
+
 const Payment = styled.div`
   margin-top: 8px;
   color: #5d554b;
@@ -42,6 +49,18 @@ export default function ResultPanel({ result, han }) {
         <>
           <Total>{result.total.toLocaleString()}점</Total>
           <div>{han}판 {result.fu}부 {result.limit && <Badge>{result.limit}</Badge>}</div>
+          {result.fuDetails?.length > 0 && (
+            <FuBreakdown>
+              {result.fuDetails.map((item, index) => (
+                <React.Fragment key={`${item.label}-${index}`}>
+                  {index > 0 ? ' + ' : ''}{item.value}({item.label})
+                </React.Fragment>
+              ))}
+              {' = '}{result.rawFu}
+              <br />
+              {result.fu}부
+            </FuBreakdown>
+          )}
           {result.payments.map((item) => (
             <Payment key={item.label}>{item.label}: {item.points.toLocaleString()}점</Payment>
           ))}

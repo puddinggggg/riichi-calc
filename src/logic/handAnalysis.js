@@ -146,8 +146,49 @@ function getStandardArrangements(tileIds) {
   return arrangements;
 }
 
+function countYakuhaiValue(tileId, options) {
+  let count = 0;
+  if (dragonIds.includes(tileId)) count += 1;
+  if (tileId === options.roundWind) count += 1;
+  if (tileId === options.seatWind) count += 1;
+  return count;
+}
+
+function getPairFuDetails(tileId, options) {
+  const details = [];
+  if (dragonIds.includes(tileId)) details.push({ value: 2, label: '역패머리' });
+  if (tileId === options.roundWind) details.push({ value: 2, label: '역패머리' });
+  if (tileId === options.seatWind) details.push({ value: 2, label: '자풍패머리' });
+  return details;
+}
+
+function getMeldFuLabel(tileId, meldType) {
+  const prefix = isTerminalOrHonor(tileId) ? '요구패' : '중장패';
+  if (meldType === 'kan') return `${prefix}명깡`;
+  if (meldType === 'ankan') return `${prefix}암깡`;
+  if (meldType === 'closedTriplet') return `${prefix}암각`;
+  return `${prefix}밍커`;
+}
+
 function hasYakuhai(pairOrMeldId, options) {
-  return dragonIds.includes(pairOrMeldId) || pairOrMeldId === options.roundWind || pairOrMeldId === options.seatWind;
+  return countYakuhaiValue(pairOrMeldId, options) > 0;
+}
+
+function getFixedMeldTypesMap(fixedMelds = []) {
+  const map = new Map();
+  fixedMelds.forEach((meld) => {
+    const tileId = meld.tileId || meld.tiles?.[0];
+    if (!tileId) return;
+    if (!map.has(tileId)) map.set(tileId, []);
+    map.get(tileId).push(meld.type);
+  });
+  return map;
+}
+
+function takeFixedMeldType(fixedMeldTypesMap, tileId) {
+  const list = fixedMeldTypesMap.get(tileId);
+  if (!list || list.length === 0) return null;
+  return list.shift();
 }
 
 function getSequenceBaseNumber(meld) {
@@ -193,7 +234,7 @@ function getFixedMeldFuMap(fixedMelds = []) {
       else if (meld.type === 'ankan') fu = isYaochu ? 32 : 16; // 암깡
       else fu = isYaochu ? 4 : 2; // 명각(퐁)
       if (!map.has(tileId)) map.set(tileId, []);
-      map.get(tileId).push({ type: meld.type, fu });
+      map.get(tileId).push({ type: meld.type, fu, label: getMeldFuLabel(tileId, meld.type) });
     });
   return map;
 }
@@ -216,7 +257,15 @@ function analyzeArrangement(tileIds, arrangement, options) {
     return { yaku: globalYakuman, fu: 0, arrangement, yakuman: true };
   }
 
-  if (options.isClosed && triplets.length === 4 && (options.winType === 'tsumo' || arrangement.pair === options.winningTileId)) {
+  const fixedMeldTypesForYakuman = getFixedMeldTypesMap(options.fixedMelds);
+  const concealedTripletCountForYakuman = triplets.filter((meld) => {
+    const fixedType = takeFixedMeldType(fixedMeldTypesForYakuman, meld.tiles[0]);
+    if (fixedType === 'pon' || fixedType === 'kan') return false;
+    if (fixedType === 'ankan') return true;
+    return !(options.winType === 'ron' && meld.tiles[0] === options.winningTileId);
+  }).length;
+
+  if (options.isClosed && concealedTripletCountForYakuman === 4 && (options.winType === 'tsumo' || arrangement.pair === options.winningTileId)) {
     return { yaku: [{ id: 'suuankou', count: 1 }], fu: 0, arrangement, yakuman: true };
   }
 
@@ -228,15 +277,32 @@ function analyzeArrangement(tileIds, arrangement, options) {
   if (options.isClosed && options.riichiStatus === 'riichi') yaku.push({ id: 'riichi', count: 1 });
   if (options.isClosed && options.riichiStatus === 'doubleRiichi') yaku.push({ id: 'doubleRiichi', count: 1 });
 
-  const yakuhaiCount = triplets.filter((meld) => hasYakuhai(meld.tiles[0], options)).length;
+  const fixedMeldTypesForYaku = getFixedMeldTypesMap(options.fixedMelds);
+  const tripletsWithFixedType = triplets.map((meld) => ({
+    meld,
+    fixedType: takeFixedMeldType(fixedMeldTypesForYaku, meld.tiles[0]),
+  }));
+
+  const yakuhaiCount = tripletsWithFixedType.reduce(
+    (sum, { meld }) => sum + countYakuhaiValue(meld.tiles[0], options),
+    0,
+  );
   if (yakuhaiCount > 0) yaku.push({ id: 'yakuhai', count: yakuhaiCount });
 
   const dragonTripletCount = triplets.filter((meld) => dragonIds.includes(meld.tiles[0])).length;
   const hasDragonPair = dragonIds.includes(arrangement.pair);
   if (dragonTripletCount === 2 && hasDragonPair) yaku.push({ id: 'shosangen', count: 1 });
 
+  const concealedTripletCount = tripletsWithFixedType.filter(({ meld, fixedType }) => {
+    if (fixedType === 'pon' || fixedType === 'kan') return false;
+    if (fixedType === 'ankan') return true;
+
+    // 론으로 완성된 커쯔는 부수/역 판정에서 명각 취급이므로 삼암각에 포함하지 않습니다.
+    return !(options.winType === 'ron' && meld.tiles[0] === options.winningTileId);
+  }).length;
+
   if (triplets.length === 4) yaku.push({ id: 'toitoi', count: 1 });
-  if (triplets.length >= 3) yaku.push({ id: 'sananko', count: 1 });
+  if (concealedTripletCount >= 3) yaku.push({ id: 'sananko', count: 1 });
   if (Number(options.kanCount || 0) >= 3) yaku.push({ id: 'sanKantsu', count: 1 });
 
   const suitSet = new Set(tileIds.filter(isNumberTile).map(tileSuit));
@@ -301,17 +367,17 @@ function analyzeArrangement(tileIds, arrangement, options) {
     && waitFu === 0;
   if (isPinfu) yaku.push({ id: 'pinfu', count: 1 });
 
-  let fu = 20;
-  if (options.winType === 'ron' && options.isClosed) fu += 10;
-  if (options.winType === 'tsumo' && !isPinfu) fu += 2;
-  if (hasYakuhai(arrangement.pair, options)) fu += 2;
-  fu += waitFu;
+  const fuDetails = [{ value: 20, label: '기본' }];
+  if (options.winType === 'ron' && options.isClosed) fuDetails.push({ value: 10, label: '멘젠론' });
+  if (options.winType === 'tsumo' && !isPinfu) fuDetails.push({ value: 2, label: '쯔모' });
+  fuDetails.push(...getPairFuDetails(arrangement.pair, options));
+  if (waitFu > 0) fuDetails.push({ value: waitFu, label: arrangement.pair === options.winningTileId ? '단기대기' : '간짱/변짱대기' });
   const fixedMeldFuMap = getFixedMeldFuMap(options.fixedMelds);
   triplets.forEach((meld) => {
     const tileId = meld.tiles[0];
     const fixedFu = takeFixedMeldFu(fixedMeldFuMap, tileId);
     if (fixedFu) {
-      fu += fixedFu.fu;
+      fuDetails.push({ value: fixedFu.fu, label: fixedFu.label });
       return;
     }
 
@@ -319,14 +385,16 @@ function analyzeArrangement(tileIds, arrangement, options) {
     // 단, 론으로 커쯔가 완성된 경우에는 명각 부수로 계산합니다.
     const isRonCompletedTriplet = options.winType === 'ron' && tileId === options.winningTileId;
     if (isRonCompletedTriplet) {
-      fu += isTerminalOrHonor(tileId) ? 4 : 2;
+      fuDetails.push({ value: isTerminalOrHonor(tileId) ? 4 : 2, label: getMeldFuLabel(tileId, 'openTriplet') });
     } else {
-      fu += isTerminalOrHonor(tileId) ? 8 : 4;
+      fuDetails.push({ value: isTerminalOrHonor(tileId) ? 8 : 4, label: getMeldFuLabel(tileId, 'closedTriplet') });
     }
   });
+  let fu = fuDetails.reduce((sum, item) => sum + item.value, 0);
+  const rawFu = fu;
   if (!isPinfu && fu < 30) fu = 30;
 
-  return { yaku, fu, arrangement };
+  return { yaku, fu, rawFu, fuDetails, arrangement };
 }
 
 function withKnownYakuName(yakuItems) {
@@ -369,7 +437,7 @@ export function analyzeHandForScore(tileIds, options) {
     if (options.isClosed && options.riichiStatus === 'doubleRiichi') yaku.push({ id: 'doubleRiichi', count: 1 });
     if (tileIds.every((id) => isNumberTile(id) && !isTerminalOrHonor(id))) yaku.push({ id: 'tanyao', count: 1 });
     if (tileIds.every(isTerminalOrHonor)) yaku.push({ id: 'honroutou', count: 1 });
-    candidates.push({ yaku: withKnownYakuName(yaku), fu: 25 });
+    candidates.push({ yaku: withKnownYakuName(yaku), fu: 25, rawFu: 25, fuDetails: [{ value: 25, label: '치또이츠 고정부' }] });
   }
 
   getStandardArrangements(tileIds).forEach((arrangement) => {
@@ -386,7 +454,7 @@ export function analyzeHandForScore(tileIds, options) {
       return { ...candidate, han: 13 * yakumanCount, result };
     }
     const { han, result } = scoreCandidate(tileIds, candidate.yaku, candidate.fu, options);
-    return { ...candidate, han, result };
+    return { ...candidate, han, result: { ...result, rawFu: candidate.rawFu ?? candidate.fu, fuDetails: candidate.fuDetails || [] } };
   });
 
   const valid = scored.filter((item) => !item.result.error);

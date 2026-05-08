@@ -88,13 +88,12 @@ const CountLabel = styled.span`
 const CONFLICTS = {
   riichi: ['doubleRiichi'],
   doubleRiichi: ['riichi'],
-  pinfu: ['yakuhai', 'toitoi', 'sananko', 'sanshokuDouko', 'sanKantsu', 'shosangen'],
+  pinfu: ['yakuhai', 'toitoi', 'sananko', 'sanshokuDouko', 'sanKantsu'],
   yakuhai: ['pinfu'],
   toitoi: ['pinfu', 'ipeiko', 'ryanpeko', 'sanshokuDoujun', 'ittsuu'],
   sananko: ['pinfu'],
   sanshokuDouko: ['pinfu', 'sanshokuDoujun', 'ittsuu', 'ipeiko', 'ryanpeko'],
   sanKantsu: ['pinfu', 'ittsuu'],
-  shosangen: ['pinfu', 'ipeiko', 'ryanpeko', 'sanshokuDoujun', 'ittsuu', 'tanyao'],
   ipeiko: ['toitoi', 'sanshokuDouko', 'ryanpeko'],
   ryanpeko: ['ipeiko', 'toitoi', 'sanshokuDouko', 'sanshokuDoujun', 'ittsuu'],
   sanshokuDoujun: ['toitoi', 'sanshokuDouko', 'ittsuu'],
@@ -103,7 +102,7 @@ const CONFLICTS = {
   junchan: ['chanta', 'honitsu', 'tanyao'],
   honitsu: ['chinitsu', 'junchan'],
   chinitsu: ['honitsu','honroutou'],
-  tanyao: ['chanta', 'junchan', 'ittsuu','honroutou','shosangen'],
+  tanyao: ['chanta', 'junchan', 'ittsuu','honroutou'],
   honroutou: ['tanyao','pinfu','sanshokuDoujun','ipeiko','ryanpeko','ittsuu','chanta','junchan']
 };
 

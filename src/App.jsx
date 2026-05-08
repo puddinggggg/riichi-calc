@@ -187,6 +187,12 @@ const TagWrap = styled.div`
   gap: 8px;
 `;
 
+const FuBreakdown = styled.div`
+  color: #5d554b;
+  font-size: 14px;
+  line-height: 1.55;
+`;
+
 const Tag = styled.span`
   display: inline-flex;
   align-items: center;
@@ -261,6 +267,18 @@ function WaitScoreModal({ tiles, winningTileId, isClosed = true, kanCount = 0, f
             <ScoreSummary>
               <ScoreLine>{analysis.result.total.toLocaleString()}점</ScoreLine>
               <div>{analysis.han}판 {analysis.result.fu}부 {analysis.result.limit ? ` / ${analysis.result.limit}` : ''}</div>
+              {analysis.result.fuDetails?.length > 0 && (
+                <FuBreakdown>
+                  {analysis.result.fuDetails.map((item, index) => (
+                    <React.Fragment key={`${item.label}-${index}`}>
+                      {index > 0 ? ' + ' : ''}{item.value}({item.label})
+                    </React.Fragment>
+                  ))}
+                  {' = '}{analysis.result.rawFu}
+                  <br />
+                  {analysis.result.fu}부
+                </FuBreakdown>
+              )}
               <TagWrap>
                 {analysis.yaku.length > 0
                   ? analysis.yaku.map((item, index) => (
@@ -416,11 +434,11 @@ export default function App() {
         <Header>
           <div>
             <Title>대기패 확인</Title>
-            <Desc>13장을 선택하면 대기패가 표시됩니다. 표시된 대기패를 클릭하면 그 패를 마지막 선택패(화료패)로 보고 점수보기 창에서 자동 판정 결과를 확인합니다. 치/퐁/깡/암깡 버튼으로 몸통을 미리 입력할 수 있고, 선택된 패 영역에서 해당 몸통을 클릭하면 한꺼번에 제거됩니다.</Desc>
+            <Desc>13장을 선택하면 대기패가 표시됩니다. 표시된 대기패를 클릭하면 그 패를 마지막 선택패(화료패)로 보고 점수보기 창에서 자동 판정 결과를 확인합니다. 치/퐁/깡/암깡 버튼으로 몸통을 미리 입력할 수 있고, 선택된 패 영역에서 해당 몸통을 클릭하면 한꺼번에 제거됩니다. 선택된 패 영역의 주황 테두리는 14장 완성 상태에서의 마지막 선택패입니다.</Desc>
           </div>
         </Header>
         <Layout>
-          <TilePicker selectedTiles={waitTiles} setSelectedTiles={setWaitTiles} maxTiles={13} title="선택된 패 / 선택할 패" />
+          <TilePicker selectedTiles={waitTiles} setSelectedTiles={setWaitTiles} maxTiles={14} title="선택된 패 / 선택할 패" />
           <WaitResultPanel selectedCount={waitEffectiveTiles.length} waits={waits} onWaitClick={(tile) => setWaitScoreTarget({
               winningTileId: tile.id,
               tiles: [...waitEffectiveTiles, tile.id],
