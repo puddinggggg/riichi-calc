@@ -211,13 +211,31 @@ function isTwoSidedWait(meld, winningTileId) {
   return winNumber === base || winNumber === base + 2;
 }
 
-function getWaitFu(arrangement, winningTileId) {
-  if (!winningTileId) return 0;
-  if (arrangement.pair === winningTileId) return 2; // 단기
+function getWaitFuOptions(arrangement, winningTileId) {
+  if (!winningTileId) {
+    return { canTwoSided: false, canFuWait: false, fuWaitLabels: [] };
+  }
+
+  const fuWaitLabels = [];
+  let canFuWait = false;
+
+  // 같은 완성패라도 머리대기/양면/변짱/간짱 등 여러 해석이 가능할 수 있습니다.
+  // 점수 계산에서는 가능한 해석 중 가장 유리한 쪽을 고르기 위해 후보를 모두 기록합니다.
+  if (arrangement.pair === winningTileId) {
+    canFuWait = true;
+    fuWaitLabels.push('단기대기');
+  }
 
   const winningSequences = arrangement.melds.filter((meld) => meld.type === 'sequence' && meld.tiles.includes(winningTileId));
-  if (winningSequences.length === 0) return 0;
-  return winningSequences.some((meld) => isTwoSidedWait(meld, winningTileId)) ? 0 : 2;
+  const canTwoSided = winningSequences.some((meld) => isTwoSidedWait(meld, winningTileId));
+  const canClosedOrEdge = winningSequences.some((meld) => !isTwoSidedWait(meld, winningTileId));
+
+  if (canClosedOrEdge) {
+    canFuWait = true;
+    fuWaitLabels.push('간짱/변짱대기');
+  }
+
+  return { canTwoSided, canFuWait, fuWaitLabels };
 }
 
 
@@ -360,18 +378,23 @@ function analyzeArrangement(tileIds, arrangement, options) {
   if (!allTerminalOrHonor && allBlocksContainTerminalOrHonor && hasHonor) yaku.push({ id: 'chanta', count: 1 });
   if (!allTerminalOrHonor && allBlocksContainTerminalOrHonor && !hasHonor) yaku.push({ id: 'junchan', count: 1 });
 
-  const waitFu = getWaitFu(arrangement, options.winningTileId);
+  const waitFuOptions = getWaitFuOptions(arrangement, options.winningTileId);
+  const canPinfuWait = waitFuOptions.canTwoSided;
   const isPinfu = options.isClosed
     && sequences.length === 4
     && !hasYakuhai(arrangement.pair, options)
-    && waitFu === 0;
+    && canPinfuWait;
   if (isPinfu) yaku.push({ id: 'pinfu', count: 1 });
+
+  // 핑후가 성립하는 해석이 있으면 양면대기 0부를 사용합니다.
+  // 핑후가 아니면서 같은 패를 변짱/간짱/단기 등으로도 볼 수 있으면 2부를 붙여 더 높은 부수 후보로 계산합니다.
+  const waitFu = isPinfu ? 0 : (waitFuOptions.canFuWait ? 2 : 0);
 
   const fuDetails = [{ value: 20, label: '기본' }];
   if (options.winType === 'ron' && options.isClosed) fuDetails.push({ value: 10, label: '멘젠론' });
   if (options.winType === 'tsumo' && !isPinfu) fuDetails.push({ value: 2, label: '쯔모' });
   fuDetails.push(...getPairFuDetails(arrangement.pair, options));
-  if (waitFu > 0) fuDetails.push({ value: waitFu, label: arrangement.pair === options.winningTileId ? '단기대기' : '간짱/변짱대기' });
+  if (waitFu > 0) fuDetails.push({ value: waitFu, label: waitFuOptions.fuWaitLabels[0] || '간짱/변짱/단기대기' });
   const fixedMeldFuMap = getFixedMeldFuMap(options.fixedMelds);
   triplets.forEach((meld) => {
     const tileId = meld.tiles[0];
