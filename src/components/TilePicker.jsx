@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { TILE_GROUPS, TILE_MAP } from '../logic/tiles';
 import { Section, SectionTitle } from './Section';
@@ -265,8 +265,16 @@ export default function TilePicker({ selectedTiles, setSelectedTiles, maxTiles =
   const physicalIds = selectedTiles.flatMap(getPhysicalIds);
   const physicalCounts = countIds(physicalIds);
   const effectiveCount = effectiveIds.length;
+  const fixedMeldCount = getFixedMeldCount(selectedTiles);
   const canShowWinningTile = effectiveCount === 14;
   const lastOriginalIndex = selectedTiles.length - 1;
+  const activeMeldMode = fixedMeldCount >= 4 ? null : meldMode;
+
+  useEffect(() => {
+    if (fixedMeldCount >= 4 && meldMode) {
+      setMeldMode(null);
+    }
+  }, [fixedMeldCount, meldMode]);
 
   const toggleMeldMode = (mode) => {
     setMeldMode((prev) => (prev === mode ? null : mode));
@@ -279,28 +287,28 @@ export default function TilePicker({ selectedTiles, setSelectedTiles, maxTiles =
   };
 
   const addTile = (id) => {
-    if (meldMode === 'chi') {
+    if (activeMeldMode === 'chi') {
       const tiles = makeChiTiles(id);
       if (!tiles || effectiveCount + 3 > maxTiles || wouldExceedPhysicalFour(tiles)) return;
       setSelectedTiles((prev) => [...prev, { type: 'chi', tiles, rotatedIndex: 0 }]);
       return;
     }
 
-    if (meldMode === 'pon') {
+    if (activeMeldMode === 'pon') {
       const tiles = [id, id, id];
       if (effectiveCount + 3 > maxTiles || (physicalCounts[id] || 0) >= 2 || wouldExceedPhysicalFour(tiles)) return;
       setSelectedTiles((prev) => [...prev, { type: 'pon', tiles, rotatedIndex: 0 }]);
       return;
     }
 
-    if (meldMode === 'kan') {
+    if (activeMeldMode === 'kan') {
       const tiles = [id, id, id, id];
       if (effectiveCount + 3 > maxTiles || (physicalCounts[id] || 0) >= 1 || wouldExceedPhysicalFour(tiles)) return;
       setSelectedTiles((prev) => [...prev, { type: 'kan', tiles, rotatedIndex: 0 }]);
       return;
     }
 
-    if (meldMode === 'ankan') {
+    if (activeMeldMode === 'ankan') {
       const tiles = [id, id, id, id];
       if (effectiveCount + 3 > maxTiles || (physicalCounts[id] || 0) >= 1 || wouldExceedPhysicalFour(tiles)) return;
       setSelectedTiles((prev) => [...prev, { type: 'ankan', tiles, backIndexes: [1, 2] }]);
@@ -317,14 +325,14 @@ export default function TilePicker({ selectedTiles, setSelectedTiles, maxTiles =
   };
 
   const isDisabled = (tile) => {
-    if (meldMode === 'chi') {
+    if (activeMeldMode === 'chi') {
       const tiles = makeChiTiles(tile.id);
       return !tiles || effectiveCount + 3 > maxTiles || wouldExceedPhysicalFour(tiles);
     }
-    if (meldMode === 'pon') {
+    if (activeMeldMode === 'pon') {
       return effectiveCount + 3 > maxTiles || (physicalCounts[tile.id] || 0) >= 2 || wouldExceedPhysicalFour([tile.id, tile.id, tile.id]);
     }
-    if (meldMode === 'kan' || meldMode === 'ankan') {
+    if (activeMeldMode === 'kan' || activeMeldMode === 'ankan') {
       return effectiveCount + 3 > maxTiles || (physicalCounts[tile.id] || 0) >= 1 || wouldExceedPhysicalFour([tile.id, tile.id, tile.id, tile.id]);
     }
     return effectiveCount >= maxTiles || (physicalCounts[tile.id] || 0) >= 4;
@@ -339,7 +347,7 @@ export default function TilePicker({ selectedTiles, setSelectedTiles, maxTiles =
 
       <MeldModeWrap aria-label="몸통 선택 모드">
         {['chi', 'pon', 'kan', 'ankan'].map((mode) => (
-          <MeldButton key={mode} type="button" $active={meldMode === mode} onClick={() => toggleMeldMode(mode)}>
+          <MeldButton key={mode} type="button" $active={activeMeldMode === mode} onClick={() => toggleMeldMode(mode)}>
             {MELD_LABELS[mode]}
           </MeldButton>
         ))}

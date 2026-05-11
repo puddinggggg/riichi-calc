@@ -93,6 +93,17 @@ function getGlobalYakuman(tileIds, options) {
   return yaku;
 }
 
+function getFlushYaku(tileIds) {
+  const suitSet = new Set(tileIds.filter(isNumberTile).map(tileSuit));
+  const hasHonor = tileIds.some((id) => TILE_MAP.get(id)?.honor);
+  const yaku = [];
+
+  if (suitSet.size === 1 && hasHonor) yaku.push({ id: 'honitsu', count: 1 });
+  if (suitSet.size === 1 && !hasHonor) yaku.push({ id: 'chinitsu', count: 1 });
+
+  return yaku;
+}
+
 function cloneCounts(counts) {
   return Object.fromEntries(TILE_LIST.map((tile) => [tile.id, counts[tile.id] || 0]));
 }
@@ -238,6 +249,12 @@ function getWaitFuOptions(arrangement, winningTileId) {
   return { canTwoSided, canFuWait, fuWaitLabels };
 }
 
+function canPlaceWinningTileOutsideTriplet(arrangement, winningTileId) {
+  if (!winningTileId) return false;
+  if (arrangement.pair === winningTileId) return true;
+  return arrangement.melds.some((meld) => meld.type === 'sequence' && meld.tiles.includes(winningTileId));
+}
+
 
 function getFixedMeldFuMap(fixedMelds = []) {
   const map = new Map();
@@ -269,11 +286,7 @@ function analyzeArrangement(tileIds, arrangement, options) {
   const melds = arrangement.melds;
   const sequences = melds.filter((meld) => meld.type === 'sequence');
   const triplets = melds.filter((meld) => meld.type === 'triplet');
-  const globalYakuman = getGlobalYakuman(tileIds, options);
-
-  if (globalYakuman.length > 0) {
-    return { yaku: globalYakuman, fu: 0, arrangement, yakuman: true };
-  }
+  const yakumanYaku = [...getGlobalYakuman(tileIds, options)];
 
   const fixedMeldTypesForYakuman = getFixedMeldTypesMap(options.fixedMelds);
   const concealedTripletCountForYakuman = triplets.filter((meld) => {
@@ -284,7 +297,11 @@ function analyzeArrangement(tileIds, arrangement, options) {
   }).length;
 
   if (options.isClosed && concealedTripletCountForYakuman === 4 && (options.winType === 'tsumo' || arrangement.pair === options.winningTileId)) {
-    return { yaku: [{ id: 'suuankou', count: 1 }], fu: 0, arrangement, yakuman: true };
+    yakumanYaku.push({ id: 'suuankou', count: 1 });
+  }
+
+  if (yakumanYaku.length > 0) {
+    return { yaku: yakumanYaku, fu: 0, arrangement, yakuman: true };
   }
 
   const allSimples = tileIds.every((id) => isNumberTile(id) && !isTerminalOrHonor(id));
@@ -300,6 +317,7 @@ function analyzeArrangement(tileIds, arrangement, options) {
     meld,
     fixedType: takeFixedMeldType(fixedMeldTypesForYaku, meld.tiles[0]),
   }));
+  const canWinOutsideTriplet = canPlaceWinningTileOutsideTriplet(arrangement, options.winningTileId);
 
   const yakuhaiCount = tripletsWithFixedType.reduce(
     (sum, { meld }) => sum + countYakuhaiValue(meld.tiles[0], options),
@@ -316,17 +334,15 @@ function analyzeArrangement(tileIds, arrangement, options) {
     if (fixedType === 'ankan') return true;
 
     // 론으로 완성된 커쯔는 부수/역 판정에서 명각 취급이므로 삼암각에 포함하지 않습니다.
-    return !(options.winType === 'ron' && meld.tiles[0] === options.winningTileId);
+    return !(options.winType === 'ron' && meld.tiles[0] === options.winningTileId && !canWinOutsideTriplet);
   }).length;
 
   if (triplets.length === 4) yaku.push({ id: 'toitoi', count: 1 });
   if (concealedTripletCount >= 3) yaku.push({ id: 'sananko', count: 1 });
   if (Number(options.kanCount || 0) >= 3) yaku.push({ id: 'sanKantsu', count: 1 });
 
-  const suitSet = new Set(tileIds.filter(isNumberTile).map(tileSuit));
   const hasHonor = tileIds.some((id) => TILE_MAP.get(id)?.honor);
-  if (suitSet.size === 1 && hasHonor) yaku.push({ id: 'honitsu', count: 1 });
-  if (suitSet.size === 1 && !hasHonor) yaku.push({ id: 'chinitsu', count: 1 });
+  yaku.push(...getFlushYaku(tileIds));
 
   const sequenceKeys = sequences.map((meld) => meld.tiles.map((id) => tileNumber(id)).join('-') + tileSuit(meld.tiles[0]));
   const sequenceCountMap = sequenceKeys.reduce((map, key) => {
@@ -406,7 +422,7 @@ function analyzeArrangement(tileIds, arrangement, options) {
 
     // 손 안에서 완성된 커쯔는 기본적으로 암각으로 계산합니다.
     // 단, 론으로 커쯔가 완성된 경우에는 명각 부수로 계산합니다.
-    const isRonCompletedTriplet = options.winType === 'ron' && tileId === options.winningTileId;
+    const isRonCompletedTriplet = options.winType === 'ron' && tileId === options.winningTileId && !canWinOutsideTriplet;
     if (isRonCompletedTriplet) {
       fuDetails.push({ value: isTerminalOrHonor(tileId) ? 4 : 2, label: getMeldFuLabel(tileId, 'openTriplet') });
     } else {
@@ -460,6 +476,7 @@ export function analyzeHandForScore(tileIds, options) {
     if (options.isClosed && options.riichiStatus === 'doubleRiichi') yaku.push({ id: 'doubleRiichi', count: 1 });
     if (tileIds.every((id) => isNumberTile(id) && !isTerminalOrHonor(id))) yaku.push({ id: 'tanyao', count: 1 });
     if (tileIds.every(isTerminalOrHonor)) yaku.push({ id: 'honroutou', count: 1 });
+    yaku.push(...getFlushYaku(tileIds));
     candidates.push({ yaku: withKnownYakuName(yaku), fu: 25, rawFu: 25, fuDetails: [{ value: 25, label: '치또이츠 고정부' }] });
   }
 
