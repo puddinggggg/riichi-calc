@@ -7,6 +7,8 @@ import TilePicker, { getEffectiveTileIds, getPhysicalTileIds, getConcealedTileId
 import WaitResultPanel from './components/WaitResultPanel';
 import YakuSelector from './components/YakuSelector';
 import QuizPage from './pages/QuizPage';
+import ScoreQuizPage from './pages/ScoreQuizPage';
+import ScoreQuizTestPage from './pages/ScoreQuizTestPage';
 import { getWaitingTiles, getWaitingTilesWithFixedMelds, TILE_MAP, countTiles } from './logic/tiles';
 import { calcHan, calcScore } from './logic/score';
 import { analyzeHandForScore } from './logic/handAnalysis';
@@ -402,6 +404,14 @@ export default function App() {
             <MenuTitle>대기패 연습퀴즈</MenuTitle>
             <MenuDesc>청일색 대기패 퀴즈입니다.</MenuDesc>
           </MenuButton>
+          <MenuButton type="button" onClick={() => setMode('scoreQuiz')}>
+            <MenuTitle>화료 점수 퀴즈</MenuTitle>
+            <MenuDesc>화료한 패를 보고 점수를 입력합니다.(테스트중)</MenuDesc>
+          </MenuButton>
+          {/* <MenuButton type="button" onClick={() => setMode('scoreQuizTest')}>
+            <MenuTitle>[테스트] 점수퀴즈 검수</MenuTitle>
+            <MenuDesc>임시 메뉴입니다. 전체 점수퀴즈 문제를 시간 제한 없이 이전/다음으로 확인합니다.</MenuDesc>
+          </MenuButton> */}
         </MenuGrid>
       </Page>
     );
@@ -421,6 +431,40 @@ export default function App() {
           </div>
         </Header>
         <QuizPage />
+      </Page>
+    );
+  }
+
+  if (mode === 'scoreQuiz') {
+    return (
+      <Page>
+        <TopBar>
+          <BackButton type="button" onClick={() => setMode('menu')}>← 메뉴로</BackButton>
+        </TopBar>
+        <Header>
+          <div>
+            <Title>화료 점수 퀴즈</Title>
+            {/* <Desc>문제은행에서 10문제를 뽑아 점수의 앞자리만 입력합니다.</Desc> */}
+          </div>
+        </Header>
+        <ScoreQuizPage />
+      </Page>
+    );
+  }
+
+  if (mode === 'scoreQuizTest') {
+    return (
+      <Page>
+        <TopBar>
+          <BackButton type="button" onClick={() => setMode('menu')}>← 메뉴로</BackButton>
+        </TopBar>
+        <Header>
+          <div>
+            <Title>[테스트] 점수퀴즈 검수</Title>
+            <Desc>전체 문제를 순서대로 넘기며 손패, 조건, 저장된 정답을 확인합니다.</Desc>
+          </div>
+        </Header>
+        <ScoreQuizTestPage />
       </Page>
     );
   }
