@@ -1,0 +1,1 @@
+import { analyzeHandForScore } from '../src/logic/handAnalysis.js'; console.log(typeof analyzeHandForScore);

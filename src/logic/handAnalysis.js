@@ -1,6 +1,6 @@
-import { TILE_LIST, TILE_MAP, countTiles, KOKUSHI_IDS, isWinningHand } from './tiles';
-import { YAKU_LIST } from './riichiData';
-import { calcHan, calcScore } from './score';
+import { TILE_LIST, TILE_MAP, countTiles, KOKUSHI_IDS, isWinningHand } from './tiles.js';
+import { YAKU_LIST } from './riichiData.js';
+import { calcHan, calcScore } from './score.js';
 
 const yakuById = new Map(YAKU_LIST.map((yaku) => [yaku.id, yaku]));
 

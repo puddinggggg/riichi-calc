@@ -1,18 +1,31 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import styled from 'styled-components';
-import DoraPanel from './components/DoraPanel';
-import OptionPanel from './components/OptionPanel';
-import ResultPanel from './components/ResultPanel';
-import TilePicker, { getEffectiveTileIds, getPhysicalTileIds, getConcealedTileIds, getFixedMeldCount, hasOpenMeld, getKanCount, getFixedMelds } from './components/TilePicker';
-import WaitResultPanel from './components/WaitResultPanel';
-import YakuSelector from './components/YakuSelector';
-import QuizPage from './pages/QuizPage';
-import ScoreQuizPage from './pages/ScoreQuizPage';
-import ScoreQuizTestPage from './pages/ScoreQuizTestPage';
-import { getWaitingTiles, getWaitingTilesWithFixedMelds, TILE_MAP, countTiles } from './logic/tiles';
-import { calcHan, calcScore } from './logic/score';
-import { analyzeHandForScore } from './logic/handAnalysis';
-import { YAKU_LIST } from './logic/riichiData';
+import React, { useEffect, useMemo, useState } from "react";
+import styled from "styled-components";
+import DoraPanel from "./components/DoraPanel";
+import OptionPanel from "./components/OptionPanel";
+import ResultPanel from "./components/ResultPanel";
+import TilePicker, {
+  getEffectiveTileIds,
+  getPhysicalTileIds,
+  getConcealedTileIds,
+  getFixedMeldCount,
+  hasOpenMeld,
+  getKanCount,
+  getFixedMelds,
+} from "./components/TilePicker";
+import WaitResultPanel from "./components/WaitResultPanel";
+import YakuSelector from "./components/YakuSelector";
+import QuizPage from "./pages/QuizPage";
+import ScoreQuizPage from "./pages/ScoreQuizPage";
+import ScoreQuizTestPage from "./pages/ScoreQuizTestPage";
+import {
+  getWaitingTiles,
+  getWaitingTilesWithFixedMelds,
+  TILE_MAP,
+  countTiles,
+} from "./logic/tiles";
+import { calcHan, calcScore } from "./logic/score";
+import { analyzeHandForScore } from "./logic/handAnalysis";
+import { YAKU_LIST } from "./logic/riichiData";
 
 const Page = styled.main`
   width: min(1120px, calc(100% - 28px));
@@ -52,13 +65,13 @@ const MenuGrid = styled.div`
 
 const MenuButton = styled.button`
   min-height: 180px;
-  border: 1px solid rgba(50,35,20,0.16);
+  border: 1px solid rgba(50, 35, 20, 0.16);
   border-radius: 24px;
   background: #fff;
   padding: 24px;
   text-align: left;
   cursor: pointer;
-  box-shadow: 0 12px 30px rgba(50,35,20,0.08);
+  box-shadow: 0 12px 30px rgba(50, 35, 20, 0.08);
 
   &:hover {
     transform: translateY(-2px);
@@ -82,7 +95,7 @@ const TopBar = styled.div`
 `;
 
 const BackButton = styled.button`
-  border: 1px solid rgba(50,35,20,0.18);
+  border: 1px solid rgba(50, 35, 20, 0.18);
   background: #fff;
   border-radius: 999px;
   padding: 9px 14px;
@@ -112,7 +125,7 @@ const Actions = styled.div`
 `;
 
 const SmallButton = styled.button`
-  border: 1px solid rgba(50,35,20,0.18);
+  border: 1px solid rgba(50, 35, 20, 0.18);
   background: #fff;
   border-radius: 999px;
   padding: 8px 12px;
@@ -174,7 +187,7 @@ const ScoreSummary = styled.div`
   padding: 16px;
   border-radius: 18px;
   background: #fff;
-  border: 1px solid rgba(50,35,20,0.14);
+  border: 1px solid rgba(50, 35, 20, 0.14);
 `;
 
 const ScoreLine = styled.div`
@@ -215,24 +228,32 @@ const WarningBox = styled.div`
 `;
 
 const initialOptions = {
-  winType: 'ron',
-  playerType: 'dealer',
+  winType: "ron",
+  playerType: "dealer",
   fu: 30,
   honba: 0,
-  roundWind: 'east',
-  seatWind: 'east',
+  roundWind: "east",
+  seatWind: "east",
   isClosed: true,
   doraCount: 0,
   uraDoraCount: 0,
   akaDoraCount: 0,
-  riichiStatus: 'none',
+  riichiStatus: "none",
 };
 
-function WaitScoreModal({ tiles, winningTileId, isClosed = true, kanCount = 0, fixedMelds = [], onClose }) {
+function WaitScoreModal({
+  tiles,
+  winningTileId,
+  isClosed = true,
+  kanCount = 0,
+  fixedMelds = [],
+  onClose,
+}) {
   const [modalOptions, setModalOptions] = useState({
     ...initialOptions,
     isClosed,
-    playerType: initialOptions.seatWind === 'east' ? 'dealer' : initialOptions.playerType,
+    playerType:
+      initialOptions.seatWind === "east" ? "dealer" : initialOptions.playerType,
     winningTileId,
     kanCount,
     fixedMelds,
@@ -240,7 +261,11 @@ function WaitScoreModal({ tiles, winningTileId, isClosed = true, kanCount = 0, f
   const [analysis, setAnalysis] = useState(null);
 
   const confirm = () => {
-    const next = analyzeHandForScore(tiles, { ...modalOptions, winningTileId, fixedMelds });
+    const next = analyzeHandForScore(tiles, {
+      ...modalOptions,
+      winningTileId,
+      fixedMelds,
+    });
     setAnalysis(next);
   };
 
@@ -248,56 +273,80 @@ function WaitScoreModal({ tiles, winningTileId, isClosed = true, kanCount = 0, f
     <ModalOverlay>
       <Modal>
         <ModalHeader>
-          <ModalTitle>{winningTileId ? `${TILE_MAP.get(winningTileId)?.label || ''} 화료 점수보기` : '선택한 14장 점수보기'}</ModalTitle>
-          <SmallButton type="button" onClick={onClose}>닫기</SmallButton>
+          <ModalTitle>
+            {winningTileId
+              ? `${TILE_MAP.get(winningTileId)?.label || ""} 화료 점수보기`
+              : "선택한 14장 점수보기"}
+          </ModalTitle>
+          <SmallButton type="button" onClick={onClose}>
+            닫기
+          </SmallButton>
         </ModalHeader>
         <ModalBody>
           <OptionPanel
-  state={modalOptions}
-  setState={setModalOptions}
-  hideFu
-  showRiichiOption
-  lockIsClosed
-/>
+            state={modalOptions}
+            setState={setModalOptions}
+            hideFu
+            showRiichiOption
+            lockIsClosed
+          />
           <DoraPanel state={modalOptions} setState={setModalOptions} />
           <Actions>
-            <PrimaryButton type="button" onClick={confirm}>확인</PrimaryButton>
+            <PrimaryButton type="button" onClick={confirm}>
+              확인
+            </PrimaryButton>
           </Actions>
-          {analysis && (analysis.error ? (
-            <WarningBox>{analysis.error}</WarningBox>
-          ) : (
-            <ScoreSummary>
-              <ScoreLine>{analysis.result.total.toLocaleString()}점</ScoreLine>
-              <div>{analysis.han}판 {analysis.result.fu}부 {analysis.result.limit ? ` / ${analysis.result.limit}` : ''}</div>
-              {analysis.result.fuDetails?.length > 0 && (
-                <FuBreakdown>
-                  {analysis.result.fuDetails.map((item, index) => (
-                    <React.Fragment key={`${item.label}-${index}`}>
-                      {index > 0 ? ' + ' : ''}{item.value}({item.label})
-                    </React.Fragment>
+          {analysis &&
+            (analysis.error ? (
+              <WarningBox>{analysis.error}</WarningBox>
+            ) : (
+              <ScoreSummary>
+                <ScoreLine>
+                  {analysis.result.total.toLocaleString()}점
+                </ScoreLine>
+                <div>
+                  {analysis.han}판 {analysis.result.fu}부{" "}
+                  {analysis.result.limit ? ` / ${analysis.result.limit}` : ""}
+                </div>
+                {analysis.result.fuDetails?.length > 0 && (
+                  <FuBreakdown>
+                    {analysis.result.fuDetails.map((item, index) => (
+                      <React.Fragment key={`${item.label}-${index}`}>
+                        {index > 0 ? " + " : ""}
+                        {item.value}({item.label})
+                      </React.Fragment>
+                    ))}
+                    {" = "}
+                    {analysis.result.rawFu}
+                    <br />
+                    {analysis.result.fu}부
+                  </FuBreakdown>
+                )}
+                <TagWrap>
+                  {analysis.yaku.length > 0 ? (
+                    analysis.yaku.map((item, index) => (
+                      <Tag key={`${item.name}-${index}`}>
+                        {item.name} {item.count > 1 ? `${item.count}개` : ""}
+                      </Tag>
+                    ))
+                  ) : (
+                    <Tag>자동 판정 역 없음</Tag>
+                  )}
+                  {analysis.doraItems.map((item) => (
+                    <Tag key={item.name}>
+                      {item.name} {item.count}개
+                    </Tag>
                   ))}
-                  {' = '}{analysis.result.rawFu}
-                  <br />
-                  {analysis.result.fu}부
-                </FuBreakdown>
-              )}
-              <TagWrap>
-                {analysis.yaku.length > 0
-                  ? analysis.yaku.map((item, index) => (
-                    <Tag key={`${item.name}-${index}`}>{item.name} {item.count > 1 ? `${item.count}개` : ''}</Tag>
-                  ))
-                  : <Tag>자동 판정 역 없음</Tag>}
-                {analysis.doraItems.map((item) => (
-                  <Tag key={item.name}>{item.name} {item.count}개</Tag>
-                ))}
-              </TagWrap>
-              <div>
-                {analysis.result.payments.map((item) => (
-                  <div key={item.label}>{item.label}: {item.points.toLocaleString()}점</div>
-                ))}
-              </div>
-            </ScoreSummary>
-          ))}
+                </TagWrap>
+                <div>
+                  {analysis.result.payments.map((item) => (
+                    <div key={item.label}>
+                      {item.label}: {item.points.toLocaleString()}점
+                    </div>
+                  ))}
+                </div>
+              </ScoreSummary>
+            ))}
         </ModalBody>
       </Modal>
     </ModalOverlay>
@@ -305,51 +354,66 @@ function WaitScoreModal({ tiles, winningTileId, isClosed = true, kanCount = 0, f
 }
 
 export default function App() {
-  const [mode, setMode] = useState('menu');
+  const [mode, setMode] = useState("menu");
   const [waitTiles, setWaitTiles] = useState([]);
   const [options, setOptions] = useState(initialOptions);
   const [selectedYaku, setSelectedYaku] = useState([]);
   const [waitScoreTarget, setWaitScoreTarget] = useState(null);
 
-  const waitEffectiveTiles = useMemo(() => getEffectiveTileIds(waitTiles), [waitTiles]);
-  const waitPhysicalTiles = useMemo(() => getPhysicalTileIds(waitTiles), [waitTiles]);
+  const waitEffectiveTiles = useMemo(
+    () => getEffectiveTileIds(waitTiles),
+    [waitTiles],
+  );
+  const waitPhysicalTiles = useMemo(
+    () => getPhysicalTileIds(waitTiles),
+    [waitTiles],
+  );
   const waits = useMemo(() => {
     const physicalCounts = countTiles(waitPhysicalTiles);
     const fixedMeldCount = getFixedMeldCount(waitTiles);
     const concealedTileIds = getConcealedTileIds(waitTiles);
 
-    const candidates = fixedMeldCount > 0
-      ? getWaitingTilesWithFixedMelds(concealedTileIds, fixedMeldCount)
-      : getWaitingTiles(waitEffectiveTiles);
+    const candidates =
+      fixedMeldCount > 0
+        ? getWaitingTilesWithFixedMelds(concealedTileIds, fixedMeldCount)
+        : getWaitingTiles(waitEffectiveTiles);
 
     return candidates.filter((tile) => (physicalCounts[tile.id] || 0) < 4);
   }, [waitTiles, waitEffectiveTiles, waitPhysicalTiles]);
 
   const han = useMemo(
-    () => calcHan({
+    () =>
+      calcHan({
+        selectedYaku,
+        yakuList: YAKU_LIST,
+        isClosed: options.isClosed,
+        doraCount: options.doraCount,
+        uraDoraCount: options.uraDoraCount,
+        akaDoraCount: options.akaDoraCount,
+      }),
+    [
       selectedYaku,
-      yakuList: YAKU_LIST,
-      isClosed: options.isClosed,
-      doraCount: options.doraCount,
-      uraDoraCount: options.uraDoraCount,
-      akaDoraCount: options.akaDoraCount,
-    }),
-    [selectedYaku, options.isClosed, options.doraCount, options.uraDoraCount, options.akaDoraCount],
+      options.isClosed,
+      options.doraCount,
+      options.uraDoraCount,
+      options.akaDoraCount,
+    ],
   );
 
   const result = useMemo(() => calcScore({ ...options, han }), [options, han]);
 
   useEffect(() => {
     setSelectedYaku((prev) => {
-      const hasMenzenTsumo = prev.some((item) => item.id === 'menzenTsumo');
-      const shouldHaveMenzenTsumo = options.winType === 'tsumo' && options.isClosed;
+      const hasMenzenTsumo = prev.some((item) => item.id === "menzenTsumo");
+      const shouldHaveMenzenTsumo =
+        options.winType === "tsumo" && options.isClosed;
 
       if (shouldHaveMenzenTsumo && !hasMenzenTsumo) {
-        return [...prev, { id: 'menzenTsumo', count: 1 }];
+        return [...prev, { id: "menzenTsumo", count: 1 }];
       }
 
       if (!shouldHaveMenzenTsumo && hasMenzenTsumo) {
-        return prev.filter((item) => item.id !== 'menzenTsumo');
+        return prev.filter((item) => item.id !== "menzenTsumo");
       }
 
       return prev;
@@ -357,22 +421,34 @@ export default function App() {
   }, [options.winType, options.isClosed]);
 
   useEffect(() => {
-    const hasPinfu = selectedYaku.some((item) => item.id === 'pinfu');
-    const hasMenzenTsumo = selectedYaku.some((item) => item.id === 'menzenTsumo');
-    if (hasPinfu && hasMenzenTsumo && options.isClosed && options.winType === 'tsumo' && Number(options.fu) !== 20) {
+    const hasPinfu = selectedYaku.some((item) => item.id === "pinfu");
+    const hasMenzenTsumo = selectedYaku.some(
+      (item) => item.id === "menzenTsumo",
+    );
+    if (
+      hasPinfu &&
+      hasMenzenTsumo &&
+      options.isClosed &&
+      options.winType === "tsumo" &&
+      Number(options.fu) !== 20
+    ) {
       setOptions((prev) => ({ ...prev, fu: 20 }));
       return;
     }
-    if (hasPinfu && options.winType === 'ron' && Number(options.fu) !== 30) {
+    if (hasPinfu && options.winType === "ron" && Number(options.fu) !== 30) {
       setOptions((prev) => ({ ...prev, fu: 30 }));
     }
   }, [selectedYaku, options.isClosed, options.winType, options.fu]);
 
   useEffect(() => {
     if (!options.isClosed) {
-      setSelectedYaku((prev) => prev.filter((item) => item.id !== 'riichi' && item.id !== 'doubleRiichi'));
-      if (options.riichiStatus !== 'none') {
-        setOptions((prev) => ({ ...prev, riichiStatus: 'none' }));
+      setSelectedYaku((prev) =>
+        prev.filter(
+          (item) => item.id !== "riichi" && item.id !== "doubleRiichi",
+        ),
+      );
+      if (options.riichiStatus !== "none") {
+        setOptions((prev) => ({ ...prev, riichiStatus: "none" }));
       }
     }
   }, [options.isClosed, options.riichiStatus]);
@@ -382,7 +458,7 @@ export default function App() {
     setSelectedYaku([]);
   };
 
-  if (mode === 'menu') {
+  if (mode === "menu") {
     return (
       <Page>
         <Header>
@@ -392,37 +468,47 @@ export default function App() {
           </div>
         </Header>
         <MenuGrid>
-          <MenuButton type="button" onClick={() => setMode('wait')}>
+          <MenuButton type="button" onClick={() => setMode("wait")}>
             <MenuTitle>대기패 확인</MenuTitle>
-            <MenuDesc>13장의 대기패 확인과 14장의 점수 계산을 한 화면에서 진행합니다.</MenuDesc>
+            <MenuDesc>
+              13장의 대기패 확인과 14장의 점수 계산을 한 화면에서 진행합니다.
+            </MenuDesc>
           </MenuButton>
-          <MenuButton type="button" onClick={() => setMode('score')}>
+          <MenuButton type="button" onClick={() => setMode("score")}>
             <MenuTitle>점수계산기</MenuTitle>
-            <MenuDesc>역, 부수, 화료 조건, 도라 개수를 입력해 점수를 계산합니다.</MenuDesc>
+            <MenuDesc>
+              역, 부수, 화료 조건, 도라 개수를 입력해 점수를 계산합니다.
+            </MenuDesc>
           </MenuButton>
-          <MenuButton type="button" onClick={() => setMode('quiz')}>
+          <MenuButton type="button" onClick={() => setMode("quiz")}>
             <MenuTitle>대기패 연습퀴즈</MenuTitle>
             <MenuDesc>청일색 대기패 퀴즈입니다.</MenuDesc>
           </MenuButton>
-          {/* <MenuButton type="button" onClick={() => setMode('scoreQuiz')}>
+          <MenuButton type="button" onClick={() => setMode("scoreQuiz")}>
             <MenuTitle>화료 점수 퀴즈</MenuTitle>
             <MenuDesc>화료한 패를 보고 점수를 입력합니다.(테스트중)</MenuDesc>
           </MenuButton>
-          <MenuButton type="button" onClick={() => setMode('scoreQuizTest')}>
+          {/*
+          <MenuButton type="button" onClick={() => setMode("scoreQuizTest")}>
             <MenuTitle>[테스트] 점수퀴즈 검수</MenuTitle>
-            <MenuDesc>임시 메뉴입니다. 전체 점수퀴즈 문제를 시간 제한 없이 이전/다음으로 확인합니다.</MenuDesc>
-          </MenuButton> */}
+            <MenuDesc>
+              임시 메뉴입니다. 전체 점수퀴즈 문제를 시간 제한 없이 이전/다음으로
+              확인합니다.
+            </MenuDesc>
+          </MenuButton>{" "}
+           */}
         </MenuGrid>
       </Page>
     );
   }
 
-
-  if (mode === 'quiz') {
+  if (mode === "quiz") {
     return (
       <Page>
         <TopBar>
-          <BackButton type="button" onClick={() => setMode('menu')}>← 메뉴로</BackButton>
+          <BackButton type="button" onClick={() => setMode("menu")}>
+            ← 메뉴로
+          </BackButton>
         </TopBar>
         <Header>
           <div>
@@ -435,11 +521,13 @@ export default function App() {
     );
   }
 
-  if (mode === 'scoreQuiz') {
+  if (mode === "scoreQuiz") {
     return (
       <Page>
         <TopBar>
-          <BackButton type="button" onClick={() => setMode('menu')}>← 메뉴로</BackButton>
+          <BackButton type="button" onClick={() => setMode("menu")}>
+            ← 메뉴로
+          </BackButton>
         </TopBar>
         <Header>
           <div>
@@ -452,16 +540,20 @@ export default function App() {
     );
   }
 
-  if (mode === 'scoreQuizTest') {
+  if (mode === "scoreQuizTest") {
     return (
       <Page>
         <TopBar>
-          <BackButton type="button" onClick={() => setMode('menu')}>← 메뉴로</BackButton>
+          <BackButton type="button" onClick={() => setMode("menu")}>
+            ← 메뉴로
+          </BackButton>
         </TopBar>
         <Header>
           <div>
             <Title>[테스트] 점수퀴즈 검수</Title>
-            <Desc>전체 문제를 순서대로 넘기며 손패, 조건, 저장된 정답을 확인합니다.</Desc>
+            <Desc>
+              전체 문제를 순서대로 넘기며 손패, 조건, 저장된 정답을 확인합니다.
+            </Desc>
           </div>
         </Header>
         <ScoreQuizTestPage />
@@ -469,36 +561,58 @@ export default function App() {
     );
   }
 
-  if (mode === 'wait') {
+  if (mode === "wait") {
     return (
       <Page>
         <TopBar>
-          <BackButton type="button" onClick={() => setMode('menu')}>← 메뉴로</BackButton>
+          <BackButton type="button" onClick={() => setMode("menu")}>
+            ← 메뉴로
+          </BackButton>
         </TopBar>
         <Header>
           <div>
             <Title>대기패 확인</Title>
-            <Desc>13장을 선택하면 대기패가 표시됩니다. 표시된 대기패를 클릭하면 그 패를 마지막 선택패(화료패)로 보고 점수보기 창에서 자동 판정 결과를 확인합니다. 치/퐁/깡/암깡 버튼으로 몸통을 미리 입력할 수 있고, 선택된 패 영역에서 해당 몸통을 클릭하면 한꺼번에 제거됩니다. 선택된 패 영역의 주황 테두리는 14장 완성 상태에서의 마지막 선택패입니다.</Desc>
+            <Desc>
+              13장을 선택하면 대기패가 표시됩니다. 표시된 대기패를 클릭하면 그
+              패를 마지막 선택패(화료패)로 보고 점수보기 창에서 자동 판정 결과를
+              확인합니다. 치/퐁/깡/암깡 버튼으로 몸통을 미리 입력할 수 있고,
+              선택된 패 영역에서 해당 몸통을 클릭하면 한꺼번에 제거됩니다.
+              선택된 패 영역의 주황 테두리는 14장 완성 상태에서의 마지막
+              선택패입니다.
+            </Desc>
           </div>
         </Header>
         <Layout>
-          <TilePicker selectedTiles={waitTiles} setSelectedTiles={setWaitTiles} maxTiles={14} title="선택된 패 / 선택할 패" />
-          <WaitResultPanel selectedCount={waitEffectiveTiles.length} waits={waits} onWaitClick={(tile) => setWaitScoreTarget({
-              winningTileId: tile.id,
-              tiles: [...waitEffectiveTiles, tile.id],
-              isClosed: !hasOpenMeld(waitTiles),
-              kanCount: getKanCount(waitTiles),
-              fixedMelds: getFixedMelds(waitTiles),
-            })} />
+          <TilePicker
+            selectedTiles={waitTiles}
+            setSelectedTiles={setWaitTiles}
+            maxTiles={14}
+            title="선택된 패 / 선택할 패"
+          />
+          <WaitResultPanel
+            selectedCount={waitEffectiveTiles.length}
+            waits={waits}
+            onWaitClick={(tile) =>
+              setWaitScoreTarget({
+                winningTileId: tile.id,
+                tiles: [...waitEffectiveTiles, tile.id],
+                isClosed: !hasOpenMeld(waitTiles),
+                kanCount: getKanCount(waitTiles),
+                fixedMelds: getFixedMelds(waitTiles),
+              })
+            }
+          />
         </Layout>
-        {waitScoreTarget && <WaitScoreModal
+        {waitScoreTarget && (
+          <WaitScoreModal
             tiles={waitScoreTarget.tiles}
             winningTileId={waitScoreTarget.winningTileId}
             isClosed={waitScoreTarget.isClosed}
             kanCount={waitScoreTarget.kanCount}
             fixedMelds={waitScoreTarget.fixedMelds}
             onClose={() => setWaitScoreTarget(null)}
-          />}
+          />
+        )}
       </Page>
     );
   }
@@ -506,7 +620,9 @@ export default function App() {
   return (
     <Page>
       <TopBar>
-        <BackButton type="button" onClick={() => setMode('menu')}>← 메뉴로</BackButton>
+        <BackButton type="button" onClick={() => setMode("menu")}>
+          ← 메뉴로
+        </BackButton>
       </TopBar>
       <Header>
         <div>
@@ -515,11 +631,18 @@ export default function App() {
         </div>
       </Header>
       <Actions>
-        <SmallButton type="button" onClick={resetScore}>초기화</SmallButton>
+        <SmallButton type="button" onClick={resetScore}>
+          초기화
+        </SmallButton>
       </Actions>
       <Layout>
         <div>
-          <YakuSelector selected={selectedYaku} setSelected={setSelectedYaku} isClosed={options.isClosed} setOptions={setOptions} />
+          <YakuSelector
+            selected={selectedYaku}
+            setSelected={setSelectedYaku}
+            isClosed={options.isClosed}
+            setOptions={setOptions}
+          />
         </div>
         <Side>
           <OptionPanel state={options} setState={setOptions} />
