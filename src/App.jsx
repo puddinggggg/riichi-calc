@@ -404,11 +404,11 @@ export default function App() {
             <MenuTitle>대기패 연습퀴즈</MenuTitle>
             <MenuDesc>청일색 대기패 퀴즈입니다.</MenuDesc>
           </MenuButton>
-          <MenuButton type="button" onClick={() => setMode('scoreQuiz')}>
+          {/* <MenuButton type="button" onClick={() => setMode('scoreQuiz')}>
             <MenuTitle>화료 점수 퀴즈</MenuTitle>
             <MenuDesc>화료한 패를 보고 점수를 입력합니다.(테스트중)</MenuDesc>
           </MenuButton>
-          {/* <MenuButton type="button" onClick={() => setMode('scoreQuizTest')}>
+          <MenuButton type="button" onClick={() => setMode('scoreQuizTest')}>
             <MenuTitle>[테스트] 점수퀴즈 검수</MenuTitle>
             <MenuDesc>임시 메뉴입니다. 전체 점수퀴즈 문제를 시간 제한 없이 이전/다음으로 확인합니다.</MenuDesc>
           </MenuButton> */}
