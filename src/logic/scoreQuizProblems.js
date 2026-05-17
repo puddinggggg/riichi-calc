@@ -58,7 +58,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-002",
       "difficulty": "초급",
-      "roundWind": "north",
+      "roundWind": "east",
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
@@ -198,7 +198,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-005",
       "difficulty": "초급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
@@ -290,7 +290,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-007",
       "difficulty": "초급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "west",
       "playerType": "child",
       "winType": "ron",
@@ -333,7 +333,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-008",
       "difficulty": "초급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
@@ -427,7 +427,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-010",
       "difficulty": "초급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "west",
       "playerType": "child",
       "winType": "tsumo",
@@ -471,7 +471,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-011",
       "difficulty": "초급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
@@ -557,7 +557,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-013",
       "difficulty": "초급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "west",
       "playerType": "child",
       "winType": "ron",
@@ -747,7 +747,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-017",
       "difficulty": "초급",
-      "roundWind": "west",
+      "roundWind": "east",
       "seatWind": "south",
       "playerType": "child",
       "winType": "tsumo",
@@ -840,7 +840,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-019",
       "difficulty": "초급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
@@ -980,7 +980,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-022",
       "difficulty": "초급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
@@ -1119,7 +1119,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-025",
       "difficulty": "초급",
-      "roundWind": "north",
+      "roundWind": "east",
       "seatWind": "north",
       "playerType": "child",
       "winType": "tsumo",
@@ -1257,7 +1257,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-028",
       "difficulty": "초급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
@@ -1348,7 +1348,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-030",
       "difficulty": "초급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
@@ -1443,7 +1443,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-032",
       "difficulty": "초급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
@@ -1540,7 +1540,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-034",
       "difficulty": "초급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "north",
       "playerType": "child",
       "winType": "tsumo",
@@ -1632,7 +1632,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-036",
       "difficulty": "초급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "west",
       "playerType": "child",
       "winType": "ron",
@@ -1681,7 +1681,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-037",
       "difficulty": "초급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "south",
       "playerType": "child",
       "winType": "tsumo",
@@ -1726,7 +1726,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-038",
       "difficulty": "초급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
@@ -1824,7 +1824,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-040",
       "difficulty": "초급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
@@ -1870,7 +1870,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-041",
       "difficulty": "초급",
-      "roundWind": "west",
+      "roundWind": "east",
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
@@ -1916,7 +1916,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-042",
       "difficulty": "초급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "west",
       "playerType": "child",
       "winType": "ron",
@@ -2002,7 +2002,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-044",
       "difficulty": "초급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
@@ -2010,7 +2010,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
-        "north",
+        "south",
         "7s",
         "5s",
         "5m",
@@ -2019,7 +2019,7 @@ export const SCORE_QUIZ_PROBLEMS = {
         "8p",
         "6p",
         "5m",
-        "north",
+        "south",
         "7p",
         "7m",
         "6m"
@@ -2045,7 +2045,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-045",
       "difficulty": "초급",
-      "roundWind": "north",
+      "roundWind": "east",
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
@@ -2228,7 +2228,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-049",
       "difficulty": "초급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
@@ -2322,7 +2322,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-051",
       "difficulty": "초급",
-      "roundWind": "north",
+      "roundWind": "east",
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
@@ -2331,7 +2331,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "riichiStatus": "none",
       "concealedTiles": [
         "2p",
-        "north",
+        "east",
         "4s",
         "4s",
         "6m",
@@ -2341,7 +2341,7 @@ export const SCORE_QUIZ_PROBLEMS = {
         "6m",
         "2p",
         "2p",
-        "north",
+        "east",
         "8s"
       ],
       "winningTile": "9s",
@@ -2454,7 +2454,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-054",
       "difficulty": "초급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "west",
       "playerType": "child",
       "winType": "tsumo",
@@ -2590,7 +2590,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-057",
       "difficulty": "초급",
-      "roundWind": "west",
+      "roundWind": "east",
       "seatWind": "south",
       "playerType": "child",
       "winType": "tsumo",
@@ -2604,9 +2604,9 @@ export const SCORE_QUIZ_PROBLEMS = {
         "4s",
         "4s",
         "5m",
-        "west",
+        "east",
         "3m",
-        "west",
+        "east",
         "2p",
         "1p",
         "4m",
@@ -2771,7 +2771,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-061",
       "difficulty": "초급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "north",
       "playerType": "child",
       "winType": "tsumo",
@@ -2817,7 +2817,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-062",
       "difficulty": "초급",
-      "roundWind": "north",
+      "roundWind": "east",
       "seatWind": "west",
       "playerType": "child",
       "winType": "ron",
@@ -2904,7 +2904,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-064",
       "difficulty": "초급",
-      "roundWind": "north",
+      "roundWind": "east",
       "seatWind": "west",
       "playerType": "child",
       "winType": "ron",
@@ -2950,7 +2950,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-065",
       "difficulty": "초급",
-      "roundWind": "west",
+      "roundWind": "east",
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
@@ -3041,7 +3041,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-067",
       "difficulty": "초급",
-      "roundWind": "west",
+      "roundWind": "east",
       "seatWind": "west",
       "playerType": "child",
       "winType": "ron",
@@ -3087,7 +3087,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-068",
       "difficulty": "초급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
@@ -3131,7 +3131,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-069",
       "difficulty": "초급",
-      "roundWind": "north",
+      "roundWind": "east",
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
@@ -3177,7 +3177,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-070",
       "difficulty": "초급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
@@ -3450,7 +3450,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-076",
       "difficulty": "초급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
@@ -3493,7 +3493,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-077",
       "difficulty": "초급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "west",
       "playerType": "child",
       "winType": "tsumo",
@@ -3540,7 +3540,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-078",
       "difficulty": "초급",
-      "roundWind": "west",
+      "roundWind": "east",
       "seatWind": "south",
       "playerType": "child",
       "winType": "tsumo",
@@ -3585,7 +3585,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-079",
       "difficulty": "초급",
-      "roundWind": "west",
+      "roundWind": "east",
       "seatWind": "west",
       "playerType": "child",
       "winType": "tsumo",
@@ -3630,7 +3630,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-080",
       "difficulty": "초급",
-      "roundWind": "north",
+      "roundWind": "east",
       "seatWind": "west",
       "playerType": "child",
       "winType": "tsumo",
@@ -3674,7 +3674,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-081",
       "difficulty": "초급",
-      "roundWind": "north",
+      "roundWind": "east",
       "seatWind": "south",
       "playerType": "child",
       "winType": "tsumo",
@@ -3767,7 +3767,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-083",
       "difficulty": "초급",
-      "roundWind": "west",
+      "roundWind": "east",
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
@@ -4082,7 +4082,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-090",
       "difficulty": "초급",
-      "roundWind": "west",
+      "roundWind": "east",
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
@@ -4126,7 +4126,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-091",
       "difficulty": "초급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
@@ -4219,7 +4219,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-093",
       "difficulty": "초급",
-      "roundWind": "west",
+      "roundWind": "east",
       "seatWind": "south",
       "playerType": "child",
       "winType": "tsumo",
@@ -4405,7 +4405,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-097",
       "difficulty": "초급",
-      "roundWind": "west",
+      "roundWind": "east",
       "seatWind": "south",
       "playerType": "child",
       "winType": "tsumo",
@@ -4454,7 +4454,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-098",
       "difficulty": "초급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
@@ -4501,7 +4501,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "easy-099",
       "difficulty": "초급",
-      "roundWind": "north",
+      "roundWind": "east",
       "seatWind": "north",
       "playerType": "child",
       "winType": "tsumo",
@@ -4700,7 +4700,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-003",
       "difficulty": "중급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "west",
       "playerType": "child",
       "winType": "tsumo",
@@ -4748,7 +4748,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-004",
       "difficulty": "중급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
@@ -4796,7 +4796,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-005",
       "difficulty": "중급",
-      "roundWind": "north",
+      "roundWind": "east",
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
@@ -4893,7 +4893,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-007",
       "difficulty": "중급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
@@ -4943,7 +4943,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-008",
       "difficulty": "중급",
-      "roundWind": "north",
+      "roundWind": "east",
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
@@ -5086,7 +5086,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-011",
       "difficulty": "중급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
@@ -5135,7 +5135,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-012",
       "difficulty": "중급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
@@ -5181,7 +5181,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-013",
       "difficulty": "중급",
-      "roundWind": "north",
+      "roundWind": "east",
       "seatWind": "north",
       "playerType": "child",
       "winType": "tsumo",
@@ -5332,7 +5332,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-016",
       "difficulty": "중급",
-      "roundWind": "north",
+      "roundWind": "east",
       "seatWind": "west",
       "playerType": "child",
       "winType": "ron",
@@ -5378,7 +5378,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-017",
       "difficulty": "중급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
@@ -5424,7 +5424,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-018",
       "difficulty": "중급",
-      "roundWind": "north",
+      "roundWind": "east",
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
@@ -5669,7 +5669,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-023",
       "difficulty": "중급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
@@ -5715,7 +5715,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-024",
       "difficulty": "중급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
@@ -5809,8 +5809,8 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-026",
       "difficulty": "중급",
-      "roundWind": "west",
-      "seatWind": "west",
+      "roundWind": "south",
+      "seatWind": "south",
       "playerType": "child",
       "winType": "tsumo",
       "honba": 0,
@@ -5821,7 +5821,7 @@ export const SCORE_QUIZ_PROBLEMS = {
         "3p",
         "7p",
         "7m",
-        "west",
+        "south",
         "3p",
         "4s",
         "8m",
@@ -5829,7 +5829,7 @@ export const SCORE_QUIZ_PROBLEMS = {
         "3p",
         "5s",
         "8p",
-        "west"
+        "south"
       ],
       "winningTile": "3s",
       "fixedMelds": [],
@@ -5857,7 +5857,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-027",
       "difficulty": "중급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
@@ -5950,7 +5950,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-029",
       "difficulty": "중급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
@@ -6096,7 +6096,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-032",
       "difficulty": "중급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
@@ -6146,7 +6146,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-033",
       "difficulty": "중급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "west",
       "playerType": "child",
       "winType": "ron",
@@ -6240,7 +6240,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-035",
       "difficulty": "중급",
-      "roundWind": "west",
+      "roundWind": "east",
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
@@ -6289,7 +6289,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-036",
       "difficulty": "중급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
@@ -6336,7 +6336,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-037",
       "difficulty": "중급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
@@ -6385,7 +6385,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-038",
       "difficulty": "중급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "west",
       "playerType": "child",
       "winType": "ron",
@@ -6630,8 +6630,8 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-043",
       "difficulty": "중급",
-      "roundWind": "north",
-      "seatWind": "north",
+      "roundWind": "south",
+      "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
       "honba": 1,
@@ -6644,11 +6644,11 @@ export const SCORE_QUIZ_PROBLEMS = {
         "2p",
         "8s",
         "6m",
-        "north",
+        "south",
         "2p",
         "7s",
         "6m",
-        "north",
+        "south",
         "2p",
         "4s"
       ],
@@ -6723,7 +6723,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-045",
       "difficulty": "중급",
-      "roundWind": "north",
+      "roundWind": "east",
       "seatWind": "south",
       "playerType": "child",
       "winType": "tsumo",
@@ -6775,7 +6775,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-046",
       "difficulty": "중급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "west",
       "playerType": "child",
       "winType": "tsumo",
@@ -6917,7 +6917,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-049",
       "difficulty": "중급",
-      "roundWind": "west",
+      "roundWind": "east",
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
@@ -7057,7 +7057,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-052",
       "difficulty": "중급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
@@ -7397,8 +7397,8 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-059",
       "difficulty": "중급",
-      "roundWind": "west",
-      "seatWind": "west",
+      "roundWind": "south",
+      "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
       "honba": 0,
@@ -7411,13 +7411,13 @@ export const SCORE_QUIZ_PROBLEMS = {
         "3m",
         "7s",
         "5p",
-        "west",
+        "south",
         "7s",
         "5p",
         "8s",
         "3m",
         "7s",
-        "west"
+        "south"
       ],
       "winningTile": "7s",
       "fixedMelds": [],
@@ -7443,7 +7443,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "medium-060",
       "difficulty": "중급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
@@ -7547,7 +7547,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "hard-002",
       "difficulty": "고급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
@@ -7599,7 +7599,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "hard-003",
       "difficulty": "고급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
@@ -7648,7 +7648,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "hard-004",
       "difficulty": "고급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
@@ -7664,10 +7664,10 @@ export const SCORE_QUIZ_PROBLEMS = {
         "5s",
         "3p",
         "7m",
-        "south",
+        "west",
         "4p",
         "7m",
-        "south",
+        "west",
         "7m"
       ],
       "winningTile": "3p",
@@ -7748,7 +7748,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "hard-006",
       "difficulty": "고급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "north",
       "playerType": "child",
       "winType": "tsumo",
@@ -7899,7 +7899,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "hard-009",
       "difficulty": "고급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
@@ -8000,7 +8000,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "hard-011",
       "difficulty": "고급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
@@ -8051,7 +8051,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "hard-012",
       "difficulty": "고급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "west",
       "playerType": "child",
       "winType": "tsumo",
@@ -8105,7 +8105,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "hard-013",
       "difficulty": "고급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "north",
       "playerType": "child",
       "winType": "tsumo",
@@ -8266,7 +8266,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "hard-016",
       "difficulty": "고급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "west",
       "playerType": "child",
       "winType": "ron",
@@ -8369,7 +8369,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "hard-018",
       "difficulty": "고급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
@@ -8385,10 +8385,10 @@ export const SCORE_QUIZ_PROBLEMS = {
         "3m",
         "5s",
         "7s",
-        "north",
+        "south",
         "5p",
         "5p",
-        "north",
+        "south",
         "6s"
       ],
       "winningTile": "3m",
@@ -8423,7 +8423,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "hard-019",
       "difficulty": "고급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
@@ -8475,7 +8475,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "hard-020",
       "difficulty": "고급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
@@ -8527,7 +8527,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "hard-021",
       "difficulty": "고급",
-      "roundWind": "north",
+      "roundWind": "east",
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
@@ -8579,7 +8579,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "hard-022",
       "difficulty": "고급",
-      "roundWind": "north",
+      "roundWind": "east",
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
@@ -8630,7 +8630,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "hard-023",
       "difficulty": "고급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "west",
       "playerType": "child",
       "winType": "ron",
@@ -8726,7 +8726,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "hard-025",
       "difficulty": "고급",
-      "roundWind": "west",
+      "roundWind": "east",
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
@@ -8887,7 +8887,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "hard-028",
       "difficulty": "고급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "north",
       "playerType": "child",
       "winType": "tsumo",
@@ -8940,7 +8940,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "hard-029",
       "difficulty": "고급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
@@ -9045,7 +9045,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "hard-031",
       "difficulty": "고급",
-      "roundWind": "north",
+      "roundWind": "east",
       "seatWind": "south",
       "playerType": "child",
       "winType": "tsumo",
@@ -9094,7 +9094,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "hard-032",
       "difficulty": "고급",
-      "roundWind": "north",
+      "roundWind": "east",
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
@@ -9104,9 +9104,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "concealedTiles": [
         "4s",
         "7p",
-        "north",
+        "east",
         "6p",
-        "north",
+        "east",
         "9s",
         "9s",
         "4s",
@@ -9147,7 +9147,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "hard-033",
       "difficulty": "고급",
-      "roundWind": "west",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
@@ -9162,14 +9162,14 @@ export const SCORE_QUIZ_PROBLEMS = {
         "5m",
         "3s",
         "3p",
-        "south",
+        "west",
         "7s",
         "4s",
         "6m",
         "4p",
         "7m"
       ],
-      "winningTile": "south",
+      "winningTile": "west",
       "fixedMelds": [],
       "doraIndicators": [
         "6m",
@@ -9253,7 +9253,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "hard-035",
       "difficulty": "고급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "west",
       "playerType": "child",
       "winType": "tsumo",
@@ -9356,7 +9356,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "hard-037",
       "difficulty": "고급",
-      "roundWind": "west",
+      "roundWind": "east",
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
@@ -9457,7 +9457,7 @@ export const SCORE_QUIZ_PROBLEMS = {
     {
       "id": "hard-039",
       "difficulty": "고급",
-      "roundWind": "north",
+      "roundWind": "south",
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
