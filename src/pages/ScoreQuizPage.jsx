@@ -336,7 +336,7 @@ function sanitizeInput(value) {
 
 function describeWin(problem) {
   if (problem.winType === 'ron') return '론';
-  return problem.playerType === 'dealer' ? '친 쯔모' : '자의 쯔모';
+  return '쯔모';
 }
 
 function meldLabel(type) {
