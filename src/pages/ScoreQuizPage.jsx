@@ -322,10 +322,10 @@ function pointToInput(point) {
 
 function formatAnswer(problem) {
   if (problem.answer.type === 'childTsumo') {
-    return `자에게 ${problem.answer.payments[0].toLocaleString()}, 친에게 ${problem.answer.payments[1].toLocaleString()}`;
+    return `자 : ${problem.answer.payments[0].toLocaleString()}, 친 : ${problem.answer.payments[1].toLocaleString()}`;
   }
   if (problem.winType === 'tsumo' && problem.playerType === 'dealer') {
-    return `각자 ${problem.answer.payments[0].toLocaleString()}`;
+    return `${problem.answer.payments[0].toLocaleString()} All`;
   }
   return `${problem.answer.payments[0].toLocaleString()}`;
 }
