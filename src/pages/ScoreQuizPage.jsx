@@ -195,6 +195,7 @@ const IndicatorLabel = styled.div`
   color: #746b60;
   font-size: 13px;
   font-weight: 900;
+  text-align: center;
 `;
 
 const IndicatorTiles = styled.div`
@@ -223,6 +224,7 @@ const ScoreInputWrap = styled.div`
   border-radius: 14px;
   background: #fff;
   overflow: hidden;
+  padding-right: ${({ $isParentTsumo }) => ($isParentTsumo && '12px')};
 `;
 
 const ScoreInput = styled.input`
@@ -383,9 +385,8 @@ function ProblemHand({ problem }) {
 
 function ProblemDoraIndicators({ problem }) {
   const groups = [
-    { label: '도라 표시패', tiles: problem.doraIndicators || [] },
-    { label: '우라 도라', tiles: problem.uraDoraIndicators || [] },
-    { label: '깡 도라', tiles: problem.kanDoraIndicators || [] },
+    { label: '도라', tiles: problem.doraIndicators || [] },
+    { label: '우라', tiles: problem.uraDoraIndicators || [] },
   ].filter((group) => group.tiles.length > 0);
 
   if (groups.length === 0) return null;
@@ -538,7 +539,8 @@ export default function ScoreQuizPage() {
               <ReviewCard key={record.index}>
                 <ReviewTitle>{record.index + 1}번 문제 {record.timedOut ? '(시간 초과)' : ''}</ReviewTitle>
                 <ReviewText>
-                  {record.problem.han}판 {record.problem.fu}부 / {describeWin(record.problem)} / {record.problem.honba}본장
+                  {record.problem.han}판 {record.problem.fu}부 / {describeWin(record.problem)} 
+                  {/* / {record.problem.honba}본장 */}
                 </ReviewText>
                 <ReviewText>입력: {record.answers.filter(Boolean).join(' / ') || '입력 없음'}</ReviewText>
                 <ReviewText>정답: {formatAnswer(record.problem)}</ReviewText>
@@ -551,6 +553,7 @@ export default function ScoreQuizPage() {
   }
 
   const needsTwoInputs = current.answer.type === 'childTsumo';
+  const isParentTsumo = current.winType === 'tsumo' && current.playerType === 'dealer';
   const canSubmit = needsTwoInputs ? answers[0] && answers[1] : answers[0];
 
   return (
@@ -572,10 +575,10 @@ export default function ScoreQuizPage() {
             <ConditionLabel>화료</ConditionLabel>
             <ConditionValue>{describeWin(current)}</ConditionValue>
           </ConditionItem>
-          <ConditionItem>
+          {/* <ConditionItem>
             <ConditionLabel>본장</ConditionLabel>
             <ConditionValue>{current.honba}본장</ConditionValue>
-          </ConditionItem>
+          </ConditionItem> */}
           <ConditionItem>
             <ConditionLabel>리치</ConditionLabel>
             <ConditionValue>{current.riichiStatus === 'riichi' ? '리치' : '리치 없음'}</ConditionValue>
@@ -593,8 +596,8 @@ export default function ScoreQuizPage() {
           <SectionTitle>답 입력</SectionTitle>
           <AnswerRow>
             <InputGroup>
-              {needsTwoInputs ? '다른 자에게 받을 점수' : '점수'}
-              <ScoreInputWrap>
+              {needsTwoInputs ? '자에게 받을 점수' : '받을 점수'}
+              <ScoreInputWrap $isParentTsumo={isParentTsumo}>
                 <ScoreInput
                   inputMode="numeric"
                   pattern="[0-9]*"
@@ -603,7 +606,7 @@ export default function ScoreQuizPage() {
                   disabled={submitted}
                   autoFocus
                 />
-                <FixedZeros>00</FixedZeros>
+                <FixedZeros>00</FixedZeros>{isParentTsumo?'All ':''}
               </ScoreInputWrap>
             </InputGroup>
             {needsTwoInputs && (

@@ -136,6 +136,7 @@ const IndicatorLabel = styled.div`
   color: #746b60;
   font-size: 13px;
   font-weight: 900;
+  text-align: center;
 `;
 
 const IndicatorTiles = styled.div`
@@ -164,6 +165,7 @@ const ScoreInputWrap = styled.div`
   border-radius: 14px;
   background: #fff;
   overflow: hidden;
+  padding-right: ${({ $isParentTsumo }) => ($isParentTsumo && '12px')};
 `;
 
 const ScoreInput = styled.input`
@@ -319,9 +321,8 @@ function ProblemHand({ problem }) {
 
 function ProblemDoraIndicators({ problem }) {
   const groups = [
-    { label: '도라 표시패', tiles: problem.doraIndicators || [] },
-    { label: '우라 도라', tiles: problem.uraDoraIndicators || [] },
-    { label: '깡 도라', tiles: problem.kanDoraIndicators || [] },
+    { label: '도라', tiles: problem.doraIndicators || [] },
+    { label: '우라', tiles: problem.uraDoraIndicators || [] },
   ].filter((group) => group.tiles.length > 0);
 
   if (groups.length === 0) return null;
@@ -354,6 +355,7 @@ export default function ScoreQuizTestPage() {
 
   const current = problems[index];
   const needsTwoInputs = current.answer.type === 'childTsumo';
+  const isParentTsumo = current.winType === 'tsumo' && current.playerType === 'dealer';
   const canCheck = needsTwoInputs ? answers[0] && answers[1] : answers[0];
 
   const moveTo = (nextIndex) => {
@@ -418,10 +420,10 @@ export default function ScoreQuizTestPage() {
             <ConditionLabel>화료</ConditionLabel>
             <ConditionValue>{describeWin(current)}</ConditionValue>
           </ConditionItem>
-          <ConditionItem>
+          {/* <ConditionItem>
             <ConditionLabel>본장</ConditionLabel>
             <ConditionValue>{current.honba}본장</ConditionValue>
-          </ConditionItem>
+          </ConditionItem> */}
           <ConditionItem>
             <ConditionLabel>리치</ConditionLabel>
             <ConditionValue>{current.riichiStatus === 'riichi' ? '리치' : '리치 없음'}</ConditionValue>
@@ -439,15 +441,15 @@ export default function ScoreQuizTestPage() {
           <SectionTitle>답 입력</SectionTitle>
           <AnswerRow>
             <InputGroup>
-              {needsTwoInputs ? '다른 자에게 받을 점수' : '점수'}
-              <ScoreInputWrap>
+              {needsTwoInputs ? '자에게 받을 점수' : '받을 점수'}
+              <ScoreInputWrap $isParentTsumo={isParentTsumo}>
                 <ScoreInput
                   inputMode="numeric"
                   pattern="[0-9]*"
                   value={answers[0]}
                   onChange={(event) => setAnswer(0, event.target.value)}
                 />
-                <FixedZeros>00</FixedZeros>
+                <FixedZeros>00</FixedZeros>{isParentTsumo?'All ':''}
               </ScoreInputWrap>
             </InputGroup>
             {needsTwoInputs && (

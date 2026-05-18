@@ -38,7 +38,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "9p"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -62,7 +61,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -82,11 +81,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "4p",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [
         "4s"
       ],
-      "kanDoraIndicators": [],
       "han": 4,
       "fu": 30,
       "yaku": [
@@ -99,7 +99,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          8000
+          7700
         ]
       }
     },
@@ -134,7 +134,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "1s"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 2,
       "fu": 30,
       "yaku": [
@@ -156,7 +155,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -176,11 +175,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "4p",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "3m"
+      ],
       "uraDoraIndicators": [
         "5s"
       ],
-      "kanDoraIndicators": [],
       "han": 4,
       "fu": 42,
       "yaku": [
@@ -191,7 +191,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          8300
+          8000
         ]
       }
     },
@@ -226,7 +226,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "6p"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 2,
       "fu": 34,
       "yaku": [
@@ -268,11 +267,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "3p",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [
         "1p"
       ],
-      "kanDoraIndicators": [],
       "han": 2,
       "fu": 32,
       "yaku": [
@@ -314,9 +314,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "5p",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 1,
       "fu": 40,
       "yaku": [
@@ -337,7 +338,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -361,7 +362,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "7s"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 2,
       "fu": 32,
       "yaku": [
@@ -372,7 +372,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          2900
+          2600
         ]
       }
     },
@@ -406,8 +406,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "doraIndicators": [
         "4p"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "7p"
+      ],
       "han": 4,
       "fu": 30,
       "yaku": [
@@ -451,9 +452,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "6p",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 1,
       "fu": 30,
       "yaku": [
@@ -475,7 +477,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -495,9 +497,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "6m",
       "fixedMelds": [],
-      "doraIndicators": [],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
+      "uraDoraIndicators": [
+        "2p"
+      ],
       "han": 1,
       "fu": 36,
       "yaku": [
@@ -507,7 +512,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          2300
+          2000
         ]
       }
     },
@@ -518,7 +523,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -538,9 +543,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "4m",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 1,
       "fu": 38,
       "yaku": [
@@ -550,7 +556,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          1600
+          1300
         ]
       }
     },
@@ -584,8 +590,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "doraIndicators": [
         "5m"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "3p"
+      ],
       "han": 4,
       "fu": 30,
       "yaku": [
@@ -609,7 +616,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -632,8 +639,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "doraIndicators": [
         "5s"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "2p"
+      ],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -645,8 +653,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          1100,
-          2100
+          1000,
+          2000
         ]
       }
     },
@@ -681,7 +689,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "6p"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 2,
       "fu": 30,
       "yaku": [
@@ -704,7 +711,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -724,11 +731,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "8p",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [
         "6m"
       ],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 40,
       "yaku": [
@@ -740,7 +748,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          5500
+          5200
         ]
       }
     },
@@ -751,7 +759,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -771,11 +779,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "2m",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "3m"
+      ],
       "uraDoraIndicators": [
         "4s"
       ],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -787,8 +796,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          1100,
-          2100
+          1000,
+          2000
         ]
       }
     },
@@ -798,7 +807,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "roundWind": "east",
       "seatWind": "north",
       "playerType": "child",
-      "winType": "ron",
+      "winType": "tsumo",
       "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
@@ -823,17 +832,19 @@ export const SCORE_QUIZ_PROBLEMS = {
         "6s"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
-      "han": 1,
-      "fu": 42,
+      "han": 4,
+      "fu": 36,
       "yaku": [
+        "멘젠쯔모",
+        "삼암각",
         "도라 1"
       ],
       "fuDetails": [],
       "answer": {
-        "type": "single",
+        "type": "childTsumo",
         "payments": [
-          1600
+          2000,
+          4000
         ]
       }
     },
@@ -864,11 +875,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "6s",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "3m"
+      ],
       "uraDoraIndicators": [
         "6m"
       ],
-      "kanDoraIndicators": [],
       "han": 4,
       "fu": 40,
       "yaku": [
@@ -891,7 +903,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -914,8 +926,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "doraIndicators": [
         "7m"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "5p"
+      ],
       "han": 3,
       "fu": 40,
       "yaku": [
@@ -927,7 +940,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          5500
+          5200
         ]
       }
     },
@@ -938,7 +951,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -958,9 +971,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "red",
       "fixedMelds": [],
-      "doraIndicators": [],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
+      "uraDoraIndicators": [
+        "2p"
+      ],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -972,8 +988,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          1100,
-          2100
+          1000,
+          2000
         ]
       }
     },
@@ -1004,9 +1020,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "2m",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "2m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 36,
       "yaku": [
@@ -1028,7 +1045,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -1048,11 +1065,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "4p",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [
         "2s"
       ],
-      "kanDoraIndicators": [],
       "han": 4,
       "fu": 20,
       "yaku": [
@@ -1065,7 +1083,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          2700
+          2600
         ]
       }
     },
@@ -1076,7 +1094,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -1100,7 +1118,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "3p"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -1112,7 +1129,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          2100
+          2000
         ]
       }
     },
@@ -1123,7 +1140,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -1143,9 +1160,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "5s",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 1,
       "fu": 30,
       "yaku": [
@@ -1155,8 +1173,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          400,
-          600
+          300,
+          500
         ]
       }
     },
@@ -1167,7 +1185,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -1190,8 +1208,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "doraIndicators": [
         "2m"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "9m"
+      ],
       "han": 4,
       "fu": 42,
       "yaku": [
@@ -1202,7 +1221,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          8300
+          8000
         ]
       }
     },
@@ -1233,11 +1252,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "3p",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [
         "5s"
       ],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -1263,7 +1283,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "winType": "ron",
       "honba": 0,
       "isClosed": true,
-      "riichiStatus": "none",
+      "riichiStatus": "riichi",
       "concealedTiles": [
         "6m",
         "6m",
@@ -1285,17 +1305,17 @@ export const SCORE_QUIZ_PROBLEMS = {
         "6s"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
-      "han": 1,
+      "han": 2,
       "fu": 42,
       "yaku": [
+        "리치",
         "도라 1"
       ],
       "fuDetails": [],
       "answer": {
         "type": "single",
         "payments": [
-          2400
+          4800
         ]
       }
     },
@@ -1306,7 +1326,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -1330,7 +1350,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "2p"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 4,
       "fu": 32,
       "yaku": [
@@ -1341,7 +1360,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          8300
+          8000
         ]
       }
     },
@@ -1352,7 +1371,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -1375,8 +1394,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "doraIndicators": [
         "2s"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "2p"
+      ],
       "han": 3,
       "fu": 32,
       "yaku": [
@@ -1388,7 +1408,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          8000
+          7700
         ]
       }
     },
@@ -1422,8 +1442,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "doraIndicators": [
         "1s"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "3p"
+      ],
       "han": 4,
       "fu": 30,
       "yaku": [
@@ -1470,8 +1491,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "doraIndicators": [
         "5s"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "5p"
+      ],
       "han": 4,
       "fu": 32,
       "yaku": [
@@ -1519,7 +1541,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "4m"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 4,
       "fu": 20,
       "yaku": [
@@ -1544,7 +1565,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -1568,7 +1589,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "9m"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 2,
       "fu": 30,
       "yaku": [
@@ -1579,8 +1599,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          600,
-          1100
+          500,
+          1000
         ]
       }
     },
@@ -1591,9 +1611,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
-      "riichiStatus": "none",
+      "riichiStatus": "riichi",
       "concealedTiles": [
         "9s",
         "7s",
@@ -1612,20 +1632,22 @@ export const SCORE_QUIZ_PROBLEMS = {
       "winningTile": "3m",
       "fixedMelds": [],
       "doraIndicators": [
-        "north"
+        "7s"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "1m"
+      ],
       "han": 2,
       "fu": 42,
       "yaku": [
-        "도라 2"
+        "리치",
+        "도라 1"
       ],
       "fuDetails": [],
       "answer": {
         "type": "single",
         "payments": [
-          3500
+          3200
         ]
       }
     },
@@ -1662,7 +1684,6 @@ export const SCORE_QUIZ_PROBLEMS = {
       "uraDoraIndicators": [
         "4m"
       ],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 38,
       "yaku": [
@@ -1705,9 +1726,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "east",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 36,
       "yaku": [
@@ -1754,7 +1776,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "4s"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -1803,7 +1824,6 @@ export const SCORE_QUIZ_PROBLEMS = {
       "uraDoraIndicators": [
         "6p"
       ],
-      "kanDoraIndicators": [],
       "han": 4,
       "fu": 30,
       "yaku": [
@@ -1828,7 +1848,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -1852,7 +1872,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "2m"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 2,
       "fu": 38,
       "yaku": [
@@ -1863,7 +1882,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          4200
+          3900
         ]
       }
     },
@@ -1898,7 +1917,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "4s"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 2,
       "fu": 30,
       "yaku": [
@@ -1940,9 +1958,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "5s",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 1,
       "fu": 32,
       "yaku": [
@@ -1983,9 +2002,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "4m",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 1,
       "fu": 38,
       "yaku": [
@@ -2006,7 +2026,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -2026,9 +2046,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "5m",
       "fixedMelds": [],
-      "doraIndicators": [],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
+      "uraDoraIndicators": [
+        "3p"
+      ],
       "han": 1,
       "fu": 34,
       "yaku": [
@@ -2038,7 +2061,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          2300
+          2000
         ]
       }
     },
@@ -2049,7 +2072,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -2073,7 +2096,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "5p"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 2,
       "fu": 38,
       "yaku": [
@@ -2084,7 +2106,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          2900
+          2600
         ]
       }
     },
@@ -2115,11 +2137,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "north",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "2m"
+      ],
       "uraDoraIndicators": [
         "5m"
       ],
-      "kanDoraIndicators": [],
       "han": 4,
       "fu": 44,
       "yaku": [
@@ -2142,7 +2165,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -2162,9 +2185,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "5m",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 1,
       "fu": 40,
       "yaku": [
@@ -2174,7 +2198,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          1600
+          1300
         ]
       }
     },
@@ -2185,7 +2209,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -2208,8 +2232,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "doraIndicators": [
         "6m"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "6p"
+      ],
       "han": 3,
       "fu": 38,
       "yaku": [
@@ -2221,7 +2246,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          5500
+          5200
         ]
       }
     },
@@ -2258,7 +2283,6 @@ export const SCORE_QUIZ_PROBLEMS = {
       "uraDoraIndicators": [
         "1p"
       ],
-      "kanDoraIndicators": [],
       "han": 4,
       "fu": 32,
       "yaku": [
@@ -2281,7 +2305,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -2301,9 +2325,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "3p",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 36,
       "yaku": [
@@ -2314,8 +2339,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          1400,
-          2700
+          1300,
+          2600
         ]
       }
     },
@@ -2326,7 +2351,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -2346,9 +2371,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "9s",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 2,
       "fu": 44,
       "yaku": [
@@ -2358,7 +2384,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          3500
+          3200
         ]
       }
     },
@@ -2389,9 +2415,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "1m",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "3m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 2,
       "fu": 30,
       "yaku": [
@@ -2434,9 +2461,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "3p",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 2,
       "fu": 30,
       "yaku": [
@@ -2458,7 +2486,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -2482,7 +2510,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "5m"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 4,
       "fu": 20,
       "yaku": [
@@ -2495,8 +2522,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          1400,
-          2700
+          1300,
+          2600
         ]
       }
     },
@@ -2507,7 +2534,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -2527,9 +2554,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "green",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 1,
       "fu": 34,
       "yaku": [
@@ -2539,7 +2567,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          1600
+          1300
         ]
       }
     },
@@ -2570,9 +2598,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "3p",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 1,
       "fu": 30,
       "yaku": [
@@ -2614,9 +2643,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "2s",
       "fixedMelds": [],
-      "doraIndicators": [],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
+      "uraDoraIndicators": [
+        "4p"
+      ],
       "han": 2,
       "fu": 30,
       "yaku": [
@@ -2639,7 +2671,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -2659,9 +2691,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "7s",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "3m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 1,
       "fu": 30,
       "yaku": [
@@ -2671,8 +2704,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          400,
-          600
+          300,
+          500
         ]
       }
     },
@@ -2706,8 +2739,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "doraIndicators": [
         "3p"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "2p"
+      ],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -2751,9 +2785,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "white",
       "fixedMelds": [],
-      "doraIndicators": [],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
+      "uraDoraIndicators": [
+        "9m"
+      ],
       "han": 3,
       "fu": 46,
       "yaku": [
@@ -2775,7 +2812,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -2795,9 +2832,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "7p",
       "fixedMelds": [],
-      "doraIndicators": [],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
+      "uraDoraIndicators": [
+        "8p"
+      ],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -2809,8 +2849,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          1100,
-          2100
+          1000,
+          2000
         ]
       }
     },
@@ -2821,7 +2861,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -2841,9 +2881,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "7s",
       "fixedMelds": [],
-      "doraIndicators": [],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
+      "uraDoraIndicators": [
+        "5p"
+      ],
       "han": 2,
       "fu": 38,
       "yaku": [
@@ -2854,7 +2897,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          2900
+          2600
         ]
       }
     },
@@ -2885,9 +2928,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "5m",
       "fixedMelds": [],
-      "doraIndicators": [],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "doraIndicators": [
+        "5m"
+      ],
+      "uraDoraIndicators": [
+        "3p"
+      ],
       "han": 1,
       "fu": 34,
       "yaku": [
@@ -2932,7 +2978,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "red"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 4,
       "fu": 34,
       "yaku": [
@@ -2977,8 +3022,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "doraIndicators": [
         "1p"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "8p"
+      ],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -3021,9 +3067,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "white",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 2,
       "fu": 30,
       "yaku": [
@@ -3045,7 +3092,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -3069,7 +3116,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "2p"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 2,
       "fu": 40,
       "yaku": [
@@ -3080,7 +3126,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          2900
+          2600
         ]
       }
     },
@@ -3091,7 +3137,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -3111,9 +3157,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "4s",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 2,
       "fu": 30,
       "yaku": [
@@ -3124,7 +3171,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          1100
+          1000
         ]
       }
     },
@@ -3135,7 +3182,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -3159,7 +3206,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "7p"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 44,
       "yaku": [
@@ -3170,7 +3216,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          6700
+          6400
         ]
       }
     },
@@ -3201,9 +3247,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "6p",
       "fixedMelds": [],
-      "doraIndicators": [],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
+      "uraDoraIndicators": [
+        "2p"
+      ],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -3226,7 +3275,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -3246,9 +3295,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "4p",
       "fixedMelds": [],
-      "doraIndicators": [],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "doraIndicators": [
+        "5m"
+      ],
+      "uraDoraIndicators": [
+        "8p"
+      ],
       "han": 2,
       "fu": 30,
       "yaku": [
@@ -3259,7 +3311,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          2300
+          2000
         ]
       }
     },
@@ -3270,7 +3322,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -3293,8 +3345,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "doraIndicators": [
         "6p"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "2p"
+      ],
       "han": 2,
       "fu": 34,
       "yaku": [
@@ -3305,7 +3358,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          4200
+          3900
         ]
       }
     },
@@ -3336,9 +3389,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "8m",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 20,
       "yaku": [
@@ -3386,7 +3440,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "6p"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 44,
       "yaku": [
@@ -3431,8 +3484,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "doraIndicators": [
         "6s"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "4p"
+      ],
       "han": 4,
       "fu": 38,
       "yaku": [
@@ -3474,9 +3528,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "7p",
       "fixedMelds": [],
-      "doraIndicators": [],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "doraIndicators": [
+        "5m"
+      ],
+      "uraDoraIndicators": [
+        "3p"
+      ],
       "han": 1,
       "fu": 36,
       "yaku": [
@@ -3521,7 +3578,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "4s"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 2,
       "fu": 30,
       "yaku": [
@@ -3544,7 +3600,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -3564,9 +3620,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "7m",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 2,
       "fu": 32,
       "yaku": [
@@ -3577,8 +3634,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          800,
-          1400
+          700,
+          1300
         ]
       }
     },
@@ -3589,7 +3646,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -3609,9 +3666,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "6p",
       "fixedMelds": [],
-      "doraIndicators": [],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
+      "uraDoraIndicators": [
+        "2p"
+      ],
       "han": 2,
       "fu": 30,
       "yaku": [
@@ -3622,8 +3682,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          600,
-          1100
+          500,
+          1000
         ]
       }
     },
@@ -3634,7 +3694,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -3654,9 +3714,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "3m",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "3m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 1,
       "fu": 30,
       "yaku": [
@@ -3666,8 +3727,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          400,
-          600
+          300,
+          500
         ]
       }
     },
@@ -3698,9 +3759,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "5m",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 2,
       "fu": 20,
       "yaku": [
@@ -3723,7 +3785,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -3743,11 +3805,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "7m",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [
         "4m"
       ],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -3759,8 +3822,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          1100,
-          2100
+          1000,
+          2000
         ]
       }
     },
@@ -3771,9 +3834,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
-      "riichiStatus": "none",
+      "riichiStatus": "riichi",
       "concealedTiles": [
         "south",
         "south",
@@ -3792,20 +3855,22 @@ export const SCORE_QUIZ_PROBLEMS = {
       "winningTile": "5p",
       "fixedMelds": [],
       "doraIndicators": [
-        "east"
+        "2m"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "1m"
+      ],
       "han": 2,
       "fu": 36,
       "yaku": [
-        "도라 2"
+        "리치",
+        "도라 1"
       ],
       "fuDetails": [],
       "answer": {
         "type": "single",
         "payments": [
-          2900
+          2600
         ]
       }
     },
@@ -3836,9 +3901,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "7p",
       "fixedMelds": [],
-      "doraIndicators": [],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "doraIndicators": [
+        "5m"
+      ],
+      "uraDoraIndicators": [
+        "3p"
+      ],
       "han": 4,
       "fu": 34,
       "yaku": [
@@ -3885,7 +3953,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "5s"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 2,
       "fu": 30,
       "yaku": [
@@ -3927,9 +3994,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "5s",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 2,
       "fu": 20,
       "yaku": [
@@ -3972,9 +4040,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "north",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "2m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 2,
       "fu": 44,
       "yaku": [
@@ -3995,7 +4064,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -4015,9 +4084,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "2p",
       "fixedMelds": [],
-      "doraIndicators": [],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
+      "uraDoraIndicators": [
+        "8p"
+      ],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -4029,7 +4101,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          6100
+          5800
         ]
       }
     },
@@ -4060,9 +4132,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "6p",
       "fixedMelds": [],
-      "doraIndicators": [],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "doraIndicators": [
+        "2m"
+      ],
+      "uraDoraIndicators": [
+        "3p"
+      ],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -4086,7 +4161,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -4106,9 +4181,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "5m",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 2,
       "fu": 30,
       "yaku": [
@@ -4119,7 +4195,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          2300
+          2000
         ]
       }
     },
@@ -4130,7 +4206,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -4154,7 +4230,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "6m"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 2,
       "fu": 40,
       "yaku": [
@@ -4165,7 +4240,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          4200
+          3900
         ]
       }
     },
@@ -4176,7 +4251,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -4200,7 +4275,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "6p"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 32,
       "yaku": [
@@ -4212,7 +4286,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          8000
+          7700
         ]
       }
     },
@@ -4223,7 +4297,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -4247,7 +4321,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "2s"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -4259,8 +4332,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          1100,
-          2100
+          1000,
+          2000
         ]
       }
     },
@@ -4291,9 +4364,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "4s",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 1,
       "fu": 30,
       "yaku": [
@@ -4314,7 +4388,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -4334,9 +4408,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "4s",
       "fixedMelds": [],
-      "doraIndicators": [],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
+      "uraDoraIndicators": [
+        "5p"
+      ],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -4348,8 +4425,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          1100,
-          2100
+          1000,
+          2000
         ]
       }
     },
@@ -4360,7 +4437,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -4386,7 +4463,6 @@ export const SCORE_QUIZ_PROBLEMS = {
       "uraDoraIndicators": [
         "4p"
       ],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 38,
       "yaku": [
@@ -4398,7 +4474,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          8000
+          7700
         ]
       }
     },
@@ -4409,7 +4485,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -4432,8 +4508,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "doraIndicators": [
         "3m"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "2p"
+      ],
       "han": 4,
       "fu": 30,
       "yaku": [
@@ -4446,8 +4523,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          2100,
-          4000
+          2000,
+          3900
         ]
       }
     },
@@ -4478,11 +4555,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "7s",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "2m"
+      ],
       "uraDoraIndicators": [
         "5s"
       ],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -4505,7 +4583,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -4528,8 +4606,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "doraIndicators": [
         "6s"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "2p"
+      ],
       "han": 4,
       "fu": 32,
       "yaku": [
@@ -4542,8 +4621,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          2100,
-          4100
+          2000,
+          4000
         ]
       }
     },
@@ -4554,7 +4633,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -4574,9 +4653,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "4p",
       "fixedMelds": [],
-      "doraIndicators": [],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "doraIndicators": [
+        "2m"
+      ],
+      "uraDoraIndicators": [
+        "6p"
+      ],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -4588,7 +4670,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          4200
+          3900
         ]
       }
     }
@@ -4601,7 +4683,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
-      "honba": 2,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -4626,9 +4708,9 @@ export const SCORE_QUIZ_PROBLEMS = {
         "3m"
       ],
       "uraDoraIndicators": [
-        "6p"
+        "6p",
+        "2p"
       ],
-      "kanDoraIndicators": [],
       "han": 5,
       "fu": 38,
       "yaku": [
@@ -4641,7 +4723,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          8600
+          8000
         ]
       }
     },
@@ -4652,7 +4734,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 2,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -4677,9 +4759,9 @@ export const SCORE_QUIZ_PROBLEMS = {
         "1s"
       ],
       "uraDoraIndicators": [
-        "4s"
+        "4s",
+        "8p"
       ],
-      "kanDoraIndicators": [],
       "han": 6,
       "fu": 30,
       "yaku": [
@@ -4692,8 +4774,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          3200,
-          6200
+          3000,
+          6000
         ]
       }
     },
@@ -4704,7 +4786,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 3,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -4728,7 +4810,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "6s"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -4740,8 +4821,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          1300,
-          2300
+          1000,
+          2000
         ]
       }
     },
@@ -4752,7 +4833,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
-      "honba": 2,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -4775,8 +4856,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "doraIndicators": [
         "8p"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "2p"
+      ],
       "han": 4,
       "fu": 32,
       "yaku": [
@@ -4789,7 +4871,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          4200
+          4000
         ]
       }
     },
@@ -4800,7 +4882,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -4820,11 +4902,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "3s",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "4m"
+      ],
       "uraDoraIndicators": [
         "red"
       ],
-      "kanDoraIndicators": [],
       "han": 5,
       "fu": 40,
       "yaku": [
@@ -4836,7 +4919,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          8300
+          8000
         ]
       }
     },
@@ -4847,7 +4930,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 3,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -4867,11 +4950,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "6m",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [
         "1p"
       ],
-      "kanDoraIndicators": [],
       "han": 5,
       "fu": 20,
       "yaku": [
@@ -4885,8 +4969,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          2300,
-          4300
+          2000,
+          4000
         ]
       }
     },
@@ -4897,7 +4981,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
-      "honba": 2,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -4922,7 +5006,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "6p"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 6,
       "fu": 20,
       "yaku": [
@@ -4936,7 +5019,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          6200
+          6000
         ]
       }
     },
@@ -4967,9 +5050,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "7p",
       "fixedMelds": [],
-      "doraIndicators": [],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
+      "uraDoraIndicators": [
+        "9m"
+      ],
       "han": 3,
       "fu": 42,
       "yaku": [
@@ -5014,8 +5100,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "doraIndicators": [
         "1m"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "5p"
+      ],
       "han": 3,
       "fu": 34,
       "yaku": [
@@ -5063,9 +5150,9 @@ export const SCORE_QUIZ_PROBLEMS = {
         "2s"
       ],
       "uraDoraIndicators": [
-        "2s"
+        "2s",
+        "6p"
       ],
-      "kanDoraIndicators": [],
       "han": 5,
       "fu": 30,
       "yaku": [
@@ -5114,8 +5201,10 @@ export const SCORE_QUIZ_PROBLEMS = {
         "4m",
         "5m"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "6p",
+        "7p"
+      ],
       "han": 5,
       "fu": 30,
       "yaku": [
@@ -5139,7 +5228,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -5163,7 +5252,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "white"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 4,
       "fu": 44,
       "yaku": [
@@ -5174,7 +5262,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          8300
+          8000
         ]
       }
     },
@@ -5185,7 +5273,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 3,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -5208,8 +5296,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "doraIndicators": [
         "6m"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "4p"
+      ],
       "han": 5,
       "fu": 20,
       "yaku": [
@@ -5223,8 +5312,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          2300,
-          4300
+          2000,
+          4000
         ]
       }
     },
@@ -5235,7 +5324,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
-      "honba": 3,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -5261,7 +5350,6 @@ export const SCORE_QUIZ_PROBLEMS = {
       "uraDoraIndicators": [
         "5p"
       ],
-      "kanDoraIndicators": [],
       "han": 6,
       "fu": 30,
       "yaku": [
@@ -5275,7 +5363,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          12900
+          12000
         ]
       }
     },
@@ -5286,7 +5374,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 2,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -5311,7 +5399,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "5s"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 5,
       "fu": 20,
       "yaku": [
@@ -5324,8 +5411,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          2200,
-          4200
+          2000,
+          4000
         ]
       }
     },
@@ -5336,9 +5423,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
-      "riichiStatus": "none",
+      "riichiStatus": "riichi",
       "concealedTiles": [
         "4m",
         "2p",
@@ -5357,21 +5444,22 @@ export const SCORE_QUIZ_PROBLEMS = {
       "winningTile": "5m",
       "fixedMelds": [],
       "doraIndicators": [
-        "6m",
-        "7p"
+        "6m"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "1m"
+      ],
       "han": 3,
       "fu": 32,
       "yaku": [
-        "도라 3"
+        "리치",
+        "도라 2"
       ],
       "fuDetails": [],
       "answer": {
         "type": "single",
         "payments": [
-          5500
+          5200
         ]
       }
     },
@@ -5382,7 +5470,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -5406,7 +5494,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "north"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -5417,7 +5504,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          2100
+          2000
         ]
       }
     },
@@ -5428,7 +5515,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
-      "honba": 2,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -5451,8 +5538,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "doraIndicators": [
         "5s"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "6p"
+      ],
       "han": 3,
       "fu": 38,
       "yaku": [
@@ -5464,7 +5552,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          5800
+          5200
         ]
       }
     },
@@ -5475,7 +5563,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -5495,11 +5583,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "4m",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [
         "6p"
       ],
-      "kanDoraIndicators": [],
       "han": 5,
       "fu": 20,
       "yaku": [
@@ -5513,8 +5602,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          2100,
-          4100
+          2000,
+          4000
         ]
       }
     },
@@ -5550,9 +5639,9 @@ export const SCORE_QUIZ_PROBLEMS = {
         "red"
       ],
       "uraDoraIndicators": [
-        "2m"
+        "2m",
+        "5p"
       ],
-      "kanDoraIndicators": [],
       "han": 5,
       "fu": 36,
       "yaku": [
@@ -5575,7 +5664,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "ron",
-      "honba": 2,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -5595,11 +5684,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "2s",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [
         "9s"
       ],
-      "kanDoraIndicators": [],
       "han": 5,
       "fu": 25,
       "yaku": [
@@ -5611,7 +5701,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          8600
+          8000
         ]
       }
     },
@@ -5647,9 +5737,9 @@ export const SCORE_QUIZ_PROBLEMS = {
         "5p"
       ],
       "uraDoraIndicators": [
-        "8s"
+        "8s",
+        "2p"
       ],
-      "kanDoraIndicators": [],
       "han": 5,
       "fu": 40,
       "yaku": [
@@ -5673,7 +5763,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
-      "honba": 2,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -5696,8 +5786,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "doraIndicators": [
         "5m"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "9m"
+      ],
       "han": 4,
       "fu": 40,
       "yaku": [
@@ -5708,7 +5799,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          8600
+          8000
         ]
       }
     },
@@ -5719,7 +5810,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
-      "honba": 3,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -5743,7 +5834,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "1p"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 4,
       "fu": 25,
       "yaku": [
@@ -5754,7 +5844,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          7300
+          6400
         ]
       }
     },
@@ -5765,7 +5855,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 2,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -5789,7 +5879,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "1s"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 4,
       "fu": 34,
       "yaku": [
@@ -5801,8 +5890,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          2200,
-          4200
+          2000,
+          4000
         ]
       }
     },
@@ -5836,8 +5925,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "doraIndicators": [
         "8p"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "3p"
+      ],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -5861,7 +5951,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
-      "honba": 2,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -5881,9 +5971,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "9m",
       "fixedMelds": [],
-      "doraIndicators": [],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
+      "uraDoraIndicators": [
+        "5p"
+      ],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -5895,7 +5988,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          2200
+          2000
         ]
       }
     },
@@ -5906,7 +5999,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
-      "honba": 2,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -5930,8 +6023,10 @@ export const SCORE_QUIZ_PROBLEMS = {
         "3s",
         "7m"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "4p",
+        "5p"
+      ],
       "han": 4,
       "fu": 40,
       "yaku": [
@@ -5943,7 +6038,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          8600
+          8000
         ]
       }
     },
@@ -5978,7 +6073,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "6s"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 6,
       "fu": 20,
       "yaku": [
@@ -6002,7 +6096,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 2,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -6027,7 +6121,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "5s"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 5,
       "fu": 20,
       "yaku": [
@@ -6040,8 +6133,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          2200,
-          4200
+          2000,
+          4000
         ]
       }
     },
@@ -6052,7 +6145,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 3,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -6076,7 +6169,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "4m"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 32,
       "yaku": [
@@ -6088,8 +6180,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          1600,
-          2900
+          1300,
+          2600
         ]
       }
     },
@@ -6100,7 +6192,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
-      "honba": 3,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -6126,7 +6218,6 @@ export const SCORE_QUIZ_PROBLEMS = {
       "uraDoraIndicators": [
         "6m"
       ],
-      "kanDoraIndicators": [],
       "han": 6,
       "fu": 32,
       "yaku": [
@@ -6139,7 +6230,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          18900
+          18000
         ]
       }
     },
@@ -6150,7 +6241,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -6170,11 +6261,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "6m",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [
         "1p"
       ],
-      "kanDoraIndicators": [],
       "han": 4,
       "fu": 42,
       "yaku": [
@@ -6185,7 +6277,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          8300
+          8000
         ]
       }
     },
@@ -6216,11 +6308,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "red",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [
         "4s"
       ],
-      "kanDoraIndicators": [],
       "han": 4,
       "fu": 30,
       "yaku": [
@@ -6270,7 +6363,6 @@ export const SCORE_QUIZ_PROBLEMS = {
       "uraDoraIndicators": [
         "4p"
       ],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 32,
       "yaku": [
@@ -6293,7 +6385,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -6316,8 +6408,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "doraIndicators": [
         "7m"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "6p"
+      ],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -6329,7 +6422,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          2100
+          2000
         ]
       }
     },
@@ -6340,7 +6433,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
-      "honba": 3,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -6366,7 +6459,6 @@ export const SCORE_QUIZ_PROBLEMS = {
       "uraDoraIndicators": [
         "1m"
       ],
-      "kanDoraIndicators": [],
       "han": 6,
       "fu": 36,
       "yaku": [
@@ -6378,7 +6470,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          12900
+          12000
         ]
       }
     },
@@ -6389,7 +6481,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -6409,9 +6501,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "7p",
       "fixedMelds": [],
-      "doraIndicators": [],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
+      "uraDoraIndicators": [
+        "2p"
+      ],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -6423,7 +6518,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          4200
+          3900
         ]
       }
     },
@@ -6460,7 +6555,6 @@ export const SCORE_QUIZ_PROBLEMS = {
       "uraDoraIndicators": [
         "5s"
       ],
-      "kanDoraIndicators": [],
       "han": 4,
       "fu": 30,
       "yaku": [
@@ -6485,7 +6579,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
-      "honba": 2,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -6511,7 +6605,6 @@ export const SCORE_QUIZ_PROBLEMS = {
       "uraDoraIndicators": [
         "3p"
       ],
-      "kanDoraIndicators": [],
       "han": 5,
       "fu": 32,
       "yaku": [
@@ -6525,7 +6618,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          4200
+          4000
         ]
       }
     },
@@ -6536,7 +6629,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "ron",
-      "honba": 3,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -6562,7 +6655,6 @@ export const SCORE_QUIZ_PROBLEMS = {
       "uraDoraIndicators": [
         "6m"
       ],
-      "kanDoraIndicators": [],
       "han": 4,
       "fu": 30,
       "yaku": [
@@ -6575,7 +6667,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          8600
+          7700
         ]
       }
     },
@@ -6586,7 +6678,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
-      "honba": 3,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -6606,11 +6698,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "3m",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [
         "2m"
       ],
-      "kanDoraIndicators": [],
       "han": 4,
       "fu": 30,
       "yaku": [
@@ -6623,7 +6716,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          4200
+          3900
         ]
       }
     },
@@ -6634,9 +6727,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
-      "riichiStatus": "none",
+      "riichiStatus": "riichi",
       "concealedTiles": [
         "4s",
         "6m",
@@ -6655,20 +6748,22 @@ export const SCORE_QUIZ_PROBLEMS = {
       "winningTile": "4s",
       "fixedMelds": [],
       "doraIndicators": [
-        "3s"
+        "east"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "1m"
+      ],
       "han": 3,
       "fu": 44,
       "yaku": [
-        "도라 3"
+        "리치",
+        "도라 2"
       ],
       "fuDetails": [],
       "answer": {
         "type": "single",
         "payments": [
-          6700
+          6400
         ]
       }
     },
@@ -6679,7 +6774,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
-      "honba": 2,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -6703,8 +6798,10 @@ export const SCORE_QUIZ_PROBLEMS = {
         "7p",
         "7m"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "3p",
+        "4p"
+      ],
       "han": 6,
       "fu": 32,
       "yaku": [
@@ -6716,7 +6813,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          12600
+          12000
         ]
       }
     },
@@ -6727,7 +6824,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 2,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -6753,7 +6850,6 @@ export const SCORE_QUIZ_PROBLEMS = {
       "uraDoraIndicators": [
         "5m"
       ],
-      "kanDoraIndicators": [],
       "han": 5,
       "fu": 30,
       "yaku": [
@@ -6767,8 +6863,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          2200,
-          4200
+          2000,
+          4000
         ]
       }
     },
@@ -6799,9 +6895,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "3s",
       "fixedMelds": [],
-      "doraIndicators": [],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
+      "uraDoraIndicators": [
+        "3p"
+      ],
       "han": 4,
       "fu": 30,
       "yaku": [
@@ -6826,7 +6925,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -6851,7 +6950,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "3s"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 6,
       "fu": 20,
       "yaku": [
@@ -6863,8 +6961,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          3100,
-          6100
+          3000,
+          6000
         ]
       }
     },
@@ -6875,9 +6973,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
-      "honba": 3,
+      "honba": 0,
       "isClosed": true,
-      "riichiStatus": "none",
+      "riichiStatus": "riichi",
       "concealedTiles": [
         "4s",
         "7m",
@@ -6896,21 +6994,22 @@ export const SCORE_QUIZ_PROBLEMS = {
       "winningTile": "white",
       "fixedMelds": [],
       "doraIndicators": [
-        "6m",
         "red"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "1m"
+      ],
       "han": 3,
       "fu": 38,
       "yaku": [
-        "도라 3"
+        "리치",
+        "도라 2"
       ],
       "fuDetails": [],
       "answer": {
         "type": "single",
         "payments": [
-          8600
+          7700
         ]
       }
     },
@@ -6923,7 +7022,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "winType": "ron",
       "honba": 0,
       "isClosed": true,
-      "riichiStatus": "none",
+      "riichiStatus": "riichi",
       "concealedTiles": [
         "4p",
         "3s",
@@ -6942,15 +7041,18 @@ export const SCORE_QUIZ_PROBLEMS = {
       "winningTile": "5m",
       "fixedMelds": [],
       "doraIndicators": [
-        "5p",
-        "white"
+        "2m",
+        "5p"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "1m",
+        "5m"
+      ],
       "han": 6,
       "fu": 36,
       "yaku": [
-        "도라 6"
+        "리치",
+        "도라 5"
       ],
       "fuDetails": [],
       "answer": {
@@ -6992,7 +7094,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "6s"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 32,
       "yaku": [
@@ -7014,7 +7115,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
-      "honba": 2,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -7037,8 +7138,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "doraIndicators": [
         "5s"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "3p"
+      ],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -7050,7 +7152,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          2200
+          2000
         ]
       }
     },
@@ -7061,7 +7163,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -7081,11 +7183,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "5p",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "3m"
+      ],
       "uraDoraIndicators": [
         "6p"
       ],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 30,
       "yaku": [
@@ -7097,7 +7200,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          6100
+          5800
         ]
       }
     },
@@ -7128,11 +7231,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "4s",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [
         "7m"
       ],
-      "kanDoraIndicators": [],
       "han": 4,
       "fu": 30,
       "yaku": [
@@ -7156,7 +7260,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -7176,9 +7280,10 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "4m",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 36,
       "yaku": [
@@ -7189,8 +7294,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          1400,
-          2700
+          1300,
+          2600
         ]
       }
     },
@@ -7201,7 +7306,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 3,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -7225,8 +7330,10 @@ export const SCORE_QUIZ_PROBLEMS = {
         "6p",
         "5m"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "2p",
+        "3p"
+      ],
       "han": 6,
       "fu": 20,
       "yaku": [
@@ -7240,8 +7347,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          3300,
-          6300
+          3000,
+          6000
         ]
       }
     },
@@ -7278,7 +7385,6 @@ export const SCORE_QUIZ_PROBLEMS = {
       "uraDoraIndicators": [
         "7s"
       ],
-      "kanDoraIndicators": [],
       "han": 5,
       "fu": 30,
       "yaku": [
@@ -7324,11 +7430,12 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "winningTile": "4p",
       "fixedMelds": [],
-      "doraIndicators": [],
+      "doraIndicators": [
+        "1m"
+      ],
       "uraDoraIndicators": [
         "7m"
       ],
-      "kanDoraIndicators": [],
       "han": 3,
       "fu": 40,
       "yaku": [
@@ -7351,7 +7458,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 3,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -7374,8 +7481,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "doraIndicators": [
         "6s"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "5p"
+      ],
       "han": 6,
       "fu": 20,
       "yaku": [
@@ -7389,8 +7497,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          3300,
-          6300
+          3000,
+          6000
         ]
       }
     },
@@ -7425,7 +7533,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "4p"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 5,
       "fu": 48,
       "yaku": [
@@ -7472,7 +7579,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "5p"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 5,
       "fu": 30,
       "yaku": [
@@ -7524,9 +7630,10 @@ export const SCORE_QUIZ_PROBLEMS = {
         "3p"
       ],
       "uraDoraIndicators": [
-        "3m"
+        "3m",
+        "7p",
+        "8p"
       ],
-      "kanDoraIndicators": [],
       "han": 7,
       "fu": 30,
       "yaku": [
@@ -7551,7 +7658,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
-      "honba": 5,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -7577,9 +7684,10 @@ export const SCORE_QUIZ_PROBLEMS = {
         "2m"
       ],
       "uraDoraIndicators": [
-        "1m"
+        "1m",
+        "5p",
+        "6p"
       ],
-      "kanDoraIndicators": [],
       "han": 8,
       "fu": 30,
       "yaku": [
@@ -7592,7 +7700,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          8500
+          8000
         ]
       }
     },
@@ -7603,7 +7711,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
-      "honba": 5,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -7627,8 +7735,10 @@ export const SCORE_QUIZ_PROBLEMS = {
         "1m",
         "red"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "2p",
+        "4p"
+      ],
       "han": 10,
       "fu": 36,
       "yaku": [
@@ -7641,7 +7751,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          8500
+          8000
         ]
       }
     },
@@ -7652,7 +7762,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
-      "honba": 2,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -7677,7 +7787,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "4s"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 6,
       "fu": 42,
       "yaku": [
@@ -7688,7 +7797,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          18600
+          18000
         ]
       }
     },
@@ -7699,7 +7808,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
-      "honba": 3,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -7726,9 +7835,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "uraDoraIndicators": [
         "3s",
-        "2p"
+        "2p",
+        "4p"
       ],
-      "kanDoraIndicators": [],
       "han": 9,
       "fu": 32,
       "yaku": [
@@ -7741,7 +7850,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          24900
+          24000
         ]
       }
     },
@@ -7752,7 +7861,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 4,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -7778,7 +7887,6 @@ export const SCORE_QUIZ_PROBLEMS = {
       "uraDoraIndicators": [
         "3m"
       ],
-      "kanDoraIndicators": [],
       "han": 5,
       "fu": 30,
       "yaku": [
@@ -7792,8 +7900,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          2400,
-          4400
+          2000,
+          4000
         ]
       }
     },
@@ -7804,7 +7912,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "ron",
-      "honba": 2,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -7830,9 +7938,10 @@ export const SCORE_QUIZ_PROBLEMS = {
         "4p"
       ],
       "uraDoraIndicators": [
-        "3m"
+        "3m",
+        "8p",
+        "4s"
       ],
-      "kanDoraIndicators": [],
       "han": 5,
       "fu": 32,
       "yaku": [
@@ -7844,7 +7953,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          8600
+          8000
         ]
       }
     },
@@ -7855,7 +7964,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
-      "honba": 5,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -7881,7 +7990,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "3s"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 10,
       "fu": 44,
       "yaku": [
@@ -7892,7 +8000,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          17500
+          16000
         ]
       }
     },
@@ -7903,7 +8011,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
-      "honba": 5,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -7931,7 +8039,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "1p",
         "6m"
       ],
-      "kanDoraIndicators": [],
       "han": 5,
       "fu": 34,
       "yaku": [
@@ -7943,7 +8050,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          13500
+          12000
         ]
       }
     },
@@ -7954,7 +8061,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 3,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -7978,8 +8085,10 @@ export const SCORE_QUIZ_PROBLEMS = {
         "6s",
         "5p"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "3p",
+        "7p"
+      ],
       "han": 5,
       "fu": 32,
       "yaku": [
@@ -7992,8 +8101,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          2300,
-          4300
+          2000,
+          4000
         ]
       }
     },
@@ -8004,7 +8113,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -8029,9 +8138,9 @@ export const SCORE_QUIZ_PROBLEMS = {
         "5m"
       ],
       "uraDoraIndicators": [
-        "8s"
+        "8s",
+        "1p"
       ],
-      "kanDoraIndicators": [],
       "han": 9,
       "fu": 25,
       "yaku": [
@@ -8044,7 +8153,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          16300
+          16000
         ]
       }
     },
@@ -8083,7 +8192,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "1s",
         "3m"
       ],
-      "kanDoraIndicators": [],
       "han": 8,
       "fu": 30,
       "yaku": [
@@ -8134,9 +8242,9 @@ export const SCORE_QUIZ_PROBLEMS = {
         "1m"
       ],
       "uraDoraIndicators": [
-        "1m"
+        "1m",
+        "2p"
       ],
-      "kanDoraIndicators": [],
       "han": 9,
       "fu": 30,
       "yaku": [
@@ -8163,7 +8271,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 2,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -8184,13 +8292,13 @@ export const SCORE_QUIZ_PROBLEMS = {
       "winningTile": "9p",
       "fixedMelds": [],
       "doraIndicators": [
-        "8p"
+        "8p",
+        "1m"
       ],
       "uraDoraIndicators": [
         "2s",
         "8p"
       ],
-      "kanDoraIndicators": [],
       "han": 10,
       "fu": 25,
       "yaku": [
@@ -8204,8 +8312,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          4200,
-          8200
+          4000,
+          8000
         ]
       }
     },
@@ -8216,7 +8324,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -8243,9 +8351,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "uraDoraIndicators": [
         "5m",
-        "5s"
+        "5s",
+        "2p"
       ],
-      "kanDoraIndicators": [],
       "han": 10,
       "fu": 30,
       "yaku": [
@@ -8259,7 +8367,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          16300
+          16000
         ]
       }
     },
@@ -8270,7 +8378,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "ron",
-      "honba": 4,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -8298,7 +8406,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "1p",
         "5m"
       ],
-      "kanDoraIndicators": [],
       "han": 6,
       "fu": 40,
       "yaku": [
@@ -8311,7 +8418,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          13200
+          12000
         ]
       }
     },
@@ -8322,7 +8429,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 5,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "none",
       "concealedTiles": [
@@ -8348,7 +8455,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "4p"
       ],
       "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
       "han": 6,
       "fu": 20,
       "yaku": [
@@ -8361,8 +8467,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          3500,
-          6500
+          3000,
+          6000
         ]
       }
     },
@@ -8373,7 +8479,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -8400,9 +8506,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "uraDoraIndicators": [
         "4s",
-        "2m"
+        "2m",
+        "9m"
       ],
-      "kanDoraIndicators": [],
       "han": 13,
       "fu": 36,
       "yaku": [
@@ -8416,7 +8522,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          16100
+          16000
         ]
       }
     },
@@ -8427,7 +8533,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
-      "honba": 5,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -8455,7 +8561,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "green",
         "6p"
       ],
-      "kanDoraIndicators": [],
       "han": 11,
       "fu": 44,
       "yaku": [
@@ -8468,7 +8573,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          25500
+          24000
         ]
       }
     },
@@ -8479,7 +8584,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
-      "honba": 3,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -8507,7 +8612,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "3m",
         "red"
       ],
-      "kanDoraIndicators": [],
       "han": 11,
       "fu": 25,
       "yaku": [
@@ -8520,7 +8624,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          36900
+          36000
         ]
       }
     },
@@ -8531,7 +8635,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -8556,9 +8660,9 @@ export const SCORE_QUIZ_PROBLEMS = {
         "7s"
       ],
       "uraDoraIndicators": [
-        "6m"
+        "6m",
+        "3p"
       ],
-      "kanDoraIndicators": [],
       "han": 11,
       "fu": 30,
       "yaku": [
@@ -8572,7 +8676,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          24300
+          24000
         ]
       }
     },
@@ -8583,7 +8687,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
-      "honba": 4,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -8609,9 +8713,10 @@ export const SCORE_QUIZ_PROBLEMS = {
         "5p"
       ],
       "uraDoraIndicators": [
-        "1s"
+        "1s",
+        "9m",
+        "4p"
       ],
-      "kanDoraIndicators": [],
       "han": 9,
       "fu": 42,
       "yaku": [
@@ -8623,7 +8728,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          17200
+          16000
         ]
       }
     },
@@ -8634,9 +8739,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
-      "riichiStatus": "none",
+      "riichiStatus": "riichi",
       "concealedTiles": [
         "north",
         "4s",
@@ -8655,22 +8760,26 @@ export const SCORE_QUIZ_PROBLEMS = {
       "winningTile": "7s",
       "fixedMelds": [],
       "doraIndicators": [
-        "6s",
-        "west",
-        "2m"
+        "2m",
+        "2m",
+        "2s"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "1m",
+        "3m",
+        "4m"
+      ],
       "han": 8,
       "fu": 40,
       "yaku": [
-        "도라 8"
+        "리치",
+        "도라 7"
       ],
       "fuDetails": [],
       "answer": {
         "type": "single",
         "payments": [
-          16300
+          16000
         ]
       }
     },
@@ -8707,7 +8816,6 @@ export const SCORE_QUIZ_PROBLEMS = {
       "uraDoraIndicators": [
         "5p"
       ],
-      "kanDoraIndicators": [],
       "han": 5,
       "fu": 32,
       "yaku": [
@@ -8730,7 +8838,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
-      "honba": 5,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -8757,9 +8865,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "uraDoraIndicators": [
         "4m",
-        "6p"
+        "6p",
+        "2p"
       ],
-      "kanDoraIndicators": [],
       "han": 9,
       "fu": 36,
       "yaku": [
@@ -8771,7 +8879,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          17500
+          16000
         ]
       }
     },
@@ -8782,7 +8890,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "west",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 2,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -8809,9 +8917,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "uraDoraIndicators": [
         "2s",
-        "3s"
+        "3s",
+        "2p"
       ],
-      "kanDoraIndicators": [],
       "han": 11,
       "fu": 20,
       "yaku": [
@@ -8826,8 +8934,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          6200,
-          12200
+          6000,
+          12000
         ]
       }
     },
@@ -8838,7 +8946,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -8859,13 +8967,13 @@ export const SCORE_QUIZ_PROBLEMS = {
       "winningTile": "4m",
       "fixedMelds": [],
       "doraIndicators": [
-        "2s"
+        "2s",
+        "1m"
       ],
       "uraDoraIndicators": [
         "green",
         "3s"
       ],
-      "kanDoraIndicators": [],
       "han": 10,
       "fu": 30,
       "yaku": [
@@ -8879,8 +8987,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          4100,
-          8100
+          4000,
+          8000
         ]
       }
     },
@@ -8891,7 +8999,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 4,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -8917,7 +9025,6 @@ export const SCORE_QUIZ_PROBLEMS = {
       "uraDoraIndicators": [
         "4s"
       ],
-      "kanDoraIndicators": [],
       "han": 6,
       "fu": 20,
       "yaku": [
@@ -8932,8 +9039,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          3400,
-          6400
+          3000,
+          6000
         ]
       }
     },
@@ -8971,9 +9078,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "uraDoraIndicators": [
         "2p",
-        "7p"
+        "7p",
+        "3p"
       ],
-      "kanDoraIndicators": [],
       "han": 9,
       "fu": 38,
       "yaku": [
@@ -8996,7 +9103,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
-      "honba": 2,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -9022,9 +9129,10 @@ export const SCORE_QUIZ_PROBLEMS = {
         "1p"
       ],
       "uraDoraIndicators": [
-        "9p"
+        "9p",
+        "4p",
+        "5p"
       ],
-      "kanDoraIndicators": [],
       "han": 7,
       "fu": 30,
       "yaku": [
@@ -9038,7 +9146,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          6200
+          6000
         ]
       }
     },
@@ -9072,8 +9180,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       "doraIndicators": [
         "6m"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "2p"
+      ],
       "han": 5,
       "fu": 30,
       "yaku": [
@@ -9098,7 +9207,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
-      "honba": 3,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -9124,10 +9233,10 @@ export const SCORE_QUIZ_PROBLEMS = {
         "south"
       ],
       "uraDoraIndicators": [
+        "3s",
         "south",
-        "west"
+        "8m"
       ],
-      "kanDoraIndicators": [],
       "han": 13,
       "fu": 25,
       "yaku": [
@@ -9140,7 +9249,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          32900
+          32000
         ]
       }
     },
@@ -9151,7 +9260,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
-      "honba": 1,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -9179,7 +9288,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "3p",
         "6s"
       ],
-      "kanDoraIndicators": [],
       "han": 7,
       "fu": 36,
       "yaku": [
@@ -9191,7 +9299,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          18300
+          18000
         ]
       }
     },
@@ -9202,7 +9310,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "tsumo",
-      "honba": 3,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -9229,9 +9337,9 @@ export const SCORE_QUIZ_PROBLEMS = {
       ],
       "uraDoraIndicators": [
         "9m",
-        "2m"
+        "2m",
+        "6p"
       ],
-      "kanDoraIndicators": [],
       "han": 9,
       "fu": 30,
       "yaku": [
@@ -9245,8 +9353,8 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "childTsumo",
         "payments": [
-          4300,
-          8300
+          4000,
+          8000
         ]
       }
     },
@@ -9282,8 +9390,11 @@ export const SCORE_QUIZ_PROBLEMS = {
         "3p",
         "4p"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "8p",
+        "4s",
+        "5s"
+      ],
       "han": 5,
       "fu": 30,
       "yaku": [
@@ -9307,7 +9418,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "north",
       "playerType": "child",
       "winType": "ron",
-      "honba": 2,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -9335,7 +9446,6 @@ export const SCORE_QUIZ_PROBLEMS = {
         "1s",
         "5p"
       ],
-      "kanDoraIndicators": [],
       "han": 9,
       "fu": 32,
       "yaku": [
@@ -9349,7 +9459,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          16600
+          16000
         ]
       }
     },
@@ -9360,7 +9470,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "south",
       "playerType": "child",
       "winType": "ron",
-      "honba": 2,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -9385,9 +9495,9 @@ export const SCORE_QUIZ_PROBLEMS = {
         "4p"
       ],
       "uraDoraIndicators": [
-        "west"
+        "west",
+        "9m"
       ],
-      "kanDoraIndicators": [],
       "han": 7,
       "fu": 40,
       "yaku": [
@@ -9399,7 +9509,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          12600
+          12000
         ]
       }
     },
@@ -9410,7 +9520,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "tsumo",
-      "honba": 3,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -9435,8 +9545,11 @@ export const SCORE_QUIZ_PROBLEMS = {
         "6m",
         "2p"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "7p",
+        "8p",
+        "9p"
+      ],
       "han": 9,
       "fu": 20,
       "yaku": [
@@ -9450,7 +9563,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          8300
+          8000
         ]
       }
     },
@@ -9461,7 +9574,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
-      "honba": 5,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -9482,13 +9595,13 @@ export const SCORE_QUIZ_PROBLEMS = {
       "winningTile": "4m",
       "fixedMelds": [],
       "doraIndicators": [
-        "1p"
+        "1p",
+        "1m"
       ],
       "uraDoraIndicators": [
         "5p",
         "4s"
       ],
-      "kanDoraIndicators": [],
       "han": 6,
       "fu": 30,
       "yaku": [
@@ -9502,7 +9615,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          19500
+          18000
         ]
       }
     },
@@ -9513,7 +9626,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "seatWind": "east",
       "playerType": "dealer",
       "winType": "ron",
-      "honba": 5,
+      "honba": 0,
       "isClosed": true,
       "riichiStatus": "riichi",
       "concealedTiles": [
@@ -9538,8 +9651,11 @@ export const SCORE_QUIZ_PROBLEMS = {
         "4m",
         "2p"
       ],
-      "uraDoraIndicators": [],
-      "kanDoraIndicators": [],
+      "uraDoraIndicators": [
+        "7p",
+        "8p",
+        "9p"
+      ],
       "han": 7,
       "fu": 32,
       "yaku": [
@@ -9551,7 +9667,7 @@ export const SCORE_QUIZ_PROBLEMS = {
       "answer": {
         "type": "single",
         "payments": [
-          19500
+          18000
         ]
       }
     }
